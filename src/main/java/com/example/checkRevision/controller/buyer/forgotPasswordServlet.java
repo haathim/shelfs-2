@@ -28,6 +28,8 @@ public class forgotPasswordServlet extends HttpServlet {
             session.setAttribute("forgotPwdVerCode", forgotPwdVerCode);
             emailObject.sendMail(email,"Forgot Password code from SHELFS", String.valueOf(forgotPwdVerCode));
 
+            response.sendRedirect("newPasswordFormServlet");
+
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

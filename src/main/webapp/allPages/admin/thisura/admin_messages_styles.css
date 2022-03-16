@@ -1,0 +1,115 @@
+
+/*.main-container{*/
+/*    height: auto;*/
+/*    width: 90%;*/
+/*    margin: 20px;*/
+/*    border-radius: 10px;*/
+/*    color: #000;*/
+/*}*/
+
+/*.main-container > h1 {*/
+/*  margin-top: 3px;*/
+/*  margin-left: 4px;*/
+/*}*/
+
+/*.mainbox1{*/
+/*  height: 580px;*/
+/*  width: 100%;*/
+/*  border: 1px solid rgb(4, 105, 13);*/
+/*  margin-top: 20px;*/
+/*  margin-left: 10px;*/
+/*  margin-right: 10px;*/
+/*  border-radius: 7px;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*#order1 {*/
+/*  margin-top: 50px;*/
+/*  margin-left: 50px;*/
+/*  border-radius: 7px;*/
+/*  color: black;*/
+/*  padding: 10px;*/
+/*  text-align: left;*/
+/*}*/
+
+/*table{*/
+/*  border-spacing: 0px;*/
+/*  border-collapse: collapse;*/
+/*  width: 40%;*/
+/*}*/
+
+/*td, th{*/
+/*    padding: 10px;*/
+/*    border: 0.5px solid black;*/
+/*}*/
+
+/*.mainbox2{*/
+/*    height: 480.5px;*/
+/*    width: 50%;*/
+/*    border: 1px solid rgb(4, 105, 13);*/
+/*    margin-top: -481px;*/
+/*    margin-left: 492.7px;*/
+/*    margin-right: 10px;*/
+/*    box-sizing: border-box;*/
+/*  }*/
+
+/*  .mainbox3{*/
+/*    height: 35px;*/
+/*    width: 48%;*/
+/*    border: 1px solid rgb(4, 105, 13);*/
+/*    margin-top: -100px;*/
+/*    margin-left: 512px;*/
+/*    margin-right: 10px;*/
+/*    border-radius: 7px;*/
+/*  }*/
+
+
+/* Chat containers */
+.messages-container-message {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.messages-container-message::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.messages-container-message img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.messages-container-message img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+    float: left;
+    color: #999;
+}

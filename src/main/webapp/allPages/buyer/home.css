@@ -1,0 +1,151 @@
+#become-seller {
+  background-color: #658154;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+#become-seller > h2 {
+  border: 1px solid black;
+  background-color: #e8c340;
+  border-radius: 5px;
+
+  color: #000000;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+#become-seller > h3 {
+  padding: 5px 0px;
+}
+
+.main-area-box {
+  /* display: block;
+      padding-top:40px;
+      padding-left: 50px;
+      height: 350px;
+      width: 90%;
+      border: 1px solid #000;
+      border-radius: 25px; */
+
+  width: 90%;
+  /*border: 1px solid red;*/
+  padding: 5px;
+  margin: 20px auto;
+}
+
+.main-area-column {
+  display: flex;
+  /*overflow-x: scroll;*/
+}
+.main-area-row {
+  display: flex;
+  align-content: center;
+}
+
+.book-tiles {
+  width: 90%;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.arrow-left,
+.arrow-right {
+  position: relative;
+  display: block;
+  height: 50px;
+  width: 20px;
+  padding-top: 120px;
+  bottom: -130px;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.main-sub-box {
+  /* margin: 5px;
+      height: 280px;
+      width: 180px;
+      border: 1px solid #000;
+      border-radius: 15px; */
+
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.book-text {
+  /* position: relative;
+      z-index: 99;
+      bottom: -90px;
+      left: 10%;
+      color: #000; */
+}
+.grid-text {
+  /* padding-bottom: 10px;
+        position: relative;
+        bottom: 0px;
+        padding-right: 50px;
+        display: block; */
+}
+
+.book-text > .book-title {
+  /* font-weight: bold; */
+}
+.title,
+.author {
+  text-align: center;
+  align-content: center;
+}
+.price {
+  /* position: relative; */
+  /* width: 89%;
+    height: 30px; */
+  text-align: center;
+  font-size: 150%;
+  font-weight: 700;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: #869960;
+  border-radius: 0px 0px 15px 15px;
+  /* left: 10px;
+    bottom: -145px;
+    align-content: center; */
+  margin-top: auto;
+}
+.cover-pic {
+  /* padding: 10px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    box-sizing: border-box; */
+  border: 1px solid green;
+}
+
+.cover-pic img {
+  width: 160px;
+  height: 240px;
+  position: relative;
+  object-fit: contain;
+}
+
+.view-more-button button {
+  border: none;
+  padding: 10px 20px;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 3px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 978px) {
+  .cover-pic img {
+    width: 100px;
+    height: 150px;
+  }
+}

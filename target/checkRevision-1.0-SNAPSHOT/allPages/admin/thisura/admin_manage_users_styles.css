@@ -1,0 +1,77 @@
+
+.main-container{
+    height: auto;
+    width: 90%;
+    margin: 20px;
+    border-radius: 10px;
+    color: #000;
+}
+
+.main-container > h1 {
+  margin-top: 3px;
+  margin-left: 4px;
+}
+
+.mainbox1{
+  height: auto;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid rgb(4, 105, 13);
+  margin: 20px 10px;
+  border-radius: 7px;
+  box-sizing: border-box;
+}
+
+#order1 {
+  margin-top: 15px;
+  margin-left: 15px;
+  border-radius: 7px;
+  color: black;
+  padding: 10px;
+  text-align: center;
+}
+
+#order1 th{
+  padding: 8px;
+  background-color: rgb(100, 136, 165);
+}
+
+table{
+  border-spacing: 0px;
+  border-collapse: collapse;
+  width: 97%;
+}
+
+td, th{
+    padding: 10px;
+    border: 2px solid #ddd;
+}
+
+button {
+    height: 30px;
+    width: 100px;
+    border-radius: 7px;
+}
+
+.searchbar {
+    overflow: hidden;
+}
+
+.searchbar input[type=text] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-left: 15px;
+    font-size: 17px;
+    width: 300px;
+    border: 1px solid #ccc;
+}
+
+.searchbar button {
+    height: 30px;
+    width: 100px;
+    border-radius: 7px;
+    float: left;
+    margin-top: 8px;
+}

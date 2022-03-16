@@ -1,0 +1,101 @@
+.main-area-box{
+    display: block;
+    padding-top:40px;
+    padding-left: 50px;
+    margin: 25px;
+    height: auto;
+    width: 70%;
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-bottom: 40px;
+    padding-right: 50px;
+  }
+
+  .top-box-title-block{
+    display: block;
+    font-size: 35px;
+    color: #000;
+    padding-bottom: 10px;
+  }
+
+  .sub-box{
+      position: relative;
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .book-cover{
+    position: relative;
+    padding-top: 10px;
+    height: 180px;
+    width: 120px;
+    border-radius: 8px;
+    background-size: cover;
+    box-sizing: border-box;
+    object-fit: fill;
+    
+  }
+.cover-pic{
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 90px;
+    left: -10px;
+    box-sizing: border-box;
+}
+
+.cover-pic img{
+    width: 120px;
+    height: auto;
+    position: relative;
+    object-fit: contain;
+}
+
+.img{
+    height: 180px;
+    width: 120px;
+}
+
+   .description{
+     position: absolute;
+     font-size: 14px;
+     width: 500px;
+     height: 50px;
+     left: 150px;
+     bottom: 50px;
+   }
+
+  .favorite-btn{
+    position: relative;
+    left: 140px;
+    bottom: 20px;
+    color: #000;
+    font-weight: 600;
+    background-color: #e8c340;
+    padding: 3px;
+    border-radius: 5px;
+  }
+  .text-box{
+      left: 150px;
+      position: absolute;
+      display: block;
+      width: fit-content;
+      
+
+  }
+  .title{
+      font-size: 25px;
+  }
+  .author{
+      font-size: 20px;
+  }

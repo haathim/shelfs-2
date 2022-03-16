@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../allPages/buyer/.css" />
+  </head>
+  <body>
+    <div class="checkout-container">
+      <div class="formContainer">
+        <h1>Billing Details</h1>
+        <p>Fill the below form with relevant billing details.</p>
+        <div id="instructions" style="color: blue; font-weight: bold"></div>
+        <div id="error" style="color: red; font-weight: bold"></div>
+        <form action="buyerRegSubmit" method="post" id="form">
+          <div class="row">
+            <div class="column">
+              <label for="firstName">First Name:</label>
+              <input id="firstName" type="text" name="firstName" required />
+            </div>
+            <div class="column">
+              <label for="lastName">Last Name:</label>
+              <input id="lastName" type="text" name="lastName" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="houseNo">House Number:</label>
+              <input id="houseNo" type="text" name="houseNo" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="street">Street:</label>
+              <input id="street" type="text" name="street" required />
+            </div>
+            <div class="column">
+              <label for="city">City:</label>
+              <input id="city" type="text" name="city" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="district">District:</label>
+              <br />
+              <select
+                id="district"
+                type="text"
+                name="district"
+                required
+              ></select>
+            </div>
+            <div class="column">
+              <input id="province" type="hidden" name="province" required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column">
+              <label for="mobileNo">Mobile Number</label>
+              <input id="mobileNo" type="text" name="mobileNo" required />
+            </div>
+            <div class="column">
+              <label for="email">Email Address</label>
+              <input id="email" type="text" name="email" required />
+            </div>
+          </div>
+          <input type="submit" value="Register" class="sub-btn" />
+        </form>
+      </div>
+
+      <div class="checkout-details">
+        <h2>YOUR ORDER</h2>
+        <table class="checkout-details-table">
+          <tr class="checkout-details-table-row">
+            <th>Product</th>
+            <th>Price</th>
+          </tr>
+
+          <tr class="checkout-details-table-row">
+            <td>The Fellowship of the Ring</td>
+            <td>Rs.5500</td>
+          </tr>
+
+          <tr class="checkout-details-table-row">
+            <td>The Hobbit</td>
+            <td>Rs.4500</td>
+          </tr>
+
+          <tr class="checkout-details-table-row">
+            <td>The Return of the King</td>
+            <td>Rs.6500</td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="checkout-details-table-row">
+            <td><strong>Subtotal</strong></td>
+            <td><strong>Rs.16500</strong></td>
+          </tr>
+        </table>
+
+        <h2>Delivery Method</h2>
+        <div class="radio-button">
+          <input
+            type="radio"
+            id="inhouse-delviery"
+            name="delivery-method"
+            value="courier"
+          />
+          <label for="inhouse-delviery">In-House Delivery</label>
+        </div>
+        <div class="radio-button">
+          <input
+            type="radio"
+            id="courier-delivery"
+            name="delivery-method"
+            value="inhouse"
+          />
+          <label for="courier-delivery"
+            >Courier Delivery <strong>Rs. 500</strong></label
+          >
+        </div>
+
+        <table>
+          <tr class="checkout-details-table-row">
+            <td><strong>Total</strong></td>
+            <td><strong>Rs.18000</strong></td>
+          </tr>
+        </table>
+
+        <div class="checkout-button">
+          <h2>PLACE ORDER</h2>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

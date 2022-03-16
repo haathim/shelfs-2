@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/buyer/my-orders.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/buyer" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/delivery/pending_Pickups.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/delivery" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller/view-buyer-requests-more.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller/view-posted-books.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/unregistered/search-results-pages.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/unregistered" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/allPages/unregistered/home.jsp" value="file://$PROJECT_DIR$/src/main/webapp/allPages/unregistered" />
+      </map>
+    </option>
+  </component>
+</project>

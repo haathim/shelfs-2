@@ -1,0 +1,230 @@
+.main-area-box{
+    display: block;
+    padding-top:40px;
+    padding-left: 50px;
+    height: auto;
+    width: 90%;
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding-bottom: 40px;
+    padding-right: 50px;
+  }
+
+  .top-box{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .top-box-title-block{
+    display: block;
+    font-size: 35px;
+    color: #000;
+    padding-bottom: 10px;
+  }
+
+  .author{
+    font-size: 16px;
+  }
+
+  .top-box-seller-block{
+    display: flex;
+    font-size: 25px;
+    color: #000;
+    padding-right: 10px;
+  }
+
+  .seller-name{
+    display: block;
+    font-size: 25px;
+    color: #000;
+    padding-right: 10px;
+  }
+
+  .rating{
+    font-size: 15px;
+  }
+
+  .seller-icon{
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .detail-block{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .book-cover{
+    padding-top: 10px;
+    height: 420px;
+    width: 350px;
+    border-radius: 8px;
+    /* background-image: url("hobbit-cover.jpg"); */
+    background-size: cover;
+    box-sizing: border-box;
+    object-fit: cover;
+    
+  }
+
+  /* .cover-pic{
+    padding: 10px;
+    width: 320px;
+    height: 410px;
+    position: relative;
+    box-sizing: border-box;
+    
+  } */
+  
+  /* .cover-pic img{
+    width: 320px;
+    height: 410px;
+    position: relative;
+    object-fit: fill;
+  } */
+
+  .padding{
+    width: 20px;
+  }
+
+  .book-details{
+    display: block;
+    padding-top: 10px;
+    padding-left: 10px;
+    display: block;
+    width: 90%;
+    height: 420px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  .list{
+    display: flex;
+  }
+
+  .list > h2{
+    font-size: 25px;
+    font-weight: bold;
+  }
+  .list > h3{
+    margin-top: 8px;
+  }
+
+  .list > p{
+    width: 90%;
+    font-weight: normal;
+  }
+  #textwidth{
+    width: 190px;
+  }
+
+  #parawidth{
+    
+    width: 80%;
+  }
+
+  .buttons{
+    height: 120px;
+    margin-top: 65px;
+    
+    margin-bottom: 0px;
+  }
+
+  .price-button{
+    margin-bottom: 5px;
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px 5px ;
+    color: #fff;
+    background-color: #869960;
+    border-radius: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    
+  }
+
+  .button-text{
+    margin-left: 5px;
+  }
+  .add-to-cart-button{
+    margin-right: 4px;
+    width: 300px;
+    height: 45px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 5px ;
+    color: #000;
+    background-color: #e8c340;
+    border-radius: 15px;
+    text-align: center;
+    align-content: center;
+    box-sizing: border-box;
+    box-shadow: 1px 2px #000;
+  }
+
+  .btn-inline{
+    display: flex;
+    
+  }
+
+  .recommendations{
+    display: block;
+    padding-top: 15px;
+  }
+
+  .recommended-books{
+    display: flex;
+   
+
+  }
+
+  .main-sub-box{
+    margin: 5px;
+    height: 250px;
+    width: 160px;
+    border: 1px solid #000;
+    border-radius: 15px;
+    box-sizing: border-box;
+  }
+
+  .cover-pic{
+    position: relative;
+    left: -70px;
+    bottom: 150px;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+  }
+
+  .cover-pic-small{
+    padding: 5px;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .cover-pic img{
+
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .cover-pic-small img{
+    width: 150px;
+    height: auto;
+    position: absolute;
+    object-fit: cover;
+  }
+
+ 
+  
+  
+  

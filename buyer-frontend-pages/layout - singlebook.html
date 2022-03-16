@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="buyer_book_styles.css" />
+  <title>SHELFS - Online Bookstore</title>
+</head>
+
+<body id="body">
+  <div class="container">
+    <div class="nav_icon" onclick="toggleSidebar()">
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
+
+    <div class="navbar__left">
+
+
+      <a class="active_link" href="#">Home</a>
+      <a href="#">Contact</a>
+      <a href="#">Help</a>
+      <a href="#">Sign in</a>
+
+    </div>
+
+    <div class="navbar__right">
+      <a href="#">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </a>
+      <a href="#">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </a>
+      <a href="#">
+        <img width="30" src="assets/avatar.svg" alt="" />
+        <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
+      </a>
+    </div>
+
+    <main>
+      <div class="main__container">
+        <div class="main-area-box">
+          <div class="top-box">
+            <div class="top-box-title-block">
+              The Hobbit
+              <div class="author">
+                J.R.R Tolkien
+              </div>
+            </div>
+            <div class="top-box-seller-block">
+              <div class="seller-name">
+                J. W. Perera
+                <div class="rating">
+                  4.9
+                </div>
+              </div>
+              <div class="seller-icon">
+
+              </div>
+            </div>
+          </div>
+          <div class="detail-block">
+            <div class="book-cover">
+              <div class="cover-pic">
+                <!-- <img src="hobbit-cover.jpg" alt=""> -->
+              </div>
+              
+            </div>
+            <div class="padding">
+              
+            </div>
+
+            <div class="book-details">
+              <div class="detail-list">
+                <div class="list">
+                  <h2 id="textwidth">Title</h2>
+                  <h2>The Hobbit</h2>
+                </div>
+                <div class="list">
+                  <h2 id="textwidth">Author</h2>
+                  <h3>J.R.R Tolkien</h3>
+                </div>
+                <div class="list">
+                  <h2 id="textwidth">Description</h2>
+                  <h3 id="parawidth">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam quo aspernatur minima, veniam enim
+                    sit ipsam iusto temporibus obcaecati atque at suscipit asperiores beatae. Dolorem ipsam eius saepe
+                    aliquid? Voluptatibus.</h3>
+                </div>
+                <div class="list">
+                  <h2 id="textwidth">Language</h2>
+                  <h3>English</h3>
+                </div>
+                <div class="list">
+                  <h2 id="textwidth">ISBN</h2>
+                  <h3>498493h9bhf4</h3>
+                </div>
+                <div class="list">
+                  <h2 id="textwidth">Category</h2>
+                  <h3>Fictional</h3>
+                </div>
+              </div>
+              <div class="buttons">
+                <div class="price-button">
+                  Rs.200.00
+                </div>
+                <div class="add-to-cart-button">
+                  Add to cart
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="recommendations">
+            <div class="top-box-title-block">
+              You may also like
+            </div>
+            <div class="recommended-books">
+              <div class="main-sub-box">
+                <div class="cover-pic">
+                  <img src="harrypotter-cover.jpg">
+                </div>
+
+              </div>
+              <div class="main-sub-box">
+                <div class="cover-pic">
+                  <img src="sherlock-cover.jpg">
+                </div>
+
+              </div>
+              <div class="main-sub-box">
+                <div class="cover-pic">
+                  <img src="got-cover.jpg">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </main>
+
+    <nav id="sidebar">
+      <div class="sidebar__title">
+        <div class="sidebar__img">
+          <!-- <img src="assets/logo.png" alt="logo" /> -->
+          <h1>SHELFS</h1>
+          <p>Online Bookstore</p>
+        </div>
+        <i onclick="closeSidebar()" class="fa fa-times" id="sidebarIcon" aria-hidden="true"></i>
+      </div>
+
+      <div class="sidebar__menu">
+        <div id="buy-and-sell-used">
+          <h2>Buy and Sell used books.</h2>
+        </div>
+        <div class="sidebar__link active_menu_link">
+          <i class="fa fa-home"></i>
+          <a href="#">MENU</a>
+        </div>
+        <h2>BUYER</h2>
+        <div class="sidebar__link">
+          <i class="fa fa-user-secret" aria-hidden="true"></i>
+          <a href="#">My Shelf</a>
+        </div>
+        <div class="sidebar__link" id="test-back">
+          <i class="fa fa-building-o"></i>
+          <a href="#">My Favourites</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-wrench"></i>
+          <a href="#">Requests Books</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-archive"></i>
+          <a href="#">My Orders</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-handshake-o"></i>
+          <a href="#">Messages</a>
+        </div>
+
+        <div id="become-seller">
+          <h3>Start selling your books.</h3>
+          <h2>Become a Seller</h2>
+        </div>
+        <!-- 
+          <h2>SELLER</h2>
+          <div class="sidebar__link">
+            <i class="fa fa-question"></i>
+            <a href="#">Sell a Book</a>
+          </div>
+          <div class="sidebar__link">
+            <i class="fa fa-sign-out"></i>
+            <a href="#">View Sales History</a>
+          </div>
+          <div class="sidebar__link">
+            <i class="fa fa-calendar-check-o"></i>
+            <a href="#">View Buyer Requests</a>
+          </div>
+          <div class="sidebar__link">
+            <i class="fa fa-files-o"></i>
+            <a href="#">View Posted Books</a>
+          </div> -->
+        <h2>ACCOUNT</h2>
+        <div class="sidebar__link">
+          <i class="fa fa-money"></i>
+          <a href="#">My Account</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-briefcase"></i>
+          <a href="#">Help</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-briefcase"></i>
+          <a href="#">History</a>
+        </div>
+        <div class="sidebar__link">
+          <i class="fa fa-briefcase"></i>
+          <a href="#">Settings</a>
+        </div>
+        <div class="sidebar__logout">
+          <i class="fa fa-power-off"></i>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

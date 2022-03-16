@@ -1,0 +1,111 @@
+#register-buyer {
+  background-color: #658154;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+}
+
+#register-buyer button > h2 {
+  border: 1px solid black;
+  background-color: #e8c340;
+  border-radius: 5px;
+
+  color: #000000;
+  font-size: 16px;
+  padding: 10px;
+  font-weight: 700;
+}
+
+#register-buyer > h3 {
+  padding: 5px 0px;
+}
+
+.formContainer > #instructions,
+.formContainer > #error {
+  align-self: flex-start;
+}
+
+.terms {
+  margin-top: 5px;
+  display: flex;
+  padding-top: 5px;
+}
+
+.terms > i {
+  margin-top: 5px;
+  margin-right: 2px;
+}
+.terms > a {
+  margin-top: 5px;
+  color: black;
+}
+
+.sub-btn {
+  background-color: #658154;
+}
+/*.formContainer {*/
+/*    background-color: #ffffff;*/
+/*    width: 80%;*/
+/*    padding: 35px 50px;*/
+/*    margin-top: 10px;*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);*/
+/*    align-self: center;*/
+
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: flex-start;*/
+/*    !*align-items: center;*!*/
+/*}*/
+
+/*.formContainer > h1 {*/
+/*    font-size: 30px;*/
+/*    color: #1c093c;*/
+/*}*/
+
+/*.sub-btn {*/
+/*    border: none;*/
+/*    padding: 10px 20px;*/
+/*    background: linear-gradient(130deg, #6f6df4, #4c46f5);*/
+/*    color: #ffffff;*/
+/*    border-radius: 3px;*/
+/*}*/
+
+/*textarea:focus,*/
+/*input:focus {*/
+/*    outline: none;*/
+/*    border-color: #6f6df4;*/
+/*}*/
+
+/*textarea,*/
+/*input {*/
+/*    width: 100%;*/
+/*    font-weight: 400;*/
+/*    padding: 8px 10px;*/
+/*    border-radius: 5px;*/
+/*    border: 1.2px solid #c4cae0;*/
+/*    margin-top: 5px;*/
+/*}*/
+
+/*.formContainer > label {*/
+/*    color: #1c093c;*/
+/*    font-size: 14px;*/
+/*}*/
+
+/*.formContainer .row {*/
+/*    !* border: 1px solid red; *!*/
+/*    width: 100%;*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));*/
+/*    grid-gap: 20px 30px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.formContainer > form {*/
+/*    width: 100%;*/
+/*    position: relative;*/
+/*    margin: 30px auto 0 auto;*/
+/*}*/

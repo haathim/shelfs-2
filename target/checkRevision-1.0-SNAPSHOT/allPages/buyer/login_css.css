@@ -1,0 +1,154 @@
+.auth-box{
+    position: relative;
+    margin-left: 20% ;
+    margin-right: 25% ;
+    margin-top: 20px;
+    padding: 20px;
+    display: block;
+    background-image: linear-gradient(rgba(46, 46, 46, 0.5), rgba(46, 46, 46, 0.5)),
+    url("bookshelf2.jpg");
+    background-color: #869960;
+    width: 800px;
+    height: 80%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.toplogintext{
+    position: relative;
+    color: #FFF;
+    transition: .5s;
+    left: 10px;
+}
+
+.topsignuptext{
+    position: relative;
+    color: #FFF;
+    bottom: 40px;
+    left: -300px;
+    transition: .5s;
+}
+
+.input-group{
+    top: 180px;
+    position: absolute;
+    width: 400px;
+    transition: .5s;
+}
+
+.input-field{
+    width: 100%;
+    padding: 10px 5px;
+    margin: 5px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.submit-btn{
+    font-weight: 600;
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    outline: none;
+    border-radius: 5px;
+    background-color: #E8C340;
+}
+
+#login{
+    margin-left: 150px;
+    left: 50px;
+}
+#signup{
+    margin-left: 1000px;
+    left: 450px;
+}
+
+.login-btn, .signup-btn{
+    position: relative;
+    padding: 5px;
+    margin: 2px;
+    width: 70px;
+    background-color: #E8C340;
+    font-weight: 700;
+    border-radius: 5px;
+    box-sizing: border-box;
+    top: 300px;
+}
+.signup-btn{
+    left: 430px;
+    transition: .5s;
+    top: 320px;
+}
+.login-btn{
+    top: 320px;
+    transition: .5s;
+}
+
+.signup-text, .login-text{
+    box-sizing: border-box;
+    padding: 1px;
+    margin: 2px;
+    position: relative;
+    color: #FFF;
+    top: 350px;
+    
+}
+.signup-text{
+    left: 250px;
+    transition: .5s;
+    top: 370px;
+}
+
+.login-text{
+    left: 900px;
+    transition: .5s;
+}
+
+.signup-text > p, .login-text > p{
+    font-size: small;
+}
+.login-btn{
+    left: 1360px;
+}
+@media screen and  (max-width: 500px){
+    .content-area, .box-c {
+        width: auto;
+        float: none;
+    }
+
+}
+
+@media screen and (max-width: 1800px) {
+    .main-text{
+        font-size: 100%;
+        left: 20%;
+        bottom: 0px;
+    }
+
+    .signupswitchblock, .loginswitchblock{
+        font-size: 70%;
+        left: -45%;
+        bottom:10px;
+    }
+
+    .box-c{
+        height: 300px;
+    }
+
+    .signupbutton{
+        width: 10%;
+    }
+    .smalltext{
+        right:300px;
+    }
+
+    .smalltext2{
+        right: 600px;
+    }
+}
+

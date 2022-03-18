@@ -9,8 +9,10 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="unauthorized.css" />
 </head>
 <body>
+<div class="box">
 
 Your Email is not verified. Please Enter username and verification code.
 
@@ -29,6 +31,6 @@ To resend code.
     <input type="text" id="username1" name="username1"><br>
     <input type="submit" value="Resend Code">
 </form>
-
+</div>
 </body>
 </html>

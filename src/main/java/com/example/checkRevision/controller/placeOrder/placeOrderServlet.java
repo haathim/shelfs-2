@@ -25,7 +25,7 @@ public class placeOrderServlet extends HttpServlet {
 
 //      PLACING ORDER ONCE EVERYTHING IS CONFIRMED
 
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 
 
 //        here should get the username of the buyer but for testing purposes for now using a hardcoded value
@@ -119,8 +119,8 @@ public class placeOrderServlet extends HttpServlet {
             throwables.printStackTrace();
         }
 
-//        get order if of pickup
-        int orderIdOfPickup = Integer.parseInt(null);
+//        get order id of pickup
+        int orderIdOfPickup = -1;
         try {
             orderIdOfPickup = newOrderPickupsDAO.getOrderIdOfPickup(13);
         } catch (SQLException | ClassNotFoundException throwables) {

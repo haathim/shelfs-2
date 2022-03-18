@@ -50,7 +50,7 @@
                 <input id = "uname" name ="uname" type="text" class="input-field" placeholder="Username"  required>
                 <input id = "pass" name = "pass" type="password" class="input-field" placeholder="Password" required>
                 <button type="submit" class="submit-btn">Log in</button>
-                <p > <span style="color:white">Forgot password?</span></p>
+                <p > <a href="forgotPasswordForm"><span style="color:white">Forgot password?</span></a></p>
             </form>
             <form id="signup" class="input-group">
                 <input type="email" class="input-field" placeholder="Email" required>
@@ -58,15 +58,15 @@
                 <input type="password" class="input-field" placeholder="Retype Password" required>
                 <button type="submit" class="submit-btn">Sign in</button>
             </form>
-            <div id="signuptext" class="signup-text">
-                <p>Don't have an account?</p>
+<%--            <div id="signuptext" class="signup-text">--%>
+<%--                <p>Don't have an account?</p>--%>
 
-            </div>
+<%--            </div>--%>
             <div id="logintext" class="login-text">
                 <p>Already have an account?</p>
             </div>
 
-            <button id="signupbtn" type="button" class="signup-btn" onclick="signup()">Sign Up</button>
+<%--            <button id="signupbtn" type="button" class="signup-btn" onclick="signup()">Sign Up</button>--%>
             <button id="loginbtn" type="button" class="login-btn" onclick="login()">Log In</button>
         </div>
 

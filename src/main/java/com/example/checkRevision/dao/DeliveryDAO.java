@@ -31,4 +31,6 @@ public class DeliveryDAO {
         buyerStmt.executeUpdate();
 
     }
+
+
 }

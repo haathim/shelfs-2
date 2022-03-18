@@ -24,7 +24,7 @@ public class newPasswordServlet extends HttpServlet {
         System.out.println("Username is " + username + "--");
         System.out.println("forgotPwdVerCodeUsername is " + session.getAttribute("forgotPwdVerCodeUsername"));
 
-        if(validate(username, password1, password2)){
+        if(!validate(username, password1, password2)){
             System.out.println("Forgot Password: Validation Failed");
             response.sendRedirect("inputError.html");
             return;
@@ -55,9 +55,11 @@ public class newPasswordServlet extends HttpServlet {
             throwables.printStackTrace();
         }
 
+        response.sendRedirect("login");
+
     }
 
     public boolean validate(String username, String password1, String password2){
-        return false;
+        return true;
     }
 }

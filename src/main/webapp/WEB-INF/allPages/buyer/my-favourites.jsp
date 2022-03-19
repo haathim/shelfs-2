@@ -74,7 +74,11 @@
                         <div class="description">
                             <%=favTitle.getDescription()%>
                         </div>
-                        <button type="button" class="favorite-btn">Remove from favourites</button>
+                        <form action="deletefromwishlist" method="post">
+                            <input type="hidden" name="adId" value=<%=favTitle.getAdId()%>>
+                                <button type="submit" class="favorite-btn">Remove from favourites</button>
+                        </form>
+
                     </div>
                     <%}%>
 

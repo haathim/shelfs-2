@@ -52,4 +52,22 @@ public class WishlistDAO {
 
         return wishlistAds;
     }
+
+    public void addToWishlist(String username, int adId) throws SQLException, ClassNotFoundException{
+        Connection con = DBConnection.getConnection();
+          String sql = "INSERT INTO `wishlist` (`adId`, `buyerId`) VALUES (?,?);";
+          PreparedStatement wishliststmt = con.prepareStatement(sql);
+          wishliststmt.setInt(1, adId);
+          wishliststmt.setString(2, username);
+          wishliststmt.executeUpdate();
+    }
+
+    public void removeFromWishlist(int adId, String username) throws SQLException, ClassNotFoundException{
+        Connection con = DBConnection.getConnection();
+        String sql = "DELETE FROM `wishlist` WHERE `adId` = ? AND `buyerId`=?;";
+        PreparedStatement wishliststmt = con.prepareStatement(sql);
+        wishliststmt.setInt(1, adId);
+        wishliststmt.setString(2, username);
+        wishliststmt.executeUpdate();
+    }
 }

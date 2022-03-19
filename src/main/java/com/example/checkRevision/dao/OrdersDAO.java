@@ -1,9 +1,7 @@
 package com.example.checkRevision.dao;
 
 import com.example.checkRevision.database.DBConnection;
-import com.example.checkRevision.model.Advertisement;
-import com.example.checkRevision.model.Order;
-import com.example.checkRevision.model.OrderAdCombined;
+import com.example.checkRevision.model.*;
 import com.example.checkRevision.variables.MyVariables;
 
 import java.sql.*;
@@ -63,62 +61,55 @@ public class OrdersDAO {
         return orders;
     }
 
-    public ArrayList<OrderAdCombined> getAllOrdersOfSeller(String sellerId, String query, int currentPage) throws SQLException, ClassNotFoundException {
+    public ArrayList<BuyerAdvertisement> getAllOrdersOfSeller(String aSellerId, String query, int currentPage) throws SQLException, ClassNotFoundException {
 
         System.out.println("3333");
 
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT  *  FROM `orders` INNER JOIN `advertisements` ON orders.adId = advertisements.adId WHERE sellerId = ? AND advertisements.title LIKE ? LIMIT ?,?;";
+//        String sql = "SELECT  *  FROM `orders` INNER JOIN `advertisements` ON orders.adId = advertisements.adId WHERE sellerId = ? AND advertisements.title LIKE ? LIMIT ?,?;";
+        String sql = "SELECT advertisements.*, neworders.buyerId FROM neworders\n" + "INNER JOIN neworderpickups\n" + "ON neworders.orderId = neworderpickups.orderId\n" + "INNER JOIN newpickupsads\n" + "on neworderpickups.pickupId = newpickupsads.pickupId\n" + "INNER JOIN advertisements\n" + "ON newpickupsads.adId = advertisements.adId\n" + "WHERE neworderpickups.sellerId = ?\n" + "AND neworderpickups.status <> 0 AND advertisements.title LIKE ? LIMIT ?,?";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, sellerId);
+        stmt.setString(1, aSellerId);
         stmt.setString(2,"%"+query+"%");
         int start = currentPage * MyVariables.resultsPerPage - MyVariables.resultsPerPage;
         stmt.setInt(3,start);
         stmt.setInt(4,MyVariables.resultsPerPage);
         ResultSet result = stmt.executeQuery();
 
-        ArrayList<OrderAdCombined> ordersAds = new ArrayList<OrderAdCombined>();
+        ArrayList<BuyerAdvertisement> buyerAdvertisements = new ArrayList<BuyerAdvertisement>();
 
         System.out.println("FROM SALES HISTORY DAO BEFORE WHILE LOOP");
         while(result.next()){
 
-            int orderId = result.getInt(1);
-            String buyerId = result.getString(2);
-            int adId = result.getInt(3);
-            boolean isDelivered = result.getBoolean(4);
+            int adId = result.getInt(1);
+            String title = result.getString(2);
+            String author = result.getString(3);
+            int price = result.getInt(4);
+            String isbn = result.getString(5);
+            String language = result.getString(6);
+            boolean available = result.getBoolean(7);
+            String description = result.getString(8);
+            String bookFrontPhoto = result.getString(9);
+            String bookBackPhoto = result.getString(10);
+            String category = result.getString(11);
+            String sellerId = result.getString(12);
+            Timestamp dateAdded = result.getTimestamp(13);
 
-            Order ord = new Order(orderId, buyerId, adId, isDelivered);
+            Advertisement advertisement = new Advertisement(adId, sellerId, title, author, price, isbn, language, available, description, bookFrontPhoto, bookBackPhoto, category, dateAdded);
 
-            //        int adId = result.getInt(5);
-            String title = result.getString(6);
-            String author = result.getString(7);
-            int price = result.getInt(8);
-            String isbn = result.getString(9);
-            String language = result.getString(10);
-            boolean available = result.getBoolean(11);
-            String description = result.getString(12);
-            String bookFrontPhoto = result.getString(13);
-            String bookBackPhoto = result.getString(14);
-            String category = result.getString(15);
-//            String sellerId = result.getString(16);
-            Timestamp dateAdded = result.getTimestamp(17);
+            String buyerId = result.getString(14);
 
-            Advertisement ad = new Advertisement(adId, sellerId, title, author, price, isbn, language, available, description, bookFrontPhoto, bookBackPhoto, category, dateAdded);
+            Buyer buyer = new Buyer(buyerId);
 
-            OrderAdCombined orderAd = new OrderAdCombined(ord, ad);
-            System.out.println("FROM SALES HISTORY DAO---");
-            System.out.println(orderAd);
-            ordersAds.add(orderAd);
-
-
+            buyerAdvertisements.add(new BuyerAdvertisement(buyer, advertisement));
         }
 
-        return ordersAds;
+        return buyerAdvertisements;
     }
 
     public int getAllOrdersOfSellerNumberOfRows(String username, String query) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT COUNT(*) FROM `orders` INNER JOIN `advertisements` ON orders.adId = advertisements.adId WHERE sellerId = ? AND advertisements.title LIKE ?;";
+        String sql = "SELECT COUNT(*) FROM neworders INNER JOIN neworderpickups ON neworders.orderId = neworderpickups.orderId INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId WHERE neworderpickups.sellerId = ? AND neworderpickups.status <> 0 AND advertisements.title LIKE ?";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,username);
         stmt.setString(2,"%"+query+"%");

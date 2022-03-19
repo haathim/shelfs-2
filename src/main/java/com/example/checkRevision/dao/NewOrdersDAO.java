@@ -149,11 +149,15 @@ public class NewOrdersDAO {
 
     }
 
-    public ArrayList<NewOrder> getAllOrdersOfBuyer(String buyerId) throws SQLException, ClassNotFoundException {
+    public ArrayList<NewOrder> getAllOrdersOfBuyer(String buyerId, String keyword) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM neworders WHERE buyerId = ?;";
+        String sql = "SELECT * FROM neworders\n" +
+                "WHERE neworders.buyerId = ?\n" +
+                "AND (neworders.orderId = ? OR neworders.buyerId LIKE ?);";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, buyerId);
+        stmt.setString(2, keyword);
+        stmt.setString(3, "%"+keyword+"%");
 
         ResultSet result = stmt.executeQuery();
         ArrayList<NewOrder> orders = new ArrayList<NewOrder>();

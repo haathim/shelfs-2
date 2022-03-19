@@ -62,7 +62,7 @@
   </div>
   <div class="sidebar__link">
     <i class="fa fa-question"></i>
-    <a href="help">Help</a>
+    <a href="help">Submit Complaint</a>
   </div>
   <div class="sidebar__link">
     <i class="fa fa-power-off"></i>

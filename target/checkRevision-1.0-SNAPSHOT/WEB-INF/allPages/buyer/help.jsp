@@ -27,11 +27,6 @@
     <title>SHELFS.</title>
 </head>
 <body>
-<%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
-
-%>
-
 
 
 <div class="container">
@@ -53,23 +48,31 @@
             <div class="formContainer">
                 <h1>Hello There!</h1>
                 <p>How can we help you?</p>
-                <form>
-
+                <form method="post" action="help">
                     <div class="column">
-                        <label for="question">Send us your questions. we'll reach to you as soon as we can</label>
+                        <label for="complaintTitle">Title</label>
+                        <input
+                                id="complaintTitle"
+                                type="text"
+                                name="complaintTitle"
+                                required
+                        />
+                    </div>
+                    <div class="column">
+                        <label for="complaintDescription">Send us your questions. we'll reach to you as soon as we can</label>
                         <textarea
                                 type="text"
-                                id="text-id"
+                                id="complaintDescription"
+                                name="complaintDescription"
                                 placeholder="Type your questions here"
                                 rows="7"
+                                required
                         ></textarea>
 
                     </div>
-
-
-
+                    <button type="submit">Submit</button>
                 </form>
-                <button>Submit</button>
+
             </div>
         </div>
 

@@ -24,8 +24,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <title>SHELFS.</title>
   </head>
   <body id="body">
-    <% OrderAdCombined orderAd = (OrderAdCombined)
-    request.getAttribute("orderAd"); %>
+    <% ArrayList<Advertisement> adsInOrder = (ArrayList<Advertisement>) request.getAttribute("adsInOrder"); %>
 
     <div class="container">
       <div class="nav_icon" onclick="toggleSidebar()">
@@ -49,66 +48,66 @@ contentType="text/html;charset=UTF-8" language="java" %>
               </div>
             </div>
             <div class="main-component">
+              <% for (Advertisement ad: adsInOrder){%>
               <div class="book-cover">
-                <% out.println("<img src=\""+
-                orderAd.getAd().getBookPhotoFront() + "\" alt=\"Book Cover\"
-                />"); %>
+                <img src="<%=ad.getBookPhotoFront()%>" alt="Book Cover">
               </div>
               <div class="book-details">
                 <div class="book-details-field">
                   <p><strong>Title</strong></p>
-                  <p><% out.println(orderAd.getAd().getTitle());%></p>
+                  <p><%=ad.getTitle()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Author</strong></p>
-                  <p><% out.println(orderAd.getAd().getAuthor());%></p>
+                  <p><%=ad.getAuthor()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Language</strong></p>
-                  <p><% out.println(orderAd.getAd().getLanguage());%></p>
+                  <p><%=ad.getLanguage()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>ISBN</strong></p>
-                  <p><% out.println(orderAd.getAd().getIsbn());%></p>
+                  <p><%=ad.getIsbn()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Category</strong></p>
-                  <p><% out.println(orderAd.getAd().getCategory());%></p>
+                  <p><%=ad.getCategory()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Seller</strong></p>
-                  <p><% out.println(orderAd.getAd().getSellerId());%></p>
+                  <p><%=ad.getSellerId()%></p>
                 </div>
 
                 <div class="price">
-                  <p>Rs. <% out.println(orderAd.getAd().getPrice());%></p>
+                  <p>Rs. <%=ad.getPrice()%></p>
                 </div>
               </div>
+              <%}%>
             </div>
 
-            <div class="description">
-              <div class="order-details">
-                <div class="order-details-field">
-                  <p><strong>Order Id</strong></p>
-                  <p><% out.println(orderAd.getAd().getTitle());%></p>
-                </div>
+<%--            <div class="description">--%>
+<%--              <div class="order-details">--%>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Order Id</strong></p>--%>
+<%--                  <p><% out.println(orderAd.getAd().getTitle());%></p>--%>
+<%--                </div>--%>
 
-                <div class="order-details-field">
-                  <p><strong>Delivered</strong></p>
-                  <p><% out.println(orderAd.getOrder().isCompleted());%></p>
-                </div>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Delivered</strong></p>--%>
+<%--                  <p><% out.println(orderAd.getOrder().isCompleted());%></p>--%>
+<%--                </div>--%>
 
-                <div class="order-details-field">
-                  <p><strong>Advertisement ID</strong></p>
-                  <p><% out.println(orderAd.getOrder().getAdId());%></p>
-                </div>
-              </div>
-            </div>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Advertisement ID</strong></p>--%>
+<%--                  <p><% out.println(orderAd.getOrder().getAdId());%></p>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
           </div>
         </div>
       </main>

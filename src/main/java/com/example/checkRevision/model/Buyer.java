@@ -30,6 +30,11 @@ public class Buyer extends User{
 
     }
 
+    public Buyer(String buyerId) {
+        super(buyerId, "","", null, 0);
+    }
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -45,6 +50,8 @@ public class Buyer extends User{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getFullName(){return firstName + " " + lastName;}
 
     public String getHouseNo() {
         return houseNo;

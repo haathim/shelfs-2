@@ -2,7 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Order" %>
 <%@ page import="com.example.checkRevision.variables.MyVariables" %>
-<%@ page import="com.example.checkRevision.model.OrderAdCombined" %><%-- Created by IntelliJ IDEA. User: Lenovo Date: 21-Sep-21 Time: 12:13 PM To
+<%@ page import="com.example.checkRevision.model.OrderAdCombined" %>
+<%@ page import="com.example.checkRevision.model.BuyerAdvertisement" %><%-- Created by IntelliJ IDEA. User: Lenovo Date: 21-Sep-21 Time: 12:13 PM To
 change this template use File | Settings | File Templates. --%> <%@ page
         contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
 </head>
 <body id="body">
 <%
-    ArrayList<OrderAdCombined> orderAds = (ArrayList<OrderAdCombined>) request.getAttribute("orderAds");
+    ArrayList<BuyerAdvertisement> buyerAds = (ArrayList<BuyerAdvertisement>) request.getAttribute("buyerAds");
     String query = (String) request.getAttribute("query");
     int currentPage = (int) request.getAttribute("currentPage");
     int noOfPages = (int) request.getAttribute("noOfPages");
@@ -49,7 +50,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
 
                 <div class="table-template">
                     <div class="search-container">
-                        <form action="searchResults" method="get">
+                        <form action="salesHistory" method="get">
                             <input
                                     type="text"
                                     class="table-search"
@@ -61,27 +62,23 @@ change this template use File | Settings | File Templates. --%> <%@ page
                     </div>
                     <table>
                         <tr class="table-head">
-                            <th>Order Id</th>
-                            <th>Status</th>
                             <th>Buyer ID</th>
                             <th>Book Title</th>
+                            <th>Book Author</th>
+                            <th>Price</th>
                             <th>View</th>
                         </tr>
 
-                        <% for(OrderAdCombined orderAd: orderAds){%>
+                        <% for(BuyerAdvertisement buyerAd: buyerAds){%>
                         <tr class="table-rows">
 
-                            <td><%=orderAd.getOrder().getOrderId()%></td>
-                            <%if(orderAd.getOrder().isCompleted()){%>
-                            <td>Completed</td>
-                            <% }else{%>
-                            <td>Not Completed</td>
-                            <%}%>
-                            <td><%=orderAd.getOrder().getBuyerId()%></td>
-                            <td><%=orderAd.getAd().getTitle()%></td>
+                            <td><%=buyerAd.getBuyer().getUsername()%></td>
+                            <td><%=buyerAd.getAd().getTitle()%></td>
+                            <td><%=buyerAd.getAd().getAuthor()%></td>
+                            <td><%=buyerAd.getAd().getPrice()%></td>
                             <td>
                                 <div class="view-more-button">
-                                    <a href="salesHistoryMore?orderId=<%=orderAd.getOrder().getOrderId()%>" ><h2>View</h2></a>
+                                    <a href="newSalesMore?adId=<%=buyerAd.getAd().getAdId()%>"><h2>View</h2></a>
                                 </div>
                             </td>
                         </tr>

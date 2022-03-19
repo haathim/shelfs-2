@@ -114,7 +114,11 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                                     </div>
                                     <div class="btn-inline">
                                         <button type="button" class="addtocart-btn" onclick="addToCart()"><i class="fa fa-shopping-cart"></i>  Add to cart</button>
-                                        <button type="button" class="addtowishlist-btn"><i class="fa fa-star"></i>  Add to wishlist</button>
+                                        <form action="addtowishlist" method="post">
+                                            <input type="hidden" name="adId" value=<%=ad.getAdId()%>>
+
+                                            <button type="submit" class="addtowishlist-btn"><i class="fa fa-star"></i>  Add to wishlist</button>
+                                        </form>
                                     </div>
 
                                 </div>

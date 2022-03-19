@@ -6,13 +6,15 @@ public class Complaint {
     private String description;
     private boolean readByAdmin;
     private String buyerId;
+    private String reply;
 
-    public Complaint(long complaintId, String title, String description, boolean readByAdmin, String buyerId) {
+    public Complaint(long complaintId, String title, String description, boolean readByAdmin, String buyerId, String reply) {
         this.complaintId = complaintId;
         this.title = title;
         this.description = description;
         this.readByAdmin = readByAdmin;
         this.buyerId = buyerId;
+        this.reply = reply;
     }
 
     public long getComplaintId() {
@@ -53,5 +55,13 @@ public class Complaint {
 
     public void setBuyerId(String buyerId) {
         this.buyerId = buyerId;
+    }
+
+    public String getReply() {
+        return reply;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
     }
 }

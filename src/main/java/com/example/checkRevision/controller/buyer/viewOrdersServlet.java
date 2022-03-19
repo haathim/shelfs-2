@@ -21,9 +21,18 @@ public class viewOrdersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = (String) request.getSession().getAttribute("username");
+        String keyword;
+        if (request.getParameter("keyword") != null){
+            keyword = request.getParameter("keyword");
+        }else {
+            keyword = "";
+        }
+//        debug
+        System.out.println(keyword);
+
         NewOrdersDAO newOrdersDAO = new NewOrdersDAO();
         try {
-            ArrayList<NewOrder> orders = newOrdersDAO.getAllOrdersOfBuyer(username);
+            ArrayList<NewOrder> orders = newOrdersDAO.getAllOrdersOfBuyer(username, keyword);
 
             request.setAttribute("orders", orders);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/my-orders.jsp");

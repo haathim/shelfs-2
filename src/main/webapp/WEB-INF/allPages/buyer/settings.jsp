@@ -28,12 +28,6 @@
   <title>SHELFS.</title>
 </head>
 <body>
-<%
-  ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
-
-%>
-
-
 
 <div class="container">
   <div class="nav_icon" onclick="toggleSidebar()">
@@ -80,25 +74,25 @@
                     id="street"
                     placeholder="Enter your street"
 
-            ></input>
+            >
             <label for="street">City</label>
             <input
                     id="city"
                     placeholder="Enter your city"
 
-            ></input>
+            >
             <label for="street">District</label>
             <input
                     id="District"
                     placeholder="Enter your district"
 
-            ></input>
+            >
             <label for="province">Province</label>
             <input
                     id="province"
                     placeholder="Enter your province"
 
-            ></input>
+            >
           </div>
 
 

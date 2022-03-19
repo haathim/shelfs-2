@@ -52,7 +52,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
 
             <div class="table-template">
                 <div class="search-container">
-                    <form action="searchResults" method="get">
+                    <form action="viewBuyerRequests" method="get">
                         <input
                                 type="text"
                                 class="table-search"

@@ -49,7 +49,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
             <div class="book-more-details">
                 <div class="navigation">
                     <div class="back-button">
-                        <a href="newSales"><p>Back</p></a>
+                        <a onclick="goBack()"><p>Back</p></a>
                     </div>
 
                 </div>
@@ -109,6 +109,11 @@ change this template use File | Settings | File Templates. --%> <%@ page
     </nav>
     <script src="../allPages/javaScript/sidebarResponsive.js"></script>
 </div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </body>
 </html>
 

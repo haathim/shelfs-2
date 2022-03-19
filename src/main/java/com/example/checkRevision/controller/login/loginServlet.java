@@ -67,7 +67,7 @@ public class loginServlet extends HttpServlet {
 
                     System.out.println("DELIVERY");
 
-                    response.sendRedirect("delivery/home");
+                    response.sendRedirect("delivery/pendingPickupsNew");
                     break;
 
                 case 5:

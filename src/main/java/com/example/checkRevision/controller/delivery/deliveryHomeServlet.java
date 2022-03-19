@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "deliveryHomeServlet", value = "/delivery/home")
+@WebServlet(name = "deliveryHomeServlet", value = "/delivery/home1")
 public class deliveryHomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

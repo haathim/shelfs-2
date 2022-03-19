@@ -50,9 +50,9 @@
         <div class="main__container">
             <div class="table-template">
                 <div class="search-container">
-                    <form method="post" action="">
-                        <input type="text" class="table-search" placeholder="Search Items...">
-                        <button class="search-button">Search</button>
+                    <form method="get" action="viewOrders">
+                        <input type="text" name="keyword" class="table-search" placeholder="Search Items...">
+                        <button type="submit" class="search-button">Search</button>
                     </form>
                 </div>
                 <table>
@@ -84,8 +84,8 @@
                             out.println("Delivered");
                             break;
                     }%></td>
-                    <td><%=order.getOrderId()%></td>
-                    <td><div class="view-more-button"><a href="#"><h2>View</h2></a></div></td>
+                    <td><%=order.getTotalPrice()%></td>
+                    <td><div class="view-more-button"><a href="viewOrdersMore?orderId=<%=order.getOrderId()%>"><h2>View</h2></a></div></td>
 
                     </tr>
                     <%}%>

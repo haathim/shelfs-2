@@ -71,7 +71,6 @@ public class DeliveryDAO {
 
     }
 
-
     public ArrayList<Advertisement> getPendingPickupsDetails(int pickupId, String deliverer) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
         String sql = "SELECT * FROM newpickupsads\n" +
@@ -236,5 +235,79 @@ public class DeliveryDAO {
 
         return deliveryPersons;
 
+    }
+
+    public ArrayList<OrderBuyer> getPendingDeliveriesToAssignDeliverer() throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username WHERE neworders.status = 1 AND neworders.deliverer IS NULL;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+        ArrayList<OrderBuyer> details = new ArrayList<>();
+
+        while(result.next()){
+            int orderId = result.getInt(1);
+            String buyerId = result.getString(2);
+            Timestamp dateOrdered = result.getTimestamp(3);
+            int status = result.getInt(4);
+            String deliverer = result.getString(5);
+            boolean isCourier = result.getBoolean(6);
+            int total = result.getInt(7);
+
+            String firstName = result.getString(9);
+            String lastName = result.getString(10);
+            String houseNo = result.getString(11);
+            String street = result.getString(12);
+            String city = result.getString(13);
+            String district = result.getString(14);
+            String province = result.getString(15);
+            String phoneNo = result.getString(16);
+            String email = result.getString(17);
+
+            NewOrder order = new NewOrder(orderId, buyerId, dateOrdered, status, deliverer, false, total);
+            Buyer buyer = new Buyer(buyerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,email);
+
+
+            details.add(new OrderBuyer(order, buyer));
+        }
+
+        return details;
+    }
+
+    public ArrayList<OrderPickupSeller> getPendingPickupsToAssignDeliverer() throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM neworderpickups\n" +
+                "INNER JOIN buyers\n" +
+                "ON neworderpickups.sellerId = buyers.username\n" +
+                "WHERE deliverer IS NULL AND status = 0;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<OrderPickupSeller> details = new ArrayList<>();
+
+        while(result.next()){
+
+            int pickupid = result.getInt(1);
+            int orderId = result.getInt(2);
+            int status = result.getInt(4);
+            String sellerId = result.getString(3);
+            String firstName = result.getString(7);
+            String lastName = result.getString(8);
+            String houseNo = result.getString(9);
+            String street = result.getString(10);
+            String city = result.getString(11);
+            String district = result.getString(12);
+            String province = result.getString(13);
+            String phoneNo = result.getString(15);
+
+            NewOrderPickups orderPickup = new NewOrderPickups(pickupid, orderId, sellerId, status, "");
+            Buyer seller = new Buyer(sellerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,"");
+
+            details.add(new OrderPickupSeller(orderPickup, seller));
+
+        }
+
+        return details;
     }
 }

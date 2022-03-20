@@ -47,7 +47,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
             <div class="back-button">
               <button onclick="goBack()">Back</button>
             </div>
-            <div class="right-buttons">No of Books:<%=orderDetails.size()%></div>
+            <div class="right-buttons"><h2>No of Books:<%=orderDetails.size()%></h2></div>
           </div>
 
           <% for (Advertisement ad: orderDetails){%>

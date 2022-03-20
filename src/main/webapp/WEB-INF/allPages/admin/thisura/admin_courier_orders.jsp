@@ -20,9 +20,9 @@
 <body id="body">
 <%
     ArrayList<Advertisement> resultAds = (ArrayList<Advertisement>) request.getAttribute("resultAds");
-    String query = (String) request.getAttribute("query");
-    int currentPage = (int) request.getAttribute("currentPage");
-    int noOfPages = (int) request.getAttribute("noOfPages");
+//    String query = (String) request.getAttribute("query");
+//    int currentPage = (int) request.getAttribute("currentPage");
+//    int noOfPages = (int) request.getAttribute("noOfPages");
 
 %>
 <div class="container">
@@ -86,25 +86,25 @@
                     </tbody>
                 </table>
             </div>
-            <nav class="pagination-container">
-                <ul class="pagination">
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>
-                    <%}%>
-                    <% if (currentPage != 1){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>
-                    <%}%>
+<%--            <nav class="pagination-container">--%>
+<%--                <ul class="pagination">--%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>--%>
+<%--                    <%}%>--%>
+<%--                    <% if (currentPage != 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (currentPage < noOfPages){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>
-                    <%}%>
+<%--                    <% if (currentPage < noOfPages){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>
-                    <%}%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>--%>
+<%--                    <%}%>--%>
 
-                </ul>
-            </nav>
+<%--                </ul>--%>
+<%--            </nav>--%>
 
         </div>
     </main>

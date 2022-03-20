@@ -73,6 +73,7 @@ public class NewOrdersDAO {
     public void assignDelivererForOrder(int orderId, String deliverer) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
 
+        System.out.println("in assigning .......--");
         String sql = "UPDATE `newOrders` SET `deliverer` = ? WHERE `orderId` = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, deliverer);

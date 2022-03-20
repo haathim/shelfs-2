@@ -1,5 +1,7 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.OrderBuyer" %>
+<%@ page import="com.example.checkRevision.model.Delivery" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,10 +21,11 @@
 
 <body id="body">
 <%
-    ArrayList<Advertisement> resultAds = (ArrayList<Advertisement>) request.getAttribute("resultAds");
-    String query = (String) request.getAttribute("query");
-    int currentPage = (int) request.getAttribute("currentPage");
-    int noOfPages = (int) request.getAttribute("noOfPages");
+    ArrayList<OrderBuyer> orders = (ArrayList<OrderBuyer>) request.getAttribute("orders");
+    ArrayList<Delivery> deliverers = (ArrayList<Delivery>) request.getAttribute("deliverers");
+//    String query = (String) request.getAttribute("query");
+//    int currentPage = (int) request.getAttribute("currentPage");
+//    int noOfPages = (int) request.getAttribute("noOfPages");
 
 %>
 <div class="container">
@@ -55,71 +58,54 @@
                         <th>User ID</th>
                         <th>Buyer's Address</th>
                         <th>Buyer's Phone No.</th>
-                        <th>Assign Driver</th>
+                        <th>Drivers</th>
+                        <th>Assign</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <% for (OrderBuyer order: orders){%>
                     <tr>
-                        <td>4512</td>
-                        <td>Shawn Rodrigo</td>
-                        <td>1045</td>
-                        <td>No. 13, Temple Road, Nugegoda</td>
-                        <td>0771426548</td>
-                        <td><select name="driver-names" id="driver-names">
-                            <option>Sunil Silva</option>
-                            <option>Nimal Perera</option>
-                            <option>Saman Lenin</option>
-                            <option>Milan Malik</option>
-                        </select></td>
+                        <td><%=order.getOrder().getOrderId()%></td>
+                        <td><%=order.getBuyer().getFullName()%></td>
+                        <td><%=order.getBuyer().getUsername()%></td>
+                        <td><%=order.getBuyer().getAddress()%></td>
+                        <td><%=order.getBuyer().getPhoneNo()%></td>
+                        <form action="assignDelivererForDelivery" method="post">
+                            <input type="hidden" name="orderId" value="<%=order.getOrder().getOrderId()%>">
+                            <td>
+                                <select name="deliverer" id="driver-names">
+                                    <% for (Delivery deliverer: deliverers){%>
+                                    <option value="<%=deliverer.getUsername()%>"><%=deliverer.getFullName()%></option>
+                                    <%}%>
+                                </select>
+                            </td>
+                            <td><button type="submit">Assign</button></td>
+                        </form>
+
                     </tr>
-                    <tr>
-                        <td>7826</td>
-                        <td>Haathim Munas</td>
-                        <td>6523</td>
-                        <td>No. 56, Chapel Lane, Kirulapone</td>
-                        <td>0712729729</td>
-                        <td><select name="driver-names" id="driver-names">
-                            <option>Sunil Silva</option>
-                            <option>Nimal Perera</option>
-                            <option>Saman Lenin</option>
-                            <option>Milan Malik</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <td>0264</td>
-                        <td>Asitha Muthumala</td>
-                        <td>4035</td>
-                        <td>No. 89/A, Bird Park, Kotte</td>
-                        <td>0785641278</td>
-                        <td><select name="driver-names" id="driver-names">
-                            <option>Sunil Silva</option>
-                            <option>Nimal Perera</option>
-                            <option>Saman Lenin</option>
-                            <option>Milan Malik</option>
-                        </select></td>
-                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
             </div>
-            <nav class="pagination-container">
-                <ul class="pagination">
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>
-                    <%}%>
-                    <% if (currentPage != 1){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>
-                    <%}%>
+<%--            <nav class="pagination-container">--%>
+<%--                <ul class="pagination">--%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>--%>
+<%--                    <%}%>--%>
+<%--                    <% if (currentPage != 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (currentPage < noOfPages){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>
-                    <%}%>
+<%--                    <% if (currentPage < noOfPages){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>
-                    <%}%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>--%>
+<%--                    <%}%>--%>
 
-                </ul>
-            </nav>
+<%--                </ul>--%>
+<%--            </nav>--%>
 
         </div>
     </main>

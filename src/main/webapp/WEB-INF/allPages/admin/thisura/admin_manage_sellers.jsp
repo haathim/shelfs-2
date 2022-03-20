@@ -20,9 +20,9 @@
 <body id="body">
 <%
     ArrayList<Advertisement> resultAds = (ArrayList<Advertisement>) request.getAttribute("resultAds");
-    String query = (String) request.getAttribute("query");
-    int currentPage = (int) request.getAttribute("currentPage");
-    int noOfPages = (int) request.getAttribute("noOfPages");
+//    String query = (String) request.getAttribute("query");
+//    int currentPage = (int) request.getAttribute("currentPage");
+//    int noOfPages = (int) request.getAttribute("noOfPages");
 
 %>
 <div class="container">
@@ -46,9 +46,9 @@
             <div class="mainbox1">
                 <table id="order1">
                     <thead>
-                    <div class="searchbar">
-                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>
-                    </div>
+<%--                    <div class="searchbar">--%>
+<%--                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
+<%--                    </div>--%>
                     <tr>
                         <th>User Name</th>
                         <th>User ID</th>
@@ -63,44 +63,44 @@
                         <td>1045</td>
                         <td>Paid</td>
                         <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Payment Completed</div></td>
+                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
                     </tr>
                     <tr>
                         <td>Monica Geller</td>
                         <td>4571</td>
                         <td>Not Paid</td>
                         <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Proceed to Pay</div></td>
+                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
                     </tr>
                     <tr>
                         <td>Joey Tribbiani</td>
                         <td>0236</td>
                         <td>Paid</td>
                         <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Payment Completed</div></td>
+                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <nav class="pagination-container">
-                <ul class="pagination">
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>
-                    <%}%>
-                    <% if (currentPage != 1){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>
-                    <%}%>
+<%--            <nav class="pagination-container">--%>
+<%--                <ul class="pagination">--%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=1&&query=${query}"><li class="page-item">First</li></a>--%>
+<%--                    <%}%>--%>
+<%--                    <% if (currentPage != 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage-1}&&query=${query}"><li class="page-item">Previous</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (currentPage < noOfPages){%>
-                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>
-                    <%}%>
+<%--                    <% if (currentPage < noOfPages){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${currentPage+1}&&query=${query}"><li class="page-item">Next</li></a>--%>
+<%--                    <%}%>--%>
 
-                    <% if (noOfPages > 1){%>
-                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>
-                    <%}%>
+<%--                    <% if (noOfPages > 1){%>--%>
+<%--                    <a class="page-link" href="manageAds?Page=${noOfPages}&&query=${query}"><li class="page-item">Last</li></a>--%>
+<%--                    <%}%>--%>
 
-                </ul>
-            </nav>
+<%--                </ul>--%>
+<%--            </nav>--%>
 
         </div>
     </main>

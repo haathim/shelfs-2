@@ -53,11 +53,12 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                   <div class="author"><% out.println(ad.getAuthor());%></div>
                 </div>
                 <div class="top-box-seller-block">
-                  <div class="seller-name" id="seller">
-                    J. W. Perera
-                    <div class="rating">4.9</div>
-                  </div>
                   <div class="seller-icon"></div>
+
+                  <div class="seller-name" id="seller">
+                    <%=ad.getSellerId()%>
+<%--                    <div class="rating">4.9</div>--%>
+                  </div>
                 </div>
               </div>
               <div class="detail-block" id="item1">
@@ -70,7 +71,7 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
 
                 <div class="book-details">
                   <div class="detail-list">
-                    <div hidden class="list">
+                    <div hidden class="list" style="display: none">
                       <h2 id="textwidth">Ad Id</h2>
                       <h3 id="adId"><% out.println(ad.getAdId());%></h3>
                     </div>

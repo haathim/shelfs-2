@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.Complaint" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +16,9 @@
   <title>SHELFS - Online Bookstore</title>
 </head>
 <body id="body">
+<%
+  ArrayList<Complaint> complaints = (ArrayList<Complaint>) request.getAttribute("complaints");
+%>
   <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
       <i class="fa fa-bars" aria-hidden="true"></i>
@@ -43,24 +48,14 @@
                 </tr>
               </thead>
               <tbody>
+              <% for (Complaint complaint: complaints){%>
                 <tr>
-                  <td>Chandler Bing</td>
-                  <td>chandlerbing</td>
-                  <td>Webiste is not working</td>
-                  <td><div class="inline"><a href="viewComplaintsMore"><button style="margin:5px;">View</a></div></td>
+                  <td><%=complaint.getBuyerName()%></td>
+                  <td><%=complaint.getBuyerId()%></td>
+                  <td><%=complaint.getTitle()%></td>
+                  <td><div class="inline"><a href="viewComplaintsMore?complaintId=<%=complaint.getComplaintId()%>"><button style="margin:5px;">View</button></a></div></td>
                 </tr>
-                <tr>
-                    <td>Monica Geller</td>
-                    <td>monicageller</td>
-                    <td>Webiste is not working</td>
-                    <td><div class="inline"><a href="viewComplaintsMore"><button style="margin:5px;">View</a></div></td>
-                  </tr>
-                  <tr>
-                    <td>Joey Tribbiani</td>
-                    <td>joey4ever</td>
-                    <td>Webiste is not working</td>
-                    <td><div class="inline"><a href="viewComplaintsMore"><button style="margin:5px;">View</a></div></td>
-                  </tr>
+                <%}%>
               </tbody>
             </table>
           </div>

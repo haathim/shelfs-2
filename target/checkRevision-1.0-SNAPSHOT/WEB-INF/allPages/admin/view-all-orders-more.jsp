@@ -25,6 +25,9 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <title>SHELFS.</title>
   </head>
   <body id="body">
+  <%
+    ArrayList<Advertisement> orderDetails = (ArrayList<Advertisement>) request.getAttribute("orderDetails");
+  %>
     <div class="container">
       <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -40,79 +43,84 @@ contentType="text/html;charset=UTF-8" language="java" %>
 
       <main>
         <div class="main__container">
-          <div class="book-more-details">
-            <div class="navigation">
-              <div class="back-button">
-                <button onclick="goBack()">Back</button>
-              </div>
+          <div class="navigation">
+            <div class="back-button">
+              <button onclick="goBack()">Back</button>
             </div>
+            <div class="right-buttons">No of Books:<%=orderDetails.size()%></div>
+          </div>
+
+          <% for (Advertisement ad: orderDetails){%>
+          <div class="book-more-details">
             <div class="main-component">
+
               <div class="book-cover">
                 <img
-                  src="<%=MyVariables.rootURL%>allPages/styling/bookCover.jpeg"
+                  src="<%=ad.getBookPhotoFront()%>"
                 />
               </div>
               <div class="book-details">
+
+                <div class="book-details-field">
+                  <p><strong>Ad Id</strong></p>
+                  <p><%=ad.getAdId()%></p>
+                </div>
+
                 <div class="book-details-field">
                   <p><strong>Title</strong></p>
-                  <p>Advanced Level Physics</p>
+                  <p><%=ad.getTitle()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Author</strong></p>
-                  <p>Nelkon & Parker</p>
+                  <p><%=ad.getAuthor()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Language</strong></p>
-                  <p>English</p>
+                  <p><%=ad.getLanguage()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>ISBN</strong></p>
-                  <p>1234567890123</p>
+                  <p><%=ad.getIsbn()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Category</strong></p>
-                  <p>Non-Fiction</p>
+                  <p><%=ad.getCategory()%></p>
                 </div>
 
                 <div class="book-details-field">
                   <p><strong>Seller</strong></p>
-                  <p>seller1</p>
+                  <p><%=ad.getSellerId()%></p>
                 </div>
-
-                <div class="book-details-field">
-                  <p><strong>Buyer</strong></p>
-                  <p>buyer1</p>
-                </div>
-
                 <div class="price">
-                  <p>Rs. 3250</p>
+                  <p><%=ad.getPrice()%></p>
                 </div>
               </div>
             </div>
 
-            <div class="description">
-              <div class="order-details">
-                <div class="order-details-field">
-                  <p><strong>Order Id</strong></p>
-                  <p>1121</p>
-                </div>
+<%--            <div class="description">--%>
+<%--              <div class="order-details">--%>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Order Id</strong></p>--%>
+<%--                  <p>1121</p>--%>
+<%--                </div>--%>
 
-                <div class="order-details-field">
-                  <p><strong>Status</strong></p>
-                  <p>Pending</p>
-                </div>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Status</strong></p>--%>
+<%--                  <p>Pending</p>--%>
+<%--                </div>--%>
 
-                <div class="order-details-field">
-                  <p><strong>Advertisement ID</strong></p>
-                  <p>2143</p>
-                </div>
-              </div>
-            </div>
+<%--                <div class="order-details-field">--%>
+<%--                  <p><strong>Advertisement ID</strong></p>--%>
+<%--                  <p>2143</p>--%>
+<%--                </div>--%>
+<%--              </div>--%>
+<%--            </div>--%>
           </div>
+          <%}%>
         </div>
       </main>
 

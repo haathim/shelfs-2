@@ -10,7 +10,7 @@ public class DeliveryDAO {
     public void addDeliveryPerson(Delivery newDeliverer) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
 
-        String userSQL = "INSERT INTO `users`  (`username`,`password`, `userType`, `dateJoined`, `salt`) VALUES (?,?,?,?,?);";
+        String userSQL = "INSERT INTO `users`  (`username`,`password`, `userType`, `dateJoined`, `salt`, `verified`) VALUES (?,?,?,?,?,?);";
         String buyerSQL = "INSERT INTO `delivery`  (`username`, `name`, `phoneNo`) VALUES (?,?,?);";
 
         PreparedStatement userStmt = con.prepareStatement(userSQL);
@@ -19,6 +19,7 @@ public class DeliveryDAO {
         userStmt.setString(3,newDeliverer.getUserType());
         userStmt.setTimestamp(4,newDeliverer.getDateJoined());
         userStmt.setInt(5,newDeliverer.getSalt());
+        userStmt.setBoolean(6,true);
 
         PreparedStatement buyerStmt = con.prepareStatement(buyerSQL);
 
@@ -132,7 +133,7 @@ public class DeliveryDAO {
 
     public ArrayList<OrderBuyer> getPendingDeliveries(String deliverer) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username WHERE neworders.status <> 3 AND neworders.deliverer = ?;";
+        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username WHERE (neworders.status = 1 OR neworders.status = 2) AND neworders.deliverer = ?;";
 
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,deliverer);
@@ -143,6 +144,7 @@ public class DeliveryDAO {
         while(result.next()){
             int orderId = result.getInt(1);
             String buyerId = result.getString(2);
+            int status = result.getInt(4);
             String firstName = result.getString(9);
             String lastName = result.getString(10);
             int total = result.getInt(7);
@@ -154,7 +156,7 @@ public class DeliveryDAO {
             String province = result.getString(15);
             String phoneNo = result.getString(16);
 
-            NewOrder order = new NewOrder(orderId, buyerId, null, 1, "", false, total);
+            NewOrder order = new NewOrder(orderId, buyerId, null, status, "", false, total);
             Buyer buyer = new Buyer(buyerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,"");
 
 
@@ -162,5 +164,77 @@ public class DeliveryDAO {
         }
 
         return details;
+    }
+
+    public ArrayList<Advertisement> getPendingDeliveryDetails(int orderId, String deliverer) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT advertisements.* FROM neworders INNER JOIN neworderpickups ON neworders.orderId = neworderpickups.orderId INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId WHERE neworders.orderId = ? AND neworders.deliverer = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1,orderId);
+        stmt.setString(2, deliverer);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        for (int i = 0; i < 10 && result.next(); i++) {
+            int adId = result.getInt(1);
+            String title = result.getString(2);
+            String author = result.getString(3);
+            int price = result.getInt(4);
+            String isbn = result.getString(5);
+            String language = result.getString(6);
+            boolean available = result.getBoolean(7);
+            String description = result.getString(8);
+            String bookFrontPhoto = result.getString(9);
+            String bookBackPhoto = result.getString(10);
+            String category = result.getString(11);
+            String sellerId = result.getString(12);
+            Timestamp dateAdded = result.getTimestamp(13);
+
+            ads.add(new Advertisement(adId, sellerId, title, author, price, isbn, language, available, description, bookFrontPhoto, bookBackPhoto, category, dateAdded));
+        }
+
+        return ads;
+    }
+
+    public ArrayList<NewOrder> getDeliveryHistory(String deliverer) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM neworders\n" +
+                "WHERE deliverer = ? AND status = 3;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1,deliverer);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<NewOrder> details = new ArrayList<>();
+
+        while(result.next()){
+            int orderId = result.getInt(1);
+            String buyerId = result.getString(2);
+            int totalPrice = result.getInt(7);
+
+            details.add(new NewOrder(orderId,buyerId,null,3,deliverer,false,totalPrice));
+        }
+
+        return details;
+    }
+
+    public ArrayList<Delivery> getDeliveryPersonDetails() throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM users INNER JOIN delivery ON users.username = delivery.username;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<Delivery> deliveryPersons = new ArrayList<>();
+        while (result.next()){
+            String username = result.getString(1);
+            Timestamp dateJoined = result.getTimestamp(5);
+            String name = result.getString(8);
+            String phoneNo = result.getString(9);
+
+            deliveryPersons.add( new Delivery(username, "",dateJoined,0,name,"",phoneNo));
+        }
+
+        return deliveryPersons;
+
     }
 }

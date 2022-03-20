@@ -8,18 +8,14 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "newDeliveryUpdateDeliveryServlet", value = "/newDeliveryUpdateDeliveryServlet")
+@WebServlet(name = "newDeliveryUpdateDeliveryServlet", value = "/delivery/newDeliveryUpdateDelivery")
 public class newDeliveryUpdateDeliveryServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String deliverer = (String) session.getAttribute("username");
 
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        HttpSession session = request.getSession();
-//        String deliverer = (String) session.getAttribute("username");
-        String deliverer = "delivery1";
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         int status = Integer.parseInt(request.getParameter("status"));
         NewOrdersDAO newOrdersDAO = new NewOrdersDAO();
@@ -29,5 +25,7 @@ public class newDeliveryUpdateDeliveryServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+
+        response.sendRedirect("pendingDeliveryNew");
     }
 }

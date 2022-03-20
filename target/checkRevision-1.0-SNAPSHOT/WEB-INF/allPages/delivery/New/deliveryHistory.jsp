@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.NewOrderPickups" %>
+<%@ page import="com.example.checkRevision.model.NewOrder" %><%--
   Created by IntelliJ IDEA.
   User: Asitha Muthumala
   Date: 18/03/2022
@@ -24,6 +26,9 @@
 </head>
 
 <body id="body">
+<%
+    ArrayList<NewOrder> historyDeliveries = (ArrayList<NewOrder>) request.getAttribute("historyDeliveries");
+%>
 
 <div class="container">
 
@@ -124,56 +129,22 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Delivered Date</th>
-                    <th>Pick from store Time</th>
-                    <th>Delivered Time</th>
-                    <th>Delivery Id</th>
+                    <th>OrderId</th>
+                    <th>Buyer ID</th>
+                    <th>Total Price</th>
                     <th>All Details</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                <% for (NewOrder historyDelivery: historyDeliveries){%>
                 <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
+                    <td data-label="Start Date"><%=historyDelivery.getOrderId()%></td>
+                    <td data-label="Start Date"><%=historyDelivery.getBuyerId()%></td>
+                    <td data-label="Start Date"><%=historyDelivery.getTotalPrice()%></td>
+                    <td data-label="Buttons"><a href="pendingDeliveryAllDetailsNew?orderId=<%=historyDelivery.getOrderId()%>" class="btn">See more</a></td>
                 </tr>
-                <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
-                </tr>
-                <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
-                </tr>
-                <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
-                </tr>
-                <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
-                </tr>
-                <tr>
-                    <td data-label="Start Date">2022-02-05</td>
-                    <td data-label="Start Date">10.00 AM</td>
-                    <td data-label="Start Date">4.00 PM</td>
-                    <td data-label="Start Date">2456</td>
-                    <td data-label="Buttons"><a href="#" class="btn">See more</a></td>
-                </tr>
+                <%}%>
                 </tbody>
             </table>
         </div>

@@ -48,15 +48,22 @@
           <div class="mainbox1">
             <table id="order1">
               <thead>
-                <div class="searchbar">
-                  <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>
-                  </div>
-                <tr>
+              <div class="searchbar">
+                <%--                <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
+                <form action="viewUsers" method="get">
+                  <input
+                          type="text"
+                          class="table-search"
+                          placeholder="Search Items..."
+                          name="query"
+                  />
+                  <div class="inline"><button type="submit" style="margin:10px;">Submit</button></div>
+                </form>
+              </div>
                   <th>User Name</th>
                   <th>User ID</th>
-                  <th>Status</th>
                   <th>More Details</th>
-                  <th>Action</th>
+<%--                  <th>Action</th>--%>
                 </tr>
               </thead>
               <tbody>
@@ -86,9 +93,8 @@
                   <tr>
                     <td><%=resultBuyer.getFirstName()%> <%=resultBuyer.getLastName()%></td>
                     <td><%=resultBuyer.getUsername()%></td>
-                    <td><%=resultBuyer.getUserType()%></td>
                     <td><a href="viewUsersMore?username=<%=resultBuyer.getUsername()%>">View</a></td>
-                    <td><div class="inline"><a href="#"><button style="margin:5px;">Remove</button></a></div></td>
+<%--                    <td><div class="inline"><a href="removeUser?username=<%=resultBuyer.getUsername()%>"><button style="margin:5px;">Remove</button></a></div></td>--%>
                   </tr>
                 <%}%>
               </tbody>

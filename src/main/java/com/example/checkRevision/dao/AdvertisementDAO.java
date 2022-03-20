@@ -368,4 +368,16 @@ public class AdvertisementDAO {
 
         return ads;
     }
+
+    public void deleteAdvertisementByAdmin(int adId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "UPDATE `advertisements` SET `availableStatus` = ? WHERE `adId` = ?;";
+
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setBoolean(1, false);
+        stmt.setInt(2, adId);
+        stmt.executeUpdate();
+    }
 }

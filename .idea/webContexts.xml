@@ -3,6 +3,7 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/admin/thisura/admin_manage_users_more.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/admin/thisura" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/buyer/my-orders.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/buyer" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/delivery/pending_Pickups.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/delivery" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller/view-buyer-requests-more.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/allPages/seller" />

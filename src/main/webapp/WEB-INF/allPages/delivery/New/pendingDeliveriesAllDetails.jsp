@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.example.checkRevision.model.Advertisement" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Asitha Muthumala
   Date: 18/03/2022
@@ -24,6 +25,9 @@
 </head>
 
 <body id="body">
+<%
+    ArrayList<Advertisement> newOrderAds = (ArrayList<Advertisement>) request.getAttribute("newOrderAds");
+%>
 
 <div class="container">
 
@@ -126,7 +130,7 @@
                 <h1>Delivery Details</h1>
             </div>
             <div class="backButton">
-                <a href="#">
+                <a onclick="goBack()">
                     <span>Back</span>
                 </a>
             </div>
@@ -135,51 +139,32 @@
 
         <!--Summary start-->
         <div class="summary">
-            <h2>QUANTITY : 5 BOOKS</h2>
+            <h2>QUANTITY : <%=newOrderAds.size()%> BOOKS</h2>
         </div>
         <!--Summary end-->
 
         <!--All pickup book details start-->
         <div class="books-details">
 
+            <% for (Advertisement ad: newOrderAds){%>
             <div class="books">
                 <div class="book-image">
                     <div class="book-image-box">
-                        <img src="assets/book-image.jpg" alt="">
+                        <img src="<%=ad.getBookPhotoFront()%>" alt="Book Image">
                     </div>
                 </div>
 
                 <div class="description-of-book">
-                    <h3>ISBN : 4563878</h3>
-                    <p>Book Name : Almost Love</p>
-                    <p>Author : Asitha Muthumala</p>
-                    <p>Published Year : 1999</p>
-                    <p>Eddition : 7th edition</p>
-                    <p>Quantity : 2</p>
-                    <p>Condition : Used book</p>
+                    <h3>ISBN : <%=ad.getIsbn()%></h3>
+                    <p>Book Name : <%=ad.getTitle()%></p>
+                    <p>Author : <%=ad.getAuthor()%></p>
+                    <p>Category : <%=ad.getCategory()%></p>
                 </div>
             </div>
+            <%}%>
 
-            <div class="books">
-                <div class="book-image">
-                    <div class="book-image-box">
-                        <img src="assets/book-image.jpg" alt="">
-                    </div>
-                </div>
-
-                <div class="description-of-book">
-                    <h3>ISBN : 4563878</h3>
-                    <p>Book Name : Almost Love</p>
-                    <p>Author : Asitha Muthumala</p>
-                    <p>Published Year : 1999</p>
-                    <p>Eddition : 7th edition</p>
-                    <p>Quantity : 2</p>
-                    <p>Condition : Used book</p>
-                </div>
-            </div>
 
         </div>
-        <!--All pickup book details end-->
 
     </main>
 
@@ -195,7 +180,11 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="../allPages/delivery/New/script.js"></script>
-
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
 </body>
 
 </html>

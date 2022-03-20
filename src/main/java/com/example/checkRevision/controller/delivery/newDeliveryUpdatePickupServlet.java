@@ -14,10 +14,7 @@ import java.util.ArrayList;
 public class newDeliveryUpdatePickupServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//        for debugging
-        System.out.println("Request arrived.");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         String deliverer = (String) session.getAttribute("username");
@@ -26,14 +23,8 @@ public class newDeliveryUpdatePickupServlet extends HttpServlet {
         int pickupId = Integer.parseInt(request.getParameter("pickupId"));
         int status = Integer.parseInt(request.getParameter("status"));
 
-        //        for debugging
-        System.out.println(pickupId);
-        System.out.println(status);
-        System.out.println(deliverer);
-
         NewOrderPickupsDAO newOrderPickupsDAO = new NewOrderPickupsDAO();
         try {
-//            newOrderPickupsDAO.updatePickupStatus(deliverer, pickupId, status);
             newOrderPickupsDAO.updatePickupStatus(deliverer, pickupId, status);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -75,5 +66,7 @@ public class newDeliveryUpdatePickupServlet extends HttpServlet {
                 throwables.printStackTrace();
             }
         }
+
+        response.sendRedirect("pendingPickupsNew");
     }
 }

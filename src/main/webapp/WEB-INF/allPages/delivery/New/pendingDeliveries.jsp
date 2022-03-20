@@ -144,18 +144,23 @@
                 </div>
 
                 <div class="control-buttons"> <!--buttons-->
-                    <a href="#">
+                    <a href="pendingDeliveryAllDetailsNew?orderId=<%=pendingDelivery.getOrder().getOrderId()%>">
                         <span>All Details</span>
                     </a>
-                    <a href="#">
+                    <% if (pendingDelivery.getOrder().getStatus() == 1){%>
+                    <a href="newDeliveryUpdateDelivery?orderId=<%=pendingDelivery.getOrder().getOrderId()%>&status=2">
                         <span>Get from store</span>
                     </a>
-                    <a href="#">
+                    <%}else if (pendingDelivery.getOrder().getStatus() == 2){%>
+                    <a href="newDeliveryUpdateDelivery?orderId=<%=pendingDelivery.getOrder().getOrderId()%>&status=3">
                         <span>Give to buyer</span>
                     </a>
-                    <a href="#">
+                    <%}%>
+                    <% if (pendingDelivery.getOrder().getStatus() == 1){%>
+                    <a href="undoPendingDelivery?orderId=<%=pendingDelivery.getOrder().getOrderId()%>">
                         <span>Undo</span>
                     </a>
+                    <%}%>
                 </div>
 
             </div>

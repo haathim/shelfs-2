@@ -45,7 +45,7 @@
     </div>
     <div class="sidebar__link">
         <i class="fa fa-envelope"></i>
-        <a href="messages">Messages</a>
+        <a href="#">Messages</a>
     </div>
     <h2>ACCOUNT</h2>
     <div class="sidebar__link">

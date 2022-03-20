@@ -109,4 +109,26 @@ public class NewOrderPickupsDAO {
 
 
     }
+
+    public void undoPendingPickupForDeliverer(String deliverer, int pickupId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "UPDATE `newOrderPickups` SET deliverer = NULL WHERE `pickupId` = ? and deliverer = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, pickupId);
+        stmt.setString(2, deliverer);
+
+        stmt.executeUpdate();
+    }
+
+    public void undoPendingDeliveryForDeliverer(String deliverer, int orderId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "UPDATE `newOrders` SET deliverer = NULL WHERE `orderId` = ? and deliverer = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, orderId);
+        stmt.setString(2, deliverer);
+
+        stmt.executeUpdate();
+    }
 }

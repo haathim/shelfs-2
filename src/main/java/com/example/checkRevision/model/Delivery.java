@@ -18,6 +18,10 @@ public class Delivery extends User{
         return firstName;
     }
 
+    public String getFullName(){
+        return firstName+lastName;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

@@ -7,14 +7,24 @@ public class Complaint {
     private boolean readByAdmin;
     private String buyerId;
     private String reply;
+    private String buyerName;
 
-    public Complaint(long complaintId, String title, String description, boolean readByAdmin, String buyerId, String reply) {
+    public Complaint(long complaintId, String title, String description, boolean readByAdmin, String buyerId, String reply, String buyerName) {
         this.complaintId = complaintId;
         this.title = title;
         this.description = description;
         this.readByAdmin = readByAdmin;
         this.buyerId = buyerId;
         this.reply = reply;
+        this.buyerName = buyerName;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
+    }
+
+    public void setBuyerName(String buyerName) {
+        this.buyerName = buyerName;
     }
 
     public long getComplaintId() {

@@ -19,11 +19,11 @@ window.addEventListener('load', ()=>{
     updateTotal()
 
     var removeItem = document.getElementsByClassName('remove-btn')
-    
+
     for (var i = 0; i < removeItem.length; i++) {
 
         var button = removeItem[i];
-        
+
         button.addEventListener('click', removeCart)
 
     }
@@ -82,11 +82,11 @@ function addToCart(){
     console.log("Ex", existingItems)
     localStorage.setItem("cartitem", JSON.stringify(existingItems));
     localStorage.setItem("cart-Id", JSON.stringify(cartId));
-    
 
-    
+
+
     console.log(title);
-    
+
 
     // console.log(localStorage.key(0));
 
@@ -94,7 +94,7 @@ function addToCart(){
 }
 
 
-    
+
 
 function display(){
     let bookitems = localStorage.getItem('cartitem')
@@ -137,7 +137,7 @@ function display(){
     </div>`
         })
     }
-    
+
 }
 
 function updateTotal(){
@@ -247,7 +247,7 @@ function removeCart(event) {
     // }
 
 
-    
+
     // existingItems = existingItems.splice(index, 1)
     // cartId = cartId.splice(index, 1)
     // localStorage.setItem("cartitem", JSON.stringify(existingItems));

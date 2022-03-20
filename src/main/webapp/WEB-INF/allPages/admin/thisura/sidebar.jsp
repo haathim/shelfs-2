@@ -35,6 +35,27 @@
         <i class="fa fa-archive"></i>
         <a href="manageDeliveryPersons">Manage Delivery Persons</a>
     </div>
+
+    <div class="sidebar__link">
+        <i class="fa fa-archive"></i>
+        <a href="paySellers">Pay Sellers</a>
+    </div>
+
+    <div class="sidebar__link">
+        <i class="fa fa-archive"></i>
+        <a href="assignDelivererForPickup">Assign Pickups</a>
+    </div>
+
+    <div class="sidebar__link">
+        <i class="fa fa-archive"></i>
+        <a href="assignDelivererForDelivery">Assign Delivery</a>
+    </div>
+
+    <div class="sidebar__link">
+        <i class="fa fa-archive"></i>
+        <a href="assignCourier">Assign Courier</a>
+    </div>
+
     <div class="sidebar__link">
         <i class="fa fa-cart-arrow-down"></i>
         <a href="viewOrdersAdmin">Orders</a>
@@ -45,7 +66,7 @@
     </div>
     <div class="sidebar__link">
         <i class="fa fa-envelope"></i>
-        <a href="messages">Messages</a>
+        <a href="#">Messages</a>
     </div>
     <h2>ACCOUNT</h2>
     <div class="sidebar__link">

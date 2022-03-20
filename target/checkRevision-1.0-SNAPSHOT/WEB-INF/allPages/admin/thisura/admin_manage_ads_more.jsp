@@ -59,7 +59,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
 <%--              <p>Edit</p>--%>
 <%--            </div>--%>
             <div class="remove-button">
-              <p>Remove</p>
+              <p><a href="deleteAd?adId=<%=ad.getAdId()%>">Remove</p></a>
             </div>
           </div>
 

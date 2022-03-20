@@ -2,7 +2,9 @@ package com.example.checkRevision.dao;
 
 import com.example.checkRevision.database.DBConnection;
 import com.example.checkRevision.model.Advertisement;
+import com.example.checkRevision.model.Buyer;
 import com.example.checkRevision.model.NewOrder;
+import com.example.checkRevision.model.OrderBuyer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -71,6 +73,7 @@ public class NewOrdersDAO {
     public void assignDelivererForOrder(int orderId, String deliverer) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
 
+        System.out.println("in assigning .......--");
         String sql = "UPDATE `newOrders` SET `deliverer` = ? WHERE `orderId` = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, deliverer);
@@ -172,5 +175,73 @@ public class NewOrdersDAO {
         }
 
         return orders;
+    }
+
+    public ArrayList<OrderBuyer> getOrdersForAdmin() throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<OrderBuyer> details = new ArrayList<>();
+
+        while(result.next()){
+            int orderId = result.getInt(1);
+            String buyerId = result.getString(2);
+            Timestamp dateOrdered = result.getTimestamp(3);
+            int status = result.getInt(4);
+            String deliverer = result.getString(5);
+            boolean isCourier = result.getBoolean(6);
+            int total = result.getInt(7);
+
+            String firstName = result.getString(9);
+            String lastName = result.getString(10);
+            String houseNo = result.getString(11);
+            String street = result.getString(12);
+            String city = result.getString(13);
+            String district = result.getString(14);
+            String province = result.getString(15);
+            String phoneNo = result.getString(16);
+            String email = result.getString(17);
+
+            NewOrder order = new NewOrder(orderId, buyerId, dateOrdered, status, deliverer, false, total);
+            Buyer buyer = new Buyer(buyerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,email);
+
+
+            details.add(new OrderBuyer(order, buyer));
+        }
+
+        return details;
+    }
+
+    public ArrayList<Advertisement> getOrderDetailsForAdmin(int orderId) throws SQLException, ClassNotFoundException {
+
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT advertisements.* FROM neworders INNER JOIN neworderpickups ON neworders.orderId = neworderpickups.orderId INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId WHERE neworders.orderId = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1,orderId);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<Advertisement> ads = new ArrayList<Advertisement>();
+        for (int i = 0; i < 10 && result.next(); i++) {
+            int adId = result.getInt(1);
+            String title = result.getString(2);
+            String author = result.getString(3);
+            int price = result.getInt(4);
+            String isbn = result.getString(5);
+            String language = result.getString(6);
+            boolean available = result.getBoolean(7);
+            String description = result.getString(8);
+            String bookFrontPhoto = result.getString(9);
+            String bookBackPhoto = result.getString(10);
+            String category = result.getString(11);
+            String sellerId = result.getString(12);
+            Timestamp dateAdded = result.getTimestamp(13);
+
+            ads.add(new Advertisement(adId, sellerId, title, author, price, isbn, language, available, description, bookFrontPhoto, bookBackPhoto, category, dateAdded));
+        }
+
+        return ads;
     }
 }

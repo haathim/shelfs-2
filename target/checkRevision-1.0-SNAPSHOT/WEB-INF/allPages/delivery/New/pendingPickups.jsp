@@ -148,50 +148,24 @@
                     <a href="pendingPickupAllDetailsNew?pickupId=<%=pickup.getNewOrderPickups().getPickupId()%>">
                         <span>All Details</span>
                     </a>
-                    <a href="#">
+                    <% if (pickup.getNewOrderPickups().getStatus() == 0){%>
+                    <a href="newDeliveryUpdatePickup?pickupId=<%=pickup.getNewOrderPickups().getPickupId()%>&status=1">
                         <span>Get from seller</span>
                     </a>
-                    <a href="#">
+                    <%}else if (pickup.getNewOrderPickups().getStatus() == 1){%>
+                    <a href="newDeliveryUpdatePickup?pickupId=<%=pickup.getNewOrderPickups().getPickupId()%>&status=2">
                         <span>Give to Store</span>
                     </a>
-                    <a href="#">
+                    <%}%>
+                    <% if (pickup.getNewOrderPickups().getStatus() == 0){%>
+                    <a href="undoPendingPickup?pickupId=<%=pickup.getNewOrderPickups().getPickupId()%>">
                         <span>Undo</span>
                     </a>
+                    <%}%>
                 </div>
 
             </div>
             <%}%>
-
-<%--            <div class="pickup-box">--%>
-<%--                <div class="seller-image">--%>
-<%--                    <div class="seller-image-box">--%>
-<%--                        <img src="assets/user_image.svg" alt="">--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-
-<%--                <div class="seller-details">--%>
-<%--                    <h3>Pickup Id : 12345075ad</h3>--%>
-<%--                    <p>Seller Name : John Perera</p>--%>
-<%--                    <p>Address : No 07, Dharmaraja Rd, Colombo 07.</p>--%>
-<%--                    <p>Phone : 0779018695</p>--%>
-<%--                </div>--%>
-
-<%--                <div class="control-buttons"> <!--buttons-->--%>
-<%--                    <a href="#">--%>
-<%--                        <span>All Details</span>--%>
-<%--                    </a>--%>
-<%--                    <a href="#">--%>
-<%--                        <span>Get from seller</span>--%>
-<%--                    </a>--%>
-<%--                    <a href="#">--%>
-<%--                        <span>Give to Store</span>--%>
-<%--                    </a>--%>
-<%--                    <a href="#">--%>
-<%--                        <span>Undo</span>--%>
-<%--                    </a>--%>
-<%--                </div>--%>
-
-<%--            </div>--%>
 
         </div>
 

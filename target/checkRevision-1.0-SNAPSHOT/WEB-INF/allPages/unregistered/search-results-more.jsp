@@ -55,13 +55,14 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <% out.println(ad.getTitle());%>
                   <div class="author"><% out.println(ad.getAuthor());%></div>
                 </div>
-<%--                <div class="top-box-seller-block">--%>
-<%--                  <div class="seller-name">--%>
-<%--                    J. W. Perera--%>
-<%--                    <div class="rating">4.9</div>--%>
-<%--                  </div>--%>
-<%--                  <div class="seller-icon"></div>--%>
-<%--                </div>--%>
+                <div class="top-box-seller-block">
+                  <div class="seller-icon"></div>
+                  <div class="seller-name" id="seller">
+                    <%=ad.getSellerId()%>
+                    <%--                    <div class="rating">4.9</div>--%>
+                  </div>
+
+                </div>
               </div>
               <div class="detail-block">
                 <div class="book-cover">

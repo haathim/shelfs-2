@@ -28,6 +28,9 @@ public class adminViewUsersMoreServlet extends HttpServlet {
 //                response.getWriter().println("Resourse doesn't exist");
 //            }
             request.setAttribute("user", user);
+            System.out.println("==========");
+            System.out.println(user);
+            System.out.println("==========");
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/admin/thisura/admin_manage_users_more.jsp");
             dispatcher.forward(request, response);
 

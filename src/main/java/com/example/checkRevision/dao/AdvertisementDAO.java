@@ -223,7 +223,7 @@ public class AdvertisementDAO {
     public ArrayList<Advertisement> getPostedAds(String aSellerId, String query, int currentPage) throws SQLException, ClassNotFoundException {
 
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM `advertisements` WHERE `sellerId` = ? AND `availableStatus` = true AND advertisements.title LIKE ? OR advertisements.author LIKE ? LIMIT ?,?;";
+        String sql = "SELECT * FROM `advertisements` WHERE `sellerId` = ? AND `availableStatus` = true AND (advertisements.title LIKE ? OR advertisements.author LIKE ?) LIMIT ?,?;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, aSellerId);
         stmt.setString(2,"%"+query+"%");
@@ -259,7 +259,7 @@ public class AdvertisementDAO {
 
     public int getPostedAdsNumberOfRows(String sellerId, String query) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT COUNT(*) FROM `advertisements` WHERE `sellerId` = ? AND `availableStatus` = true AND advertisements.title LIKE ? OR advertisements.author LIKE ?;";
+        String sql = "SELECT COUNT(*) FROM `advertisements` WHERE `sellerId` = ? AND `availableStatus` = true AND (advertisements.title LIKE ? OR advertisements.author LIKE ?);";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,sellerId);
         stmt.setString(2,"%"+query+"%");
@@ -314,7 +314,6 @@ public class AdvertisementDAO {
         stmt.setString(2, aSellerId);
         stmt.executeUpdate();
     }
-
 
     public void makeUnavailable(Advertisement ad) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
@@ -379,5 +378,35 @@ public class AdvertisementDAO {
         stmt.setBoolean(1, false);
         stmt.setInt(2, adId);
         stmt.executeUpdate();
+    }
+
+    public Advertisement isAvailable(int adId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM `advertisements` WHERE adId = ? AND availableStatus = false;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1,adId);
+
+
+        ResultSet result = stmt.executeQuery();
+        if (result.next()){
+//            int adId = result.getInt(1);
+            String title = result.getString(2);
+            String author = result.getString(3);
+            int price = result.getInt(4);
+            String isbn = result.getString(5);
+            String language = result.getString(6);
+            boolean available = result.getBoolean(7);
+            String description = result.getString(8);
+            String bookFrontPhoto = result.getString(9);
+            String bookBackPhoto = result.getString(10);
+            String category = result.getString(11);
+            String sellerId = result.getString(12);
+            Timestamp dateAdded = result.getTimestamp(13);
+
+            return new Advertisement(adId, sellerId, title, author, price, isbn, language, available, description, bookFrontPhoto, bookBackPhoto, category, dateAdded);
+        }else{
+            return null;
+        }
+
     }
 }

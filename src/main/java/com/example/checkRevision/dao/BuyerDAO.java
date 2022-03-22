@@ -193,7 +193,7 @@ public class BuyerDAO {
 
     public Seller getBuyerDetails(String aUsername) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT buyers.*, users.usertype, sellers.* FROM users INNER JOIN buyers ON users.username = buyers.username INNER JOIN sellers ON users.username = sellers.username WHERE users.username = ?";
+        String sql = "SELECT buyers.*, users.usertype, sellers.* FROM users INNER JOIN buyers ON users.username = buyers.username LEFT JOIN sellers ON users.username = sellers.username WHERE users.username = ?";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,aUsername);
 
@@ -252,6 +252,7 @@ public class BuyerDAO {
             }
 
         }else{
+            System.out.println("000000000000000000000000000000000000000000000");
             return null;
         }
 

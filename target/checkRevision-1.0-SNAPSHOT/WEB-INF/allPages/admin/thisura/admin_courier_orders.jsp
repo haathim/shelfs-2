@@ -1,5 +1,6 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.OrderBuyer" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +20,7 @@
 
 <body id="body">
 <%
-    ArrayList<Advertisement> resultAds = (ArrayList<Advertisement>) request.getAttribute("resultAds");
+    ArrayList<OrderBuyer> courierOrders = (ArrayList<OrderBuyer>) request.getAttribute("courierOrders");
 //    String query = (String) request.getAttribute("query");
 //    int currentPage = (int) request.getAttribute("currentPage");
 //    int noOfPages = (int) request.getAttribute("noOfPages");
@@ -51,38 +52,35 @@
                     </div>
                     <tr>
                         <th>Order No.</th>
-                        <th>Buyer Name</th>
                         <th>User ID</th>
+                        <th>Buyer Name</th>
                         <th>Buyer's Delivery Address</th>
                         <th>Buyer's Phone No.</th>
+                        <th>View Details</th>
                         <th>Update Status</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <% for (OrderBuyer courierOrder: courierOrders){%>
                     <tr>
-                        <td>4512</td>
-                        <td>Shawn Rodrigo</td>
-                        <td>1045</td>
-                        <td>No. 13, Temple Road, Nugegoda</td>
-                        <td>0771426548</td>
-                        <td><div class="inline"><button style="margin:5px;">Sent to Courier</div></td>
+                        <td><%=courierOrder.getOrder().getOrderId()%></td>
+                        <td><%=courierOrder.getBuyer().getUsername()%></td>
+                        <td><%=courierOrder.getBuyer().getFullName()%></td>
+                        <td><%=courierOrder.getBuyer().getAddress()%></td>
+                        <td><%=courierOrder.getBuyer().getPhoneNo()%></td>
+                        <td><div class="inline"><button style="margin:5px;"><a href="viewOrdersAdminMore?orderId=<%=courierOrder.getOrder().getOrderId()%>">View Details</a></button></div></td>
+                        <form action="assignCourier" method="post">
+                            <input type="hidden" name="orderId" value="<%=courierOrder.getOrder().getOrderId()%>">
+                            <% if (courierOrder.getOrder().getStatus() == 1){%>
+                            <input type="hidden" name="status" value="2">
+                            <td><button type="submit">Given to Courier</button></td>
+                            <%} else if (courierOrder.getOrder().getStatus() == 2){%>
+                            <input type="hidden" name="status" value="3">
+                            <td><button type="submit">Courier Delivered.</button></td>
+                            <%}%>
+                        </form>
                     </tr>
-                    <tr>
-                        <td>7826</td>
-                        <td>Haathim Munas</td>
-                        <td>6523</td>
-                        <td>No. 56, Chapel Lane, Kirulapone</td>
-                        <td>0712729729</td>
-                        <td><div class="inline"><button style="margin:5px;">Sent to Courier</div></td>
-                    </tr>
-                    <tr>
-                        <td>0264</td>
-                        <td>Asitha Muthumala</td>
-                        <td>4035</td>
-                        <td>No. 89/A, Bird Park, Kotte</td>
-                        <td>0785641278</td>
-                        <td><div class="inline"><button style="margin:5px;">Sent to Courier</div></td>
-                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
             </div>

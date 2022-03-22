@@ -39,14 +39,19 @@ public class placeOrderServlet extends HttpServlet {
         ArrayList<Advertisement> cartAds = new ArrayList<>();
 
         try {
-            cartAds.add(advertisementDAO.getAdById(4));
-            cartAds.add(advertisementDAO.getAdById(5));
-            cartAds.add(advertisementDAO.getAdById(6));
-            cartAds.add(advertisementDAO.getAdById(7));
+//            cartAds.add(advertisementDAO.getAdById(4));
+//            cartAds.add(advertisementDAO.getAdById(5));
+//            cartAds.add(advertisementDAO.getAdById(6));
+//            cartAds.add(advertisementDAO.getAdById(7));
+//
+//            cartAds.add(advertisementDAO.getAdById(20));
+//            cartAds.add(advertisementDAO.getAdById(21));
+//            cartAds.add(advertisementDAO.getAdById(22));
+            cartAds.add(advertisementDAO.getAdById(44));
+            cartAds.add(advertisementDAO.getAdById(69));
+            cartAds.add(advertisementDAO.getAdById(76));
+            cartAds.add(advertisementDAO.getAdById(80));
 
-            cartAds.add(advertisementDAO.getAdById(20));
-            cartAds.add(advertisementDAO.getAdById(21));
-            cartAds.add(advertisementDAO.getAdById(22));
 
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -99,6 +104,9 @@ public class placeOrderServlet extends HttpServlet {
 //                now have to get the pickup id of inserted value
                 int pickupId = newOrderPickupsDAO.getPickupId(orderId, seller);
 
+//                add to payment status table with not paid as initial
+                newOrderPickupsDAO.addPickupPaymentStatus(pickupId);
+
 //                now have to add all the ads relevant to that pickup
                 for (Advertisement ad: (ArrayList<Advertisement>) adListGrouped.get(seller)){
                     newPickupAdsDAO.addPickupAd(pickupId, (int) ad.getAdId());
@@ -113,59 +121,59 @@ public class placeOrderServlet extends HttpServlet {
 //        ASSIGNING DELIVERIES
 
 //        just to test assigning deliverer
-        try {
-            newOrderPickupsDAO.assignDelivererForPickup(13, "delivery1");
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
+//        try {
+//            newOrderPickupsDAO.assignDelivererForPickup(13, "delivery1");
+//        } catch (SQLException | ClassNotFoundException throwables) {
+//            throwables.printStackTrace();
+//        }
 
 //        get order id of pickup
-        int orderIdOfPickup = -1;
-        try {
-            orderIdOfPickup = newOrderPickupsDAO.getOrderIdOfPickup(13);
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
+//        int orderIdOfPickup = -1;
+//        try {
+//            orderIdOfPickup = newOrderPickupsDAO.getOrderIdOfPickup(13);
+//        } catch (SQLException | ClassNotFoundException throwables) {
+//            throwables.printStackTrace();
+//        }
 
 //        code to check if all pickups are 2
-        ArrayList<Integer> allPickupsStatusOfOrderId = null;
-        try {
-            allPickupsStatusOfOrderId = newOrderPickupsDAO.getAllPickupsStatusOfOrderId(orderIdOfPickup);
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
-        boolean allDone = true;
-        for (int pickupStatus: allPickupsStatusOfOrderId){
-            if (pickupStatus != 2){
-                System.out.println("All Pickups are not yet complete");
-                allDone = false;
-                break;
-            }
-        }
+//        ArrayList<Integer> allPickupsStatusOfOrderId = null;
+//        try {
+//            allPickupsStatusOfOrderId = newOrderPickupsDAO.getAllPickupsStatusOfOrderId(orderIdOfPickup);
+//        } catch (SQLException | ClassNotFoundException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        boolean allDone = true;
+//        for (int pickupStatus: allPickupsStatusOfOrderId){
+//            if (pickupStatus != 2){
+//                System.out.println("All Pickups are not yet complete");
+//                allDone = false;
+//                break;
+//            }
+//        }
 
-        if (allDone){
-            System.out.println("All the pickups are done.");
-
-//            now have to change order table status to 1
-            try {
-                newOrdersDAO.updateOrderStatus(orderId, 1);
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+//        if (allDone){
+//            System.out.println("All the pickups are done.");
+//
+////            now have to change order table status to 1
+//            try {
+//                newOrdersDAO.updateOrderStatus(orderId, 1);
+//            } catch (SQLException | ClassNotFoundException throwables) {
+//                throwables.printStackTrace();
+//            }
+//        }
 
 
 //        find all courier orders
 //        What details do we get about the couriers? is it all the details?
 
-        try {
-            ArrayList<NewOrder> courierOrders = newOrdersDAO.getCourierOrders();
-            for (NewOrder courOrd: courierOrders){
-                System.out.println(courOrd);
-            }
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-        }
+//        try {
+//            ArrayList<NewOrder> courierOrders = newOrdersDAO.getCourierOrders();
+//            for (NewOrder courOrd: courierOrders){
+//                System.out.println(courOrd);
+//            }
+//        } catch (SQLException | ClassNotFoundException throwables) {
+//            throwables.printStackTrace();
+//        }
 
 
 

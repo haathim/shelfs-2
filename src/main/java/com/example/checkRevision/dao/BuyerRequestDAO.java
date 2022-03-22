@@ -77,7 +77,7 @@ public class BuyerRequestDAO {
         System.out.println("3333");
 
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT  * FROM `buyerRequests` WHERE buyerRequests.title LIKE ? OR buyerRequests.author LIKE ? LIMIT ?, ?;";
+        String sql = "SELECT  * FROM `buyerRequests` WHERE (buyerRequests.title LIKE ? OR buyerRequests.author LIKE ?) LIMIT ?, ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
 
         stmt.setString(1,"%"+query+"%");
@@ -113,7 +113,7 @@ public class BuyerRequestDAO {
 
     public int getAllBuyerRequestsNumberOfRows(String query) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT COUNT(*) FROM `buyerRequests` WHERE buyerRequests.title LIKE ? OR buyerRequests.author LIKE ?;";
+        String sql = "SELECT COUNT(*) FROM `buyerRequests` WHERE (buyerRequests.title LIKE ? OR buyerRequests.author LIKE ?);";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1,"%"+query+"%");
         stmt.setString(2,"%"+query+"%");

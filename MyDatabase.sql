@@ -290,6 +290,16 @@ CREATE TABLE `newPickupsAds` (
  FOREIGN KEY (`adId`) REFERENCES `advertisements` (`adId`) ON DELETE CASCADE
 );
 
+CREATE TABLE `pickupPaymentStatus` (
+ `pickupId` INT NOT NULL,
+ `status` TINYINT(1) NOT NULL,
+
+ PRIMARY KEY (`pickupId`),
+ FOREIGN KEY (`pickupId`) REFERENCES `newOrderPickups` (`pickupId`) ON DELETE CASCADE,
+);
+
+
+
 
 # SQL for getting orders and adId
 SELECT newOrders.orderId, newPickupsAds.adId FROM newOrders

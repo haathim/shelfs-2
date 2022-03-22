@@ -75,6 +75,16 @@ change this template use File | Settings | File Templates. --%> <%@ page
                                 <p><strong>Address</strong></p>
                                 <p><%=user.getAddress()%></p>
                             </div>
+
+                            <div class="book-details-field">
+                                <p><strong>Contact</strong></p>
+                                <p><%=user.getPhoneNo()%></p>
+                            </div>
+
+                            <div class="book-details-field">
+                                <p><strong>Email</strong></p>
+                                <p><%=user.getEmail()%></p>
+                            </div>
                         </div>
 
 <%--                        <% if (request.getSession().getAttribute("userType") == "seller"){%>--%>

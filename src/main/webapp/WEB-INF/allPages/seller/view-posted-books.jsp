@@ -67,20 +67,29 @@ change this template use File | Settings | File Templates. --%> <%@ page
                         <th>ISBN</th>
                         <th>View</th>
                     </tr>
-                    <%
+<%--                    <%--%>
 
-                        for (Advertisement postedBook: postedBooks) {
-                            out.println("<tr class=\"table-rows\">");
-                            out.println("<td>" + postedBook.getTitle() + "</td>");
-                            out.println("<td>" + postedBook.getAuthor() + "</td>");
-                            out.println("<td>" + postedBook.getPrice() + "</td>");
-                            out.println("<td>" + postedBook.getIsbn() + "</td>");
-                            out.println("<td>"+"<div class=\"view-more-button\">"+ "<a href=\"" + MyVariables.rootURL +"seller/viewPostedAdsMore?adId=" + postedBook.getAdId() + "\"><h2>View</h2></a>\n" +"</div></td>");
-                            out.println("</tr>");
-                        }
+<%--                        for (Advertisement postedBook: postedBooks) {--%>
+<%--                            out.println("<tr class=\"table-rows\">");--%>
+<%--                            out.println("<td>" + postedBook.getTitle() + "</td>");--%>
+<%--                            out.println("<td>" + postedBook.getAuthor() + "</td>");--%>
+<%--                            out.println("<td>" + postedBook.getPrice() + "</td>");--%>
+<%--                            out.println("<td>" + postedBook.getIsbn() + "</td>");--%>
+<%--                            out.println("<td>"+"<div class=\"view-more-button\">"+ "<a href=\"" + MyVariables.rootURL +"seller/viewPostedAdsMore?adId=" + postedBook.getAdId() + "\"><h2>View</h2></a>\n" +"</div></td>");--%>
+<%--                            out.println("</tr>");--%>
+<%--                        }--%>
 
 
-                    %>
+<%--                    %>--%>
+                    <% for (Advertisement postedBook: postedBooks) {%>
+                    <tr class="table-rows">
+                        <td><%=postedBook.getTitle()%></td>
+                        <td><%=postedBook.getAuthor()%></td>
+                        <td><%=postedBook.getPrice()%></td>
+                        <td><%=postedBook.getIsbn()%></td>
+                        <td><div class="view-more-button"><a href="viewPostedAdsMore?adId=<%=postedBook.getAdId()%>"><h2>View</h2></a></div></td>
+                    </tr>
+                    <%}%>
                 </table>
             </div>
 

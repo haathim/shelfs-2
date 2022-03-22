@@ -1,7 +1,9 @@
 package com.example.checkRevision.dao;
 
 import com.example.checkRevision.database.DBConnection;
+import com.example.checkRevision.model.Seller;
 import com.example.checkRevision.model.SellerSale;
+import com.example.checkRevision.model.SellersPayment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -128,6 +130,58 @@ public class NewOrderPickupsDAO {
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setInt(1, orderId);
         stmt.setString(2, deliverer);
+
+        stmt.executeUpdate();
+    }
+
+    public void addPickupPaymentStatus(int pickupId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = " INSERT INTO `pickupPaymentStatus` (pickupId, status) VALUES (?,?);";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, pickupId);
+        stmt.setBoolean(2, false);
+
+        stmt.executeUpdate();
+    }
+
+
+    public ArrayList<SellersPayment> getToBePayedSellers() throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT neworderpickups.pickupId, neworderpickups.sellerId, buyers.firstName, buyers.lastname, buyers.email, sellers.bankAccountNo, sellers.bankName, sellers.bankBranch, SUM(advertisements.price) FROM neworderpickups INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId INNER JOIN buyers ON neworderpickups.sellerId = buyers.username INNER JOIN sellers ON neworderpickups.sellerId = sellers.username INNER JOIN pickuppaymentstatus ON neworderpickups.pickupId = pickuppaymentstatus.pickupId WHERE neworderpickups.status = 1 AND pickuppaymentstatus.status = 0 GROUP BY neworderpickups.pickupId;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        ResultSet result = stmt.executeQuery();
+        ArrayList<SellersPayment> sellersPaymentsList= new ArrayList<>();
+
+        while (result.next()){
+
+            int pickupId = result.getInt(1);
+            String sellerId = result.getString(2);
+            String firstName = result.getString(3);
+            String lastName = result.getString(4);
+            String email = result.getString(5);
+            String bankAccountNo = result.getString(6);
+            String bankName = result.getString(7);
+            String bankBranch = result.getString(8);
+            int paymentAmount = result.getInt(9);
+
+
+
+            Seller seller = new Seller(sellerId,"","seller",0,null, firstName, lastName, "","","","","",true,"",email,"", "", "", bankAccountNo,bankName,bankBranch);
+            sellersPaymentsList.add(new SellersPayment(pickupId, seller, paymentAmount));
+        }
+
+        return sellersPaymentsList;
+
+    }
+
+    public void updatePickupPaymentStatus(int pickupId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = " UPDATE `pickupPaymentStatus` SET status = 1 WHERE pickupId = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, pickupId);
 
         stmt.executeUpdate();
     }

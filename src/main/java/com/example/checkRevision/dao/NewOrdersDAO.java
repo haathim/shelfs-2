@@ -82,6 +82,17 @@ public class NewOrdersDAO {
         stmt.executeUpdate();
     }
 
+    public void assignCourierForOrder(int orderId, int status) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "UPDATE `newOrders` SET `status` = ? WHERE `orderId` = ? AND `isCourier` = true;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, status);
+        stmt.setInt(2, orderId);
+
+        stmt.executeUpdate();
+    }
+
     public void completeOrder(int orderId) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
 
@@ -95,22 +106,42 @@ public class NewOrdersDAO {
     }
 
 
-    public ArrayList<NewOrder> getCourierOrders() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderBuyer> getCourierOrders() throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM  `newOrders` WHERE `status` = ? AND isCourier = ?;";
+        String sql = "SELECT * FROM  `newOrders` INNER JOIN `buyers` ON newOrders.buyerId = buyers.username WHERE (`status` = 1 OR `status` = 2) AND isCourier = ?;";
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1, 1);
-        stmt.setBoolean(2, true);
+//        stmt.setInt(1, 1);
+        stmt.setBoolean(1, true);
 
         ResultSet result = stmt.executeQuery();
 
-        ArrayList<NewOrder> courierOrders = new ArrayList<>();
+        ArrayList<OrderBuyer> courierOrders = new ArrayList<>();
 
         while(result.next()){
 
-            NewOrder courierOrder = new NewOrder(result.getInt(1), result.getString(2), result.getTimestamp(3), result.getInt(4), result.getString(5), true, result.getInt(7));
+            int orderId = result.getInt(1);
+            String buyerId = result.getString(2);
+            Timestamp dateOrdered = result.getTimestamp(3);
+            int status = result.getInt(4);
+            String deliverer = result.getString(5);
+            boolean isCourier = result.getBoolean(6);
+            int total = result.getInt(7);
 
-            courierOrders.add(courierOrder);
+            String firstName = result.getString(9);
+            String lastName = result.getString(10);
+            String houseNo = result.getString(11);
+            String street = result.getString(12);
+            String city = result.getString(13);
+            String district = result.getString(14);
+            String province = result.getString(15);
+            String phoneNo = result.getString(17);
+            String email = result.getString(18);
+
+            NewOrder order = new NewOrder(orderId, buyerId, dateOrdered, status, deliverer, true, total);
+            Buyer buyer = new Buyer(buyerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,email);
+
+
+            courierOrders.add(new OrderBuyer(order, buyer));
 
         }
 

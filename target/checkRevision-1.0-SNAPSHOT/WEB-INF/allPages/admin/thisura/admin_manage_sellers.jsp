@@ -1,5 +1,7 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.SellersPayment" %>
+<%@ page import="com.example.checkRevision.model.SellerSale" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +21,7 @@
 
 <body id="body">
 <%
-    ArrayList<Advertisement> resultAds = (ArrayList<Advertisement>) request.getAttribute("resultAds");
+    ArrayList<SellersPayment> sellersPayments = (ArrayList<SellersPayment>) request.getAttribute("sellersPayments");
 //    String query = (String) request.getAttribute("query");
 //    int currentPage = (int) request.getAttribute("currentPage");
 //    int noOfPages = (int) request.getAttribute("noOfPages");
@@ -50,35 +52,33 @@
 <%--                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
 <%--                    </div>--%>
                     <tr>
-                        <th>User Name</th>
-                        <th>User ID</th>
-                        <th>Payment Status</th>
-                        <th>Payment Details</th>
+                        <th>SellerId</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Account No.</th>
+                        <th>Bank Name</th>
+                        <th>Bank Branch</th>
+                        <th>Amount</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
+
+                    <% for (SellersPayment sellersPayment: sellersPayments){%>
                     <tr>
-                        <td>Chandler Bing</td>
-                        <td>1045</td>
-                        <td>Paid</td>
-                        <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
+                        <td><%=sellersPayment.getSeller().getUsername()%></td>
+                        <td><%=sellersPayment.getSeller().getFullName()%></td>
+                        <td><%=sellersPayment.getSeller().getEmail()%></td>
+                        <td><%=sellersPayment.getSeller().getBankAccountNo()%></td>
+                        <td><%=sellersPayment.getSeller().getBankName()%></td>
+                        <td><%=sellersPayment.getSeller().getBankBranch()%></td>
+                        <td><%=sellersPayment.getPaymentAmount()%></td>
+                        <form action="paySellers" method="post">
+                            <input type="hidden" name="pickupId" value="<%=sellersPayment.getPickupId()%>">
+                            <td><button type="submit">Mark as Paid</button></td>
+                        </form>
                     </tr>
-                    <tr>
-                        <td>Monica Geller</td>
-                        <td>4571</td>
-                        <td>Not Paid</td>
-                        <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
-                    </tr>
-                    <tr>
-                        <td>Joey Tribbiani</td>
-                        <td>0236</td>
-                        <td>Paid</td>
-                        <td><a href="#">View</a></td>
-                        <td><div class="inline"><button style="margin:5px;">Payment Completed</button></div></td>
-                    </tr>
+                    <%}%>
                     </tbody>
                 </table>
             </div>

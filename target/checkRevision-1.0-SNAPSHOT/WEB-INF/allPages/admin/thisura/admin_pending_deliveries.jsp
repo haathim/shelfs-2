@@ -45,7 +45,7 @@
 
     <main>
         <div class="main-container">
-            <h1>Pending Pickups</h1>
+            <h1>Pending Deliveries</h1>
             <div class="mainbox1">
                 <table id="order1">
                     <thead>

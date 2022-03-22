@@ -48,19 +48,20 @@
     <%}else if (request.getSession().getAttribute("userType") == "seller"){%>
     <a href="../seller/home"><h2>SWITCH TO SELLER PORTAL</h2></a>
     <%}%>
+  </div>
 
-    <h2>ACCOUNT</h2>
-    <div class="sidebar__link">
-      <i class="fa fa-wrench"></i>
-      <a href="help">Settings</a>
-    </div>
-    <div class="sidebar__link">
-      <i class="fa fa-question"></i>
-      <a href="settings">Help</a>
-    </div>
-    <div class="sidebar__link">
-      <i class="fa fa-power-off"></i>
-      <a href="../logout">Logout</a>
-    </div>
+  <h2>ACCOUNT</h2>
+  <div class="sidebar__link">
+    <i class="fa fa-wrench"></i>
+    <a href="help">Settings</a>
+  </div>
+  <div class="sidebar__link">
+    <i class="fa fa-question"></i>
+    <a href="settings">Help</a>
+  </div>
+  <div class="sidebar__link">
+    <i class="fa fa-power-off"></i>
+    <a href="../logout">Logout</a>
+  </div>
   </div>
 </div>

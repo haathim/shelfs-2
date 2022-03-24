@@ -289,4 +289,18 @@ public class BuyerDAO {
         return null;
 
     }
+
+    public String getBuyerDistrict(String buyerId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT `district` FROM `buyers` WHERE `username` = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+
+        stmt.setString(1, buyerId);
+        ResultSet result = stmt.executeQuery();
+        if (result.next()){
+            return result.getString(1);
+        }
+        return null;
+    }
 }

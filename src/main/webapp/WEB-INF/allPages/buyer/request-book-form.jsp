@@ -144,7 +144,7 @@
                         <td><%=buyerRequest.getTitle()%></td>
                         <td><%=buyerRequest.getAuthor()%></td>
                         <td><%=buyerRequest.getPreferredPrice()%></td>
-                        <td><div class="view-more-button"><a href="editBuyerRequest?buyerRequestId=<%=buyerRequest.getRequestId()%>"><h2>View</h2></a></div></td>
+                        <td><div class="view-more-button"><a href="editBuyerRequest?buyerRequestId=<%=buyerRequest.getRequestId()%>"><h2>Edit</h2></a></div></td>
                     </tr>
                     <%}%>
                 </table>

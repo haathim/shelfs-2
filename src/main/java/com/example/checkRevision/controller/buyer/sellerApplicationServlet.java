@@ -25,19 +25,32 @@ public class sellerApplicationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String buyerId = (String) request.getSession().getAttribute("username");
-        SellerApplicationDAO dao = new SellerApplicationDAO();
+        BuyerDAO buyerDAO = new BuyerDAO();
+        String district = null;
         try {
-            if(dao.isSellerApplied(buyerId)){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/already-applied.jsp");
-                dispatcher.forward(request, response);
-            }
-            else{
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/seller-application.jsp");
-                dispatcher.forward(request, response);
-            }
+            district = buyerDAO.getBuyerDistrict(buyerId);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
+        if (!district.equals("Colombo")){
+            response.sendRedirect("buyerOutOfColombo");
+            return;
+        }else{
+            SellerApplicationDAO dao = new SellerApplicationDAO();
+            try {
+                if(dao.isSellerApplied(buyerId)){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/already-applied.jsp");
+                    dispatcher.forward(request, response);
+                }
+                else{
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/seller-application.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } catch (SQLException | ClassNotFoundException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+
 
 
     }
@@ -46,6 +59,18 @@ public class sellerApplicationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String buyerId = (String) request.getSession().getAttribute("username");
+        BuyerDAO buyerDAO = new BuyerDAO();
+        String district = null;
+        try {
+            district = buyerDAO.getBuyerDistrict(buyerId);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        if (!district.equals("Colombo")){
+            response.sendRedirect("buyerOutOfColombo");
+            return;
+        }
+        ///
         String nicNo = request.getParameter("nicNo");
         Part nicFront = request.getPart("nicFront");
         Part nicBack = request.getPart("nicBack");

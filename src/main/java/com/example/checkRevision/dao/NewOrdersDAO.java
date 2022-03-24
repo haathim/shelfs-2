@@ -150,7 +150,7 @@ public class NewOrdersDAO {
 
     public ArrayList<Advertisement> getMyShelfAds(String buyerId) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT  advertisements.adId, advertisements.title, advertisements.author, advertisements.description, advertisements.bookFrontPhoto FROM neworders\n" +
+        String sql = "SELECT  advertisements.adId, advertisements.title, advertisements.author, advertisements.description, advertisements.bookFrontPhoto, advertisements.availableStatus FROM neworders\n" +
                 "INNER JOIN neworderpickups\n" +
                 "ON neworders.orderId = neworderpickups.orderId\n" +
                 "INNER JOIN newpickupsads\n" +
@@ -175,8 +175,9 @@ public class NewOrdersDAO {
             String author = result.getString(3);
             String description = result.getString(4);
             String bookPhotoFront = result.getString(5);
+            int availableStatus = result.getInt(6);
 
-            ads.add(new Advertisement(adId, null, title, author, 0, null, null, true, description, bookPhotoFront, null, null, null));
+            ads.add(new Advertisement(adId, null, title, author, 0, null, null,availableStatus , description, bookPhotoFront, null, null, null));
         }
 
         return ads;
@@ -208,11 +209,13 @@ public class NewOrdersDAO {
         return orders;
     }
 
-    public ArrayList<OrderBuyer> getOrdersForAdmin() throws SQLException, ClassNotFoundException {
+    public ArrayList<OrderBuyer> getOrdersForAdmin(String query) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username;";
+        String sql = "SELECT * FROM neworders INNER JOIN buyers ON neworders.buyerId = buyers.username WHERE (buyers.username LIKE ? OR neworders.orderId = ?);";
 
         PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1,"%"+query+"%");
+        stmt.setString(2,query);
         ResultSet result = stmt.executeQuery();
 
         ArrayList<OrderBuyer> details = new ArrayList<>();
@@ -262,7 +265,7 @@ public class NewOrdersDAO {
             int price = result.getInt(4);
             String isbn = result.getString(5);
             String language = result.getString(6);
-            boolean available = result.getBoolean(7);
+            int available = result.getInt(7);
             String description = result.getString(8);
             String bookFrontPhoto = result.getString(9);
             String bookBackPhoto = result.getString(10);

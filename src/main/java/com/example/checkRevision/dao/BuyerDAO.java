@@ -257,4 +257,36 @@ public class BuyerDAO {
         }
 
     }
+
+    public Buyer getOnlyBuyerDetails(String aUsername) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT buyers.*, users.usertype FROM users INNER JOIN buyers ON users.username = buyers.username WHERE users.username = ?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, aUsername);
+
+        ResultSet result = stmt.executeQuery();
+
+        if (result.next()) {
+
+            String username = result.getString(1);
+            String firstName = result.getString(2);
+            String lastName = result.getString(3);
+            String houseNo = result.getString(4);
+            String street = result.getString(5);
+            String city = result.getString(6);
+            String district = result.getString(7);
+            String province = result.getString(8);
+            boolean sellerApplied = result.getBoolean(9);
+            String phoneNo = result.getString(10);
+            String email = result.getString(11);
+
+            String userType = result.getString(12);
+
+            return new Buyer(username, "", userType, 0, null, firstName, lastName, houseNo, street, city, district, province, sellerApplied, phoneNo, email);
+
+
+        }
+        return null;
+
+    }
 }

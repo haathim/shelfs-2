@@ -66,4 +66,41 @@ public class ComplaintsDAO {
 
         return null;
     }
+
+    public void replyToComplaint(int complaintId, String replyDescription) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "UPDATE`complaints` SET reply = ? AND readByAdmin = 1 WHERE complaintId = ?";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, replyDescription);
+        stmt.setInt(2, complaintId);
+
+        stmt.executeUpdate();
+
+    }
+
+    public ArrayList<Complaint> buyersComplaintReplies(String buyerId) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM `complaints` WHERE buyerId = ? AND reply IS NOT NULL;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+
+        stmt.setString(1, buyerId);
+        ResultSet result = stmt.executeQuery();
+
+        ArrayList<Complaint> buyerComplaintReplies = new ArrayList<>();
+
+        while(result.next()){
+
+            int complaintId = result.getInt(1);
+            String title = result.getString(2);
+            String description = result.getString(3);
+            String reply = result.getString(6);
+
+            buyerComplaintReplies.add(new Complaint(complaintId, title, description, true, buyerId, reply, ""));
+        }
+
+        return buyerComplaintReplies;
+
+
+    }
 }

@@ -49,8 +49,9 @@
 
         <div class="formContainer">
           <h1>Give a reply</h1>
-          <form method="post" action="complaintReply">
+          <form method="post" action="replyToComplaint">
             <div class="column">
+                <input type="hidden" name="complaintId" value="<%=complaint.getComplaintId()%>">
               <label for="replyDescription">Write your reply here.</label>
               <textarea
                       type="text"

@@ -49,9 +49,9 @@
             <div class="mainbox1">
                 <table id="order1">
                     <thead>
-                    <div class="searchbar">
-                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>
-                    </div>
+<%--                    <div class="searchbar">--%>
+<%--                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
+<%--                    </div>--%>
                     <tr>
                         <th>Order No.</th>
                         <th>Buyer Name</th>

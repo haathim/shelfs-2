@@ -61,6 +61,7 @@
                                 <%=ad.getAuthor()%>
                             </div>
 
+
                         </div>
 
                         <div class="book-cover">
@@ -70,8 +71,13 @@
                         </div>
                         <div class="description">
                            <%=ad.getDescription()%>
+                            <% if (ad.getAvailable() == 2){%>
+                            <p style="color: red">THIS BOOK WAS REJECTED BECAUSE IT DID NOT MEET VALID CONDITIONS. REFUND WILL BE PROVIDED SOON.</p>
+                            <%} else if(ad.getAvailable() == 3){%>
+                            <p style="color: red">THIS BOOK WAS REJECTED BECAUSE IT DID NOT MEET VALID CONDITIONS. REFUND HAS BEEN GIVEN.</p>
+                            <%}%>
                         </div>
-                        <button type="button" class="favorite-btn">Add a Review</button>
+<%--                        <button type="button" class="favorite-btn">Add a Review</button>--%>
                     </div>
                     <%}%>
                 </div>

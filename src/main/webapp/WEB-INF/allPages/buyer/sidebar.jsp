@@ -61,7 +61,11 @@
   </div>
   <div class="sidebar__link">
     <i class="fa fa-power-off"></i>
-    <a href="../logout">Logout</a>
+    <a href="../logout" onclick="removeLocalStorage()">Logout</a>
   </div>
   </div>
-</div>
+  <script>
+    function removeLocalStorage(){
+      localStorage.removeItem("cartitem");
+    }
+  </script>

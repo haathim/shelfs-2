@@ -1,7 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.Complaint" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -27,6 +28,10 @@
     <title>SHELFS.</title>
 </head>
 <body>
+
+<%
+    ArrayList<Complaint> buyersComplaintReplies = (ArrayList<Complaint>) request.getAttribute("buyersComplaintReplies");
+%>
 
 
 <div class="container">
@@ -74,6 +79,24 @@
                 </form>
 
             </div>
+
+
+            <% if(!buyersComplaintReplies.isEmpty()){%>
+            <h1>Replies to Complaints</h1>
+            <%}%>
+            <% for (Complaint complaint: buyersComplaintReplies){%>
+            <div class="formContainer">
+                <h4 style="color: #343434">Complaint ID: <%=complaint.getComplaintId()%></h4>
+                <h2>Complaint Title: <%=complaint.getTitle()%></h2>
+                <h3>Complaint Description:</h3>
+                <p><%=complaint.getDescription()%></p>
+                <h3 style="color: #4c46f5">Reply from Admin:</h3>
+                <p style="color: #4c46f5"><%=complaint.getReply()%></p>
+            </div>
+
+            <%}%>
+
+
         </div>
 
     </main>

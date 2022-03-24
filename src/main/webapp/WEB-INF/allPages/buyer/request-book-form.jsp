@@ -1,7 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.BuyerRequest" %>
+<%@ page import="com.example.checkRevision.model.Buyer" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -29,7 +31,7 @@
 </head>
 <body>
 <%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
+    ArrayList<BuyerRequest> buyerRequests = (ArrayList<BuyerRequest>) request.getAttribute("buyerRequests");
 %>
 
 
@@ -67,6 +69,7 @@
                     </div>
                     <div id="error" style="color: red; font-weight: bold"></div>
                     <form action="requestBooks" method="post" id="form">
+
                         <div class="row">
                             <div class="column">
                                 <label for="title">Title</label>
@@ -125,6 +128,28 @@
                     </form>
                 </div>
             </div>
+
+            <div class="table-template">
+
+                <table>
+                    <tr class="table-head">
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Preferred Price</th>
+                        <th>Edit</th>
+                    </tr>
+
+                    <% for (BuyerRequest buyerRequest: buyerRequests) {%>
+                    <tr class="table-rows">
+                        <td><%=buyerRequest.getTitle()%></td>
+                        <td><%=buyerRequest.getAuthor()%></td>
+                        <td><%=buyerRequest.getPreferredPrice()%></td>
+                        <td><div class="view-more-button"><a href="editBuyerRequest?buyerRequestId=<%=buyerRequest.getRequestId()%>"><h2>View</h2></a></div></td>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
+
 
 
         </div>

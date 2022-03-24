@@ -12,14 +12,14 @@ public class Advertisement {
     private int price ;
     private String isbn;
     private String language;
-    private boolean available;
+    private int available;
     private String description;
     private String bookPhotoFront;
     private String bookPhotoBack;
     private String category;
     private Timestamp dateAdded;
 
-    public Advertisement(long adId, String sellerId, String title, String author, int price, String isbn, String language, boolean available, String description, String bookPhotoFront, String bookPhotoBack, String category, Timestamp dateAdded) {
+    public Advertisement(long adId, String sellerId, String title, String author, int price, String isbn, String language, int available, String description, String bookPhotoFront, String bookPhotoBack, String category, Timestamp dateAdded) {
         this.adId = adId;
         this.sellerId = sellerId;
         this.title = title;
@@ -91,11 +91,11 @@ public class Advertisement {
         this.language = language;
     }
 
-    public boolean isAvailable() {
+    public int getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(int available) {
         this.available = available;
     }
 

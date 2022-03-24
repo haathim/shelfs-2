@@ -159,7 +159,12 @@
                     <p>Book Name : <%=ad.getTitle()%></p>
                     <p>Author : <%=ad.getAuthor()%></p>
                     <p>Category : <%=ad.getCategory()%></p>
+                    <form action="rejectPickupAd" method="post">
+                        <input type="hidden" name="adId" value="<%=ad.getAdId()%>">
+                        <button type="submit">Reject</button>
+                    </form>
                 </div>
+
             </div>
             <%}%>
 

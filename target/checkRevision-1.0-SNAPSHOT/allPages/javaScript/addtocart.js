@@ -109,7 +109,7 @@ function display(){
         cartContainer.innerHTML = '';
         Object.values(bookitems).map(item=>{
             cartContainer.innerHTML += `
-            <div class="sub-box" data-adId="${item.adId}">
+        <div class="sub-box" data-adId="${item.adId}">
             <div class="text-box">
             <div hidden class="adId">
                 // <div id="adId">${item.adId}</div> 

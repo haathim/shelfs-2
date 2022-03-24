@@ -30,7 +30,7 @@ public class placeOrderServlet extends HttpServlet {
 
 //        here should get the username of the buyer but for testing purposes for now using a hardcoded value
 //        String buyerId = (String) session.getAttribute("username");
-        String buyerId = "buyer2";
+        String buyerId = "buyer1";
 
         AdvertisementDAO advertisementDAO = new AdvertisementDAO();
 
@@ -47,10 +47,10 @@ public class placeOrderServlet extends HttpServlet {
 //            cartAds.add(advertisementDAO.getAdById(20));
 //            cartAds.add(advertisementDAO.getAdById(21));
 //            cartAds.add(advertisementDAO.getAdById(22));
-            cartAds.add(advertisementDAO.getAdById(44));
-            cartAds.add(advertisementDAO.getAdById(69));
-            cartAds.add(advertisementDAO.getAdById(76));
-            cartAds.add(advertisementDAO.getAdById(80));
+            cartAds.add(advertisementDAO.getAdById(14));
+            cartAds.add(advertisementDAO.getAdById(15));
+            cartAds.add(advertisementDAO.getAdById(17));
+            cartAds.add(advertisementDAO.getAdById(19));
 
 
         } catch (SQLException | ClassNotFoundException throwables) {

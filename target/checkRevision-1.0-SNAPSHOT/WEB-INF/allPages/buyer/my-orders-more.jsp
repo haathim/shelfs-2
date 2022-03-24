@@ -82,7 +82,13 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <p><strong>Seller</strong></p>
                   <p><%=ad.getSellerId()%></p>
                 </div>
-
+                <% if (ad.getAvailable() == 2){%>
+                <div class="book-details-field">
+                  <p style="color: red"><strong>THIS BOOK WAS REJECTED AS IT DID NOT MEET VALID CONDITIONS.</strong></p>
+                </div>
+                <%}else if (ad.getAvailable() == 3){%>
+                <p style="color: red"><strong>THIS BOOK WAS REJECTED AS IT DID NOT MEET VALID CONDITIONS. REFUND HAS BEEN GIVEN</strong></p>
+                <%}%>
                 <div class="price">
                   <p>Rs. <%=ad.getPrice()%></p>
                 </div>

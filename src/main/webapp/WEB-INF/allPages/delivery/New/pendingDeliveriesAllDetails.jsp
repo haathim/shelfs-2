@@ -159,6 +159,9 @@
                     <p>Book Name : <%=ad.getTitle()%></p>
                     <p>Author : <%=ad.getAuthor()%></p>
                     <p>Category : <%=ad.getCategory()%></p>
+                    <% if (ad.getAvailable() == 2 || ad.getAvailable() == 3){%>
+                    <p style="color: red">THIS BOOK WAS REJECTED.</p>
+                    <%}%>
                 </div>
             </div>
             <%}%>

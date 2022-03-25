@@ -375,14 +375,14 @@ public class AdvertisementDAO {
 
 
         PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1, 3);
+        stmt.setInt(1, 4);
         stmt.setInt(2, adId);
         stmt.executeUpdate();
     }
 
     public Advertisement isAvailable(int adId) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM `advertisements` WHERE adId = ? AND availableStatus = 0;";
+        String sql = "SELECT * FROM `advertisements` WHERE adId = ? AND availableStatus <> 1;";
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setInt(1,adId);
 

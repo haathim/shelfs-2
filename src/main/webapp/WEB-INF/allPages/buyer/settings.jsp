@@ -1,7 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.Buyer" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -28,6 +29,8 @@
   <title>SHELFS.</title>
 </head>
 <body>
+<% Buyer buyer = (Buyer)request.getAttribute("usernamex"); %>
+
 
 <div class="container">
   <div class="nav_icon" onclick="toggleSidebar()">
@@ -48,59 +51,92 @@
       <div class="formContainer">
         <h1>CHANGE ACCOUNT DETAILS</h1>
         <p>Fill the fields where you wish to change the details</p>
-        <form>
+        <form action="changeAccountDetailsBuyer" method="post" id="formnew">
 
           <div class="column">
-            <label for="book-title">Change Email address</label>
+            <label for="email">Email address</label>
             <input
                     type="email"
-                    id="email-id"
+                    id="email"
+                    name = "email-id"
                     placeholder="Enter your email address"
+                    disabled
+                    value= "<%=buyer.getEmail()%>"
             />
-            <label for="phonenumber">Change Phone number</label>
+            <label for="mobileNo">Phone number</label>
             <input
-                    type="number"
-                    id="phone"
+                    type="text"
+                    id="mobileNo"
+                    name="phoneNo"
                     placeholder="Enter your phone number"
+                    value="<%=buyer.getPhoneNo()%>"
             />
-            <label for="houseno">Change House number</label>
+            <label for="houseNo">House number</label>
             <input
-                    type="number"
-                    id="houseno"
+                    type="text"
+                    id="houseNo"
+                    name="houseNo"
                     placeholder="Enter your House number"
+                    value="<%=buyer.getHouseNo()%>"
             />
             <label for="street">Street</label>
             <input
+                    type="text"
                     id="street"
                     placeholder="Enter your street"
+                    name="street"
+                    value="<%=buyer.getStreet()%>"
 
-            >
-            <label for="street">City</label>
+            ></input>
+            <label for="city">City</label>
             <input
+                    type="text"
                     id="city"
+                    name="city"
                     placeholder="Enter your city"
+                    value="<%=buyer.getCity()%>"
 
-            >
-            <label for="street">District</label>
-            <input
-                    id="District"
-                    placeholder="Enter your district"
+            ></input>
+            <% if(buyer.getUserType().equals("buyer")){%>
+            <label for="district">District:</label>
+            <br />
+            <select
+                    id="district"
+                    type="text"
+                    name="district"
 
-            >
-            <label for="province">Province</label>
+            ></select>
             <input
                     id="province"
-                    placeholder="Enter your province"
+                    type="hidden"
+                    name="province"
+                    required
+            />
+            <%} else if(buyer.getUserType().equals("seller")){%>
+            <label for="district">District:</label>
+            <br />
+            <select
+                    id="district"
+                    type="text"
+                    name="district"
+                    value="<%=buyer.getDistrict()%>"
+                    disabled
 
-            >
+            ></select>
+            <input
+                    id="province"
+                    type="hidden"
+                    name="province"
+                    required
+            />
+            <%}%>
           </div>
 
 
-
+          <button type="submit">Submit</button>
         </form>
-        <button>Submit</button>
-      </div>
 
+      </div>
       <%@include file="/WEB-INF/allPages/common/changePasswordCommonpart.jsp"%>
 
     </div>
@@ -112,7 +148,7 @@
   </nav>
   <script src="../allPages/javaScript/sidebarResponsive.js"></script>
   <script src="../allPages/javaScript/inputValidation/changePasswordValidation.js"></script>
-
+  <script src="../allPages/javaScript/inputValidation/buyer/changeAccountDetails.js"></script>
 </div>
 </body>
 </html>

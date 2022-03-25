@@ -258,8 +258,8 @@ public class DeliveryDAO {
             String city = result.getString(13);
             String district = result.getString(14);
             String province = result.getString(15);
-            String phoneNo = result.getString(16);
-            String email = result.getString(17);
+            String phoneNo = result.getString(17);
+            String email = result.getString(18);
 
             NewOrder order = new NewOrder(orderId, buyerId, dateOrdered, status, deliverer, false, total);
             Buyer buyer = new Buyer(buyerId, "","",0,null,firstName,lastName,houseNo,street,city,district,province,true,phoneNo,email);

@@ -29,27 +29,28 @@ public class sellerApplicationServlet extends HttpServlet {
         String district = null;
         try {
             district = buyerDAO.getBuyerDistrict(buyerId);
+            if (!district.equals("Colombo")){
+                response.sendRedirect("buyerOutOfColombo");
+                return;
+            }else{
+                SellerApplicationDAO dao = new SellerApplicationDAO();
+                try {
+                    if(dao.isSellerApplied(buyerId)){
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/already-applied.jsp");
+                        dispatcher.forward(request, response);
+                    }
+                    else{
+                        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/seller-application.jsp");
+                        dispatcher.forward(request, response);
+                    }
+                } catch (SQLException | ClassNotFoundException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        if (!district.equals("Colombo")){
-            response.sendRedirect("buyerOutOfColombo");
-            return;
-        }else{
-            SellerApplicationDAO dao = new SellerApplicationDAO();
-            try {
-                if(dao.isSellerApplied(buyerId)){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/already-applied.jsp");
-                    dispatcher.forward(request, response);
-                }
-                else{
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/seller-application.jsp");
-                    dispatcher.forward(request, response);
-                }
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        }
+
 
 
 

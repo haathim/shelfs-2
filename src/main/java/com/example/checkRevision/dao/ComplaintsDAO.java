@@ -69,13 +69,14 @@ public class ComplaintsDAO {
 
     public void replyToComplaint(int complaintId, String replyDescription) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "UPDATE`complaints` SET reply = ? AND readByAdmin = 1 WHERE complaintId = ?";
+        String sql = "UPDATE `complaints` SET reply = ? , readByAdmin = 1 WHERE complaintId = ?;";
 
         PreparedStatement stmt = con.prepareStatement(sql);
         stmt.setString(1, replyDescription);
         stmt.setInt(2, complaintId);
 
         stmt.executeUpdate();
+
 
     }
 

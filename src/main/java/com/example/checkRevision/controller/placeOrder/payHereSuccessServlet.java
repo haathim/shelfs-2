@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "payHereSuccessServlet", value = "/payHereSuccess")
+@WebServlet(name = "payHereSuccessServlet", value = "/buyer/payHereSuccess")
 public class payHereSuccessServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,6 +26,7 @@ public class payHereSuccessServlet extends HttpServlet {
         System.out.println("WE ARE IN PAYHERESUCCESS SERVLET");
 
         String checkoutAds = request.getParameter("checkoutAds");
+        boolean isCourier = false;
         checkoutAds = "["+checkoutAds+"]";
         String buyerId = (String) request.getSession().getAttribute("username");
         System.out.println("BUYER IS " + buyerId);
@@ -58,7 +59,7 @@ public class payHereSuccessServlet extends HttpServlet {
         NewOrdersDAO newOrdersDAO = new NewOrdersDAO();
         Timestamp dateOrdered = new Timestamp(System.currentTimeMillis());
         try {
-            newOrdersDAO.addOrder(buyerId, dateOrdered , false, total);
+            newOrdersDAO.addOrder(buyerId, dateOrdered , isCourier, total);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
@@ -107,7 +108,7 @@ public class payHereSuccessServlet extends HttpServlet {
                 throwables.printStackTrace();
             }
         }
-
+        response.sendRedirect("home");
         System.out.println("LEAVING PAYHERESUCCESS SERVLET");
 
     }

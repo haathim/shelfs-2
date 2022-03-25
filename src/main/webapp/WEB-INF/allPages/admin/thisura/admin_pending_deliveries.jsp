@@ -28,6 +28,7 @@
 //    int noOfPages = (int) request.getAttribute("noOfPages");
 
 %>
+
 <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>

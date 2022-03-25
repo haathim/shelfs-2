@@ -208,17 +208,24 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                 </tr>
                 <tr class="checkout-details-table-row">
                   <td><strong>Subtotal</strong></td>
-                  <td><strong><%=total%></strong></td>
+                  <td style="font-weight: bold"><%=total%></td>
                 </tr>
               </table>
 
               <h2>Delivery Method</h2>
-              <form method="post" action="https://sandbox.payhere.lk/pay/checkout">
+              <h4 id="error" style= "color:red"></h4>
+              <table>
+                <tr class="checkout-details-table-row">
+                  <td><strong>Total</strong></td>
+                  <td id="total" style="font-weight: bold"><%=total%></td>
+                </tr>
+              </table>
+              <form onsubmit="checkDelivery()" id="payHereForm" method="post" action="https://sandbox.payhere.lk/pay/checkout">
                 <input type="hidden" name="merchant_id" value="1218974" />
                 <input
                         type="hidden"
                         name="return_url"
-                        value="http://localhost:8976/checkRevision_war_exploded/payHereSuccess?checkoutAds=<%=commaseparatedlist%>"
+                        value="http://localhost:8976/checkRevision_war_exploded/buyer/payHereSuccess?checkoutAds=<%=commaseparatedlist%>"
                 />
                 <input
                         type="hidden"
@@ -230,66 +237,84 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                         name="notify_url"
                         value="http://http://localhost:8000/checkRevision_war_exploded/testPayHereServlet"
                 />
-                <br><br>Item Details<br />
-                <input type="text" name="order_id" value="ItemNo12345">
-                <input type="text" name="items" value="Door bell wireless"><br />
-                <input type="text" name="currency" value="LKR" />
-                <input type="text" name="amount" value="<%=total%>">
+<%--                <br><br>Item Details<br />--%>
+                <input type="hidden" name="order_id" value="shelfsOrder">
+                <input type="hidden" name="items" value="Shelfs Books"><br />
+                <input type="hidden" name="currency" value="LKR" />
+                <input id="payHereTotal" type="hidden" name="amount" value="<%=total%>">
                 <br /><br />Customer Details<br />
-                <input type="text" name="first_name" value="Saman">
-                <input type="text" name="last_name" value="Perera"><br />
-                <input type="text" name="email" value="samanp@gmail.com">
-                <input type="text" name="phone" value="0771234567"><br/>
-                <input type="text" name="address" value="No.1, Galle Road">
-                <input type="text" name="city" value="Colombo">
+                <input type="text" name="first_name" value="" placeholder="First Name">
+                <input type="text" name="last_name" value="" placeholder="Last Name"><br />
+                <input type="text" name="email" value="" placeholder="Email">
+                <input type="text" name="phone" value="" placeholder="Phone"><br/>
+                <input type="text" name="address" value="" placeholder="Address">
+                <input type="text" name="city" value="" placeholder="City">
                 <input type="hidden" name="country" value="Sri Lanka"><br /><br />
-                <input type="submit" value="Buy Now">
-              </form>
-<%--                <% if (buyer.getDistrict().equals("Colombo")){%>--%>
-<%--                <div class="radio-button">--%>
-<%--                  <input--%>
-<%--                          type="radio"--%>
-<%--                          id="inhouse-delviery"--%>
-<%--                          name="delivery-method"--%>
-<%--                          value="inhouse"--%>
-<%--                  />--%>
-<%--                  <label for="inhouse-delviery">In-House Delivery</label>--%>
-<%--                </div>--%>
-<%--                <div class="radio-button">--%>
-<%--                  <input--%>
-<%--                          type="radio"--%>
-<%--                          id="courier-delivery"--%>
-<%--                          name="delivery-method"--%>
-<%--                          value="courier"--%>
-<%--                  />--%>
-<%--                  <label for="courier-delivery"--%>
-<%--                  >Courier Delivery <strong>Rs.100</strong></label--%>
-<%--                  >--%>
-<%--                </div>--%>
-<%--                <%}else{%>--%>
-<%--                <div class="radio-button">--%>
-<%--                  <input--%>
-<%--                          type="radio"--%>
-<%--                          id="courier-delivery"--%>
-<%--                          name="delivery-method"--%>
-<%--                          value="courier"--%>
-<%--                  />--%>
-<%--                  <label for="courier-delivery"--%>
-<%--                  >Courier Delivery <strong>Rs.100</strong></label--%>
-<%--                  >--%>
-<%--                </div>--%>
-<%--                <%}%>--%>
-                <table>
-                  <tr class="checkout-details-table-row">
-                    <td><strong>Total</strong></td>
-                    <td><strong>Rs.18000</strong></td>
-                  </tr>
-                </table>
-                <div class="checkout-button">
-                  <h2><button type="submit">PLACE ORDER</button></h2>
-                </div>
-              </form>
+                <div>
+                    <h4>Delivery Details</h4>
 
+                    <p><%=buyer.getHouseNo()%></p>
+                    <p><%=buyer.getStreet()%></p>
+                    <p><%=buyer.getCity()%></p>
+                    <p><%=buyer.getDistrict()%></p>
+                    <p><%=buyer.getProvince()%> Province</p>
+                    <br>
+                    <div class="view-more-button">
+                        <a href="settings">Change Delivery Address</a>
+                    </div>
+                </div>
+                  <br>
+
+
+
+
+            <%--                <div class="checkout-button">--%>
+<%--                  <h2><button type="submit">PLACE ORDER</button></h2>--%>
+<%--                </div>--%>
+<%--              </form>--%>
+
+              <% if (buyer.getDistrict().equals("Colombo")){%>
+              <div class="radio-button">
+                <input
+                        type="radio"
+                        id="inhouse-delviery"
+                        name="delivery-method"
+                        value="inhouse"
+                        required
+                />
+                <label for="inhouse-delviery">In-House Delivery</label>
+              </div>
+              <div class="radio-button">
+                <input
+                        type="radio"
+                        id="courier-delivery"
+                        name="delivery-method"
+                        value="courier"
+                        required
+                />
+                <label for="courier-delivery"
+                >Courier Delivery <strong>Rs.100</strong></label
+                >
+              </div>
+              <%}else{%>
+              <div class="radio-button">
+                <input
+                        type="radio"
+                        id="courier-delivery"
+                        name="delivery-method"
+                        value="courier"
+                        disabled
+                        checked
+                        required
+                />
+                <label for="courier-delivery1"
+                >Courier Delivery <strong>Rs.100</strong></label
+                >
+              </div>
+                  <br>
+              <%}%>
+                  <input type="submit" value="Place Order">
+              </form>
 
 
 
@@ -302,7 +327,50 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
       <nav id="sidebar">
         <%@include file="/WEB-INF/allPages/buyer/sidebar/sidebar.jsp"%>
       </nav>
-      <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+
     </div>
+  <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+  <script>
+      var form = document.getElementById("payHereForm");
+      var total = document.getElementById("total");
+      var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
+
+      form.addEventListener("submit", (e) => {
+          var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
+          if (getSelectedValue != null) {
+              console.log("INSIDE NOT NULL IF")
+              if (getSelectedValue.value === "courier") {
+                  console.log("INSIDE COURIER IF")
+                  document.getElementById("payHereTotal").value = 100 + parseInt(document.getElementById("payHereTotal").value);
+              }
+          } else {
+              console.log("INSIDE NULL IF")
+              console.log(getSelectedValue)
+              document.getElementById("error").innerHTML
+                  = "*You have not selected any delivery option";
+              e.preventDefault();
+          }
+      });
+      //
+      // function checkDelivery(e) {
+      //     // if (getSelectedValue != null) {
+      //     //     console.log("INSIDE NOT NULL IF")
+      //     //     if (getSelectedValue.value === "courier") {
+      //     //         console.log("INSIDE COURIER IF")
+      //     //         document.getElementById("payHereTotal").value = 100 + parseInt(document.getElementById("payHereTotal").value);
+      //     //     }
+      //     // } else {
+      //     //     console.log("INSIDE NULL IF")
+      //     //     console.log(getSelectedValue.value)
+      //     //     document.getElementById("error").innerHTML
+      //     //         = "*You have not selected any delivery option";
+      //     //     e.preventDefault();
+      //     // }
+      //     console.log(getSelectedValue)
+      //     e.pre
+      //
+      // }
+
+  </script>
   </body>
 </html>

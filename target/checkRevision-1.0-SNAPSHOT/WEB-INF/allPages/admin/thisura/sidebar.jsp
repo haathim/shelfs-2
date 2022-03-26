@@ -65,6 +65,10 @@
         <a href="viewComplaints">Complaints</a>
     </div>
     <div class="sidebar__link">
+        <i class="fa fa-exclamation-triangle"></i>
+        <a href="refundBuyers">Refund Buyers</a>
+    </div>
+    <div class="sidebar__link">
         <i class="fa fa-envelope"></i>
         <a href="#">Messages</a>
     </div>

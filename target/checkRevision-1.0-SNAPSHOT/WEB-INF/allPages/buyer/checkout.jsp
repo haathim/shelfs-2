@@ -1,5 +1,6 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %> <%@ page
-import="java.util.ArrayList" %><%-- Created by IntelliJ IDEA. User: Lenovo Date:
+import="java.util.ArrayList" %>
+<%@ page import="com.example.checkRevision.model.Buyer" %><%-- Created by IntelliJ IDEA. User: Lenovo Date:
 21-Sep-21 Time: 12:13 PM To change this template use File | Settings | File
 Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
 %>
@@ -31,6 +32,31 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
     <title>SHELFS.</title>
   </head>
   <body id="body">
+
+  <%
+    ArrayList<Advertisement> checkoutAds = (ArrayList<Advertisement>) request.getAttribute("checkoutAds");
+    String checkoutAdsValue = "";
+    int total = 0;
+    for (Advertisement checkoutAd: checkoutAds){
+      total += checkoutAd.getPrice();
+
+    }
+    Buyer buyer = (Buyer) request.getAttribute("buyer");
+
+    StringBuilder str = new StringBuilder("");
+    for (Advertisement checkoutAd : checkoutAds) {
+      str.append(checkoutAd.getAdId()).append(",");
+    }
+
+    String commaseparatedlist = str.toString();
+    if (commaseparatedlist.length() > 0) {
+      commaseparatedlist = commaseparatedlist.substring(0, commaseparatedlist.length() - 1);
+    }
+
+    commaseparatedlist = commaseparatedlist;
+
+
+  %>
     <div class="container">
       <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -47,119 +73,119 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
       <main>
         <div class="main__container">
           <div class="checkout-container">
-            <div class="formContainer">
-              <h1>Billing Details</h1>
-              <p>Please check whether the below details are accurate</p>
-              <div
-                id="instructions"
-                style="color: blue; font-weight: bold"
-              ></div>
-              <div id="error" style="color: red; font-weight: bold"></div>
-              <form action="buyerRegSubmit" method="post" id="form">
-                <div class="row">
-                  <div class="column">
-                    <label for="firstName">First Name:</label>
-                    <input
-                      id="firstName"
-                      placeholder="Nimal"
-                      type="text"
-                      name="firstName"
-                      required
-                    />
-                  </div>
-                  <div class="column">
-                    <label for="lastName">Last Name:</label>
-                    <input
-                      id="lastName"
-                      placeholder="Perera"
-                      type="text"
-                      name="lastName"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    <label for="houseNo">House Number:</label>
-                    <input
-                      id="houseNo"
-                      placeholder="23/7"
-                      type="text"
-                      name="houseNo"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    <label for="street">Street:</label>
-                    <input
-                      id="street"
-                      placeholder="Parakrama road"
-                      type="text"
-                      name="street"
-                      required
-                    />
-                  </div>
-                  <div class="column">
-                    <label for="city">City:</label>
-                    <input
-                      id="city"
-                      placeholder="Kaduwela"
-                      type="text"
-                      name="city"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    <label for="district"> District:</label>
-                    <br />
-                    <select
-                      placeholder="Kaduwela"
-                      id="district"
-                      type="text"
-                      name="district"
-                      required
-                    ></select>
-                  </div>
-                  <div class="column">
-                    <input
-                      id="province"
-                      placeholder="Western"
-                      type="hidden"
-                      name="province"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="column">
-                    <label for="mobileNo">Mobile Number</label>
-                    <input
-                      id="mobileNo"
-                      placeholder="0771234567"
-                      type="text"
-                      name="mobileNo"
-                      required
-                    />
-                  </div>
-                  <div class="column">
-                    <label for="email">Email Address</label>
-                    <input
-                      id="email"
-                      placeholder="Nimal@gmail.com"
-                      type="text"
-                      name="email"
-                      required
-                    />
-                  </div>
-                </div>
-                <%--
-                <input type="submit" value="Register" class="sub-btn" />--%>
-              </form>
-            </div>
+<%--            <div class="formContainer">--%>
+<%--              <h1>Billing Details</h1>--%>
+<%--              <p>Please check whether the below details are accurate</p>--%>
+<%--              <div--%>
+<%--                id="instructions"--%>
+<%--                style="color: blue; font-weight: bold"--%>
+<%--              ></div>--%>
+<%--              <div id="error" style="color: red; font-weight: bold"></div>--%>
+<%--              <form action="buyerRegSubmit" method="post" id="form">--%>
+<%--                <div class="row">--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="firstName">First Name:</label>--%>
+<%--                    <input--%>
+<%--                      id="firstName"--%>
+<%--                      placeholder="Nimal"--%>
+<%--                      type="text"--%>
+<%--                      name="firstName"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="lastName">Last Name:</label>--%>
+<%--                    <input--%>
+<%--                      id="lastName"--%>
+<%--                      placeholder="Perera"--%>
+<%--                      type="text"--%>
+<%--                      name="lastName"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="row">--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="houseNo">House Number:</label>--%>
+<%--                    <input--%>
+<%--                      id="houseNo"--%>
+<%--                      placeholder="23/7"--%>
+<%--                      type="text"--%>
+<%--                      name="houseNo"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="row">--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="street">Street:</label>--%>
+<%--                    <input--%>
+<%--                      id="street"--%>
+<%--                      placeholder="Parakrama road"--%>
+<%--                      type="text"--%>
+<%--                      name="street"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="city">City:</label>--%>
+<%--                    <input--%>
+<%--                      id="city"--%>
+<%--                      placeholder="Kaduwela"--%>
+<%--                      type="text"--%>
+<%--                      name="city"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="row">--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="district"> District:</label>--%>
+<%--                    <br />--%>
+<%--                    <select--%>
+<%--                      placeholder="Kaduwela"--%>
+<%--                      id="district"--%>
+<%--                      type="text"--%>
+<%--                      name="district"--%>
+<%--                      required--%>
+<%--                    ></select>--%>
+<%--                  </div>--%>
+<%--                  <div class="column">--%>
+<%--                    <input--%>
+<%--                      id="province"--%>
+<%--                      placeholder="Western"--%>
+<%--                      type="hidden"--%>
+<%--                      name="province"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                <div class="row">--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="mobileNo">Mobile Number</label>--%>
+<%--                    <input--%>
+<%--                      id="mobileNo"--%>
+<%--                      placeholder="0771234567"--%>
+<%--                      type="text"--%>
+<%--                      name="mobileNo"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                  <div class="column">--%>
+<%--                    <label for="email">Email Address</label>--%>
+<%--                    <input--%>
+<%--                      id="email"--%>
+<%--                      placeholder="Nimal@gmail.com"--%>
+<%--                      type="text"--%>
+<%--                      name="email"--%>
+<%--                      required--%>
+<%--                    />--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--                &lt;%&ndash;--%>
+<%--                <input type="submit" value="Register" class="sub-btn" />&ndash;%&gt;--%>
+<%--              </form>--%>
+<%--            </div>--%>
 
             <div class="checkout-details">
               <h2>YOUR ORDER</h2>
@@ -169,20 +195,12 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                   <th>Price</th>
                 </tr>
 
+                <% for (Advertisement checkoutAd: checkoutAds){%>
                 <tr class="checkout-details-table-row">
-                  <td>The Fellowship of the Ring</td>
-                  <td>Rs.5500</td>
+                  <td><%=checkoutAd.getTitle()%></td>
+                  <td><%=checkoutAd.getPrice()%></td>
                 </tr>
-
-                <tr class="checkout-details-table-row">
-                  <td>The Hobbit</td>
-                  <td>Rs.4500</td>
-                </tr>
-
-                <tr class="checkout-details-table-row">
-                  <td>The Return of the King</td>
-                  <td>Rs.6500</td>
-                </tr>
+                <%}%>
 
                 <tr>
                   <td></td>
@@ -190,42 +208,117 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                 </tr>
                 <tr class="checkout-details-table-row">
                   <td><strong>Subtotal</strong></td>
-                  <td><strong>Rs.16500</strong></td>
+                  <td style="font-weight: bold"><%=total%></td>
                 </tr>
               </table>
 
               <h2>Delivery Method</h2>
+              <h4 id="error" style= "color:red"></h4>
+              <table>
+                <tr class="checkout-details-table-row">
+                  <td><strong>Total</strong></td>
+                  <td id="total" style="font-weight: bold"><%=total%></td>
+                </tr>
+              </table>
+              <form onsubmit="checkDelivery()" id="payHereForm" method="post" action="https://sandbox.payhere.lk/pay/checkout">
+                <input type="hidden" name="merchant_id" value="1218974" />
+                <input
+                        type="hidden"
+                        name="return_url"
+                        value="http://localhost:8976/checkRevision_war_exploded/buyer/payHereSuccess?checkoutAds=<%=commaseparatedlist%>"
+                />
+                <input
+                        type="hidden"
+                        name="cancel_url"
+                        value="http://localhost:8976/checkRevision_war_exploded/payHereFailiure"
+                />
+                <input
+                        type="hidden"
+                        name="notify_url"
+                        value="http://http://localhost:8000/checkRevision_war_exploded/testPayHereServlet"
+                />
+<%--                <br><br>Item Details<br />--%>
+                <input type="hidden" name="order_id" value="shelfsOrder">
+                <input type="hidden" name="items" value="Shelfs Books"><br />
+                <input type="hidden" name="currency" value="LKR" />
+                <input id="payHereTotal" type="hidden" name="amount" value="<%=total%>">
+                <br /><br />Customer Details<br />
+                <input type="text" name="first_name" value="" placeholder="First Name">
+                <input type="text" name="last_name" value="" placeholder="Last Name"><br />
+                <input type="text" name="email" value="" placeholder="Email">
+                <input type="text" name="phone" value="" placeholder="Phone"><br/>
+                <input type="text" name="address" value="" placeholder="Address">
+                <input type="text" name="city" value="" placeholder="City">
+                <input type="hidden" name="country" value="Sri Lanka"><br /><br />
+                <div>
+                    <h4>Delivery Details</h4>
+
+                    <p><%=buyer.getHouseNo()%></p>
+                    <p><%=buyer.getStreet()%></p>
+                    <p><%=buyer.getCity()%></p>
+                    <p><%=buyer.getDistrict()%></p>
+                    <p><%=buyer.getProvince()%> Province</p>
+                    <br>
+                    <div class="view-more-button">
+                        <a href="settings">Change Delivery Address</a>
+                    </div>
+                </div>
+                  <br>
+
+
+
+
+            <%--                <div class="checkout-button">--%>
+<%--                  <h2><button type="submit">PLACE ORDER</button></h2>--%>
+<%--                </div>--%>
+<%--              </form>--%>
+
+              <% if (buyer.getDistrict().equals("Colombo")){%>
               <div class="radio-button">
                 <input
-                  type="radio"
-                  id="inhouse-delviery"
-                  name="delivery-method"
-                  value="courier"
+                        type="radio"
+                        id="inhouse-delviery"
+                        name="delivery-method"
+                        value="inhouse"
+                        required
                 />
                 <label for="inhouse-delviery">In-House Delivery</label>
               </div>
               <div class="radio-button">
                 <input
-                  type="radio"
-                  id="courier-delivery"
-                  name="delivery-method"
-                  value="inhouse"
+                        type="radio"
+                        id="courier-delivery"
+                        name="delivery-method"
+                        value="courier"
+                        required
                 />
                 <label for="courier-delivery"
-                  >Courier Delivery <strong>Rs.100</strong></label
+                >Courier Delivery <strong>Rs.100</strong></label
                 >
               </div>
-
-              <table>
-                <tr class="checkout-details-table-row">
-                  <td><strong>Total</strong></td>
-                  <td><strong>Rs.18000</strong></td>
-                </tr>
-              </table>
-
-              <div class="checkout-button">
-                <h2>PLACE ORDER</h2>
+              <%}else{%>
+              <div class="radio-button">
+                <input
+                        type="radio"
+                        id="courier-delivery"
+                        name="delivery-method"
+                        value="courier"
+                        disabled
+                        checked
+                        required
+                />
+                <label for="courier-delivery1"
+                >Courier Delivery <strong>Rs.100</strong></label
+                >
               </div>
+                  <br>
+              <%}%>
+                  <input type="submit" value="Place Order">
+              </form>
+
+
+
+
             </div>
           </div>
         </div>
@@ -234,7 +327,50 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
       <nav id="sidebar">
         <%@include file="/WEB-INF/allPages/buyer/sidebar/sidebar.jsp"%>
       </nav>
-      <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+
     </div>
+  <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+  <script>
+      var form = document.getElementById("payHereForm");
+      var total = document.getElementById("total");
+      var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
+
+      form.addEventListener("submit", (e) => {
+          var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
+          if (getSelectedValue != null) {
+              console.log("INSIDE NOT NULL IF")
+              if (getSelectedValue.value === "courier") {
+                  console.log("INSIDE COURIER IF")
+                  document.getElementById("payHereTotal").value = 100 + parseInt(document.getElementById("payHereTotal").value);
+              }
+          } else {
+              console.log("INSIDE NULL IF")
+              console.log(getSelectedValue)
+              document.getElementById("error").innerHTML
+                  = "*You have not selected any delivery option";
+              e.preventDefault();
+          }
+      });
+      //
+      // function checkDelivery(e) {
+      //     // if (getSelectedValue != null) {
+      //     //     console.log("INSIDE NOT NULL IF")
+      //     //     if (getSelectedValue.value === "courier") {
+      //     //         console.log("INSIDE COURIER IF")
+      //     //         document.getElementById("payHereTotal").value = 100 + parseInt(document.getElementById("payHereTotal").value);
+      //     //     }
+      //     // } else {
+      //     //     console.log("INSIDE NULL IF")
+      //     //     console.log(getSelectedValue.value)
+      //     //     document.getElementById("error").innerHTML
+      //     //         = "*You have not selected any delivery option";
+      //     //     e.preventDefault();
+      //     // }
+      //     console.log(getSelectedValue)
+      //     e.pre
+      //
+      // }
+
+  </script>
   </body>
 </html>

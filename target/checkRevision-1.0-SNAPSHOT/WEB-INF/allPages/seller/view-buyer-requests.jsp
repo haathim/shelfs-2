@@ -71,21 +71,35 @@ change this template use File | Settings | File Templates. --%> <%@ page
                         <th>Buyer</th>
                         <th>View</th>
                     </tr>
-                    <%
+<%--                    <%--%>
 
-                        for (BuyerRequest buyReq: buyReqs) {
-                            out.println("<tr class=\"table-rows\">");
-                            out.println("<td>" + buyReq.getTitle() + "</td>");
-                            out.println("<td>" + buyReq.getAuthor() + "</td>");
-                            out.println("<td>" + buyReq.getCategory() + "</td>");
-                            out.println("<td>" + buyReq.getPreferredPrice() + "</td>");
-                            out.println("<td>" + buyReq.getBuyerId() + "</td>");
-                            out.println("<td>"+"<div class=\"view-more-button\">"+ "<a href=\"" + MyVariables.rootURL +"seller/viewBuyerRequestsMore2?buyReqId=" + buyReq.getRequestId() + "\"><h2>View</h2></a>\n" +"</div></td>");
-                            out.println("</tr>");
-                        }
+<%--                        for (BuyerRequest buyReq: buyReqs) {--%>
+<%--                            out.println("<tr class=\"table-rows\">");--%>
+<%--                            out.println("<td>" + buyReq.getTitle() + "</td>");--%>
+<%--                            out.println("<td>" + buyReq.getAuthor() + "</td>");--%>
+<%--                            out.println("<td>" + buyReq.getCategory() + "</td>");--%>
+<%--                            out.println("<td>" + buyReq.getPreferredPrice() + "</td>");--%>
+<%--                            out.println("<td>" + buyReq.getBuyerId() + "</td>");--%>
+<%--                            out.println("<td>"+"<div class=\"view-more-button\">"+ "<a href=\"" + MyVariables.rootURL +"seller/viewBuyerRequestsMore2?buyReqId=" + buyReq.getRequestId() + "\"><h2>View</h2></a>\n" +"</div></td>");--%>
+<%--                            out.println("</tr>");--%>
+<%--                        }--%>
 
 
-                    %>
+<%--                    %>--%>
+                    <% for (BuyerRequest buyReq: buyReqs) {%>
+                    <tr class="table-rows">
+
+                        <td><%=buyReq.getTitle()%></td>
+                        <td><%=buyReq.getAuthor()%></td>
+                        <td><%=buyReq.getCategory()%></td>
+                        <td><%=buyReq.getPreferredPrice()%></td>
+                        <td><%=buyReq.getBuyerId()%></td>
+                        <td><div class="view-more-button"><a href="viewBuyerRequestsMore2?buyReqId=<%=buyReq.getRequestId()%>"><h2>View</h2></a></div></td>
+
+                    </tr>
+
+                    <%}%>
+
                 </table>
             </div>
 

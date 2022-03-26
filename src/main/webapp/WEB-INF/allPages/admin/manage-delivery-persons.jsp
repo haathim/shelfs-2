@@ -160,6 +160,7 @@
             <th>Username</th>
             <th>Date Joined</th>
             <th>Mobile Number</th>
+            <th>Remove</th>
 <%--            <th>View</th>--%>
           </tr>
 
@@ -187,12 +188,14 @@
               <p><%=deliverer.getPhoneNo()%></p>
             </td>
 
-
 <%--            <td class="table-cell">--%>
 <%--              <div class="view-more-button">--%>
-<%--                <h2>View</h2>--%>
+<%--                <a></a><h2>View</h2>--%>
 <%--              </div>--%>
 <%--            </td>--%>
+
+            <td><div class="view-more-button"><a href="removeDeliverer?username=<%=deliverer.getUsername()%>"><h2>Remove</h2></a></div></td>
+
           </tr>
           <%}%>
         </table>

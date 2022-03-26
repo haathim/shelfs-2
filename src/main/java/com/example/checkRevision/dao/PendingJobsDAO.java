@@ -73,7 +73,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);
@@ -176,7 +176,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);
@@ -270,7 +270,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);
@@ -362,7 +362,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);
@@ -453,7 +453,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);
@@ -578,7 +578,7 @@ public class PendingJobsDAO {
             int price = result.getInt(34);
             String isbn = result.getString(35);
             String language = result.getString(36);
-            boolean available = result.getBoolean(37);
+            int available = result.getInt(37);
             String description = result.getString(38);
             String bookFrontPhoto = result.getString(39);
             String bookBackPhoto = result.getString(40);

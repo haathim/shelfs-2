@@ -139,6 +139,7 @@
 
                 <div class="seller-details">
                     <h3>Pickup Id : <%=pickup.getNewOrderPickups().getPickupId()%></h3>
+                    <p>Seller ID: <%=pickup.getSeller().getUsername()%></p>
                     <p>Seller Name : <%=pickup.getSeller().getFullName()%></p>
                     <p>Address : <%=pickup.getSeller().getAddress()%></p>
                     <p>Phone : <%=pickup.getSeller().getPhoneNo()%></p>
@@ -162,6 +163,9 @@
                         <span>Undo</span>
                     </a>
                     <%}%>
+<%--                    <a href="rejectPickup?pickupId=<%=pickup.getNewOrderPickups().getPickupId()%>">--%>
+<%--                        <span>Reject</span>--%>
+<%--                    </a>--%>
                 </div>
 
             </div>

@@ -44,7 +44,11 @@
             <table id="order1">
               <thead>
                 <div class="searchbar">
-                    <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</div>
+                  <form action="viewOrdersAdmin" method="get">
+                    <input type="text" placeholder="Search.." name="query">
+                    <div class="inline"><button style="margin:10px;" type="submit">Submit</button></div>
+                  </form>
+
                   </div>
                 <tr>
                 <tr>

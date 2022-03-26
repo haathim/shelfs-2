@@ -56,7 +56,7 @@
   </div>
   <div class="sidebar__link">
     <i class="fa fa-files-o"></i>
-    <a href="newSales">New Sales</a>
+    <a href="newSales">Pending Sales</a>
   </div>
 
   <div id="become-seller">

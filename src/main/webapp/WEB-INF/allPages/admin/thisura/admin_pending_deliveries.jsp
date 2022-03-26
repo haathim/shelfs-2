@@ -28,6 +28,7 @@
 //    int noOfPages = (int) request.getAttribute("noOfPages");
 
 %>
+
 <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -45,13 +46,13 @@
 
     <main>
         <div class="main-container">
-            <h1>Pending Pickups</h1>
+            <h1>Pending Deliveries</h1>
             <div class="mainbox1">
                 <table id="order1">
                     <thead>
-                    <div class="searchbar">
-                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>
-                    </div>
+<%--                    <div class="searchbar">--%>
+<%--                        <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
+<%--                    </div>--%>
                     <tr>
                         <th>Order No.</th>
                         <th>Buyer Name</th>

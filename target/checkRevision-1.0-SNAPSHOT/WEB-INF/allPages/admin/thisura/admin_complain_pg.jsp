@@ -40,13 +40,35 @@
           <h1>Complaints</h1>
           <div class="mainbox1">
             <div class="searchbar">
-                <div class="inline"><a href="#"><button style="margin:5px;">Reply</a></div>
+<%--                <div class="inline"><a href="#"><button style="margin:5px;">Reply</a></div>--%>
                 <div class="outline"><a href="viewComplaints"><button style="margin: 5px;">Back</a></div>
               </div>
             <h2>Complaint Details</h2>
             <p><br><br><b>Name of User:</b><%=complaint.getBuyerName()%><br><br><b>Username:</b> <%=complaint.getBuyerId()%><br><br><b>Title:</b> <%=complaint.getTitle()%><br><br><b>Description:</b><%=complaint.getDescription()%></p>
           </div>
+
+        <div class="formContainer">
+          <h1>Give a reply</h1>
+          <form method="post" action="replyToComplaint">
+            <div class="column">
+                <input type="hidden" name="complaintId" value="<%=complaint.getComplaintId()%>">
+              <label for="replyDescription">Write your reply here.</label>
+              <textarea
+                      type="text"
+                      id="replyDescription"
+                      name="replyDescription"
+                      placeholder="Type your questions here"
+                      rows="7"
+                      required
+              ></textarea>
+
+            </div>
+            <button type="submit">Reply</button>
+          </form>
+
         </div>
+
+      </div>
     </main>
 
     <nav id="sidebar">

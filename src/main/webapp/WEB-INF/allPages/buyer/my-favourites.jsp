@@ -64,6 +64,7 @@
                                 <%=favTitle.getAuthor()%>
                             </div>
 
+
                         </div>
 
                         <div class="book-cover">
@@ -71,9 +72,23 @@
                                 <img src="<%=favTitle.getBookPhotoFront()%>">
                             </div>
                         </div>
+
+                        <% if(favTitle.getAvailable() != 1){%>
+                        <div class="description">
+                            <p style="color: red">This Advertisement is no longer available</p>
+                            <a href="searchResults?query=<%=favTitle.getTitle()%>">View Similar Books</a>
+                        </div>
+                        <%}else{%>
                         <div class="description">
                             <%=favTitle.getDescription()%>
                         </div>
+                        <form method="post">
+                            <input type="hidden" name="adId" value=<%=favTitle.getAdId()%>>
+                            <button type="submit" class="favorite-btn">
+                                <a href="searchResultsMore?adId=<%=favTitle.getAdId()%>">View book </a> </button>
+                        </form>
+                        <%}%>
+
                         <form action="deletefromwishlist" method="post">
                             <input type="hidden" name="adId" value=<%=favTitle.getAdId()%>>
                                 <button type="submit" class="favorite-btn">Remove from favourites</button>

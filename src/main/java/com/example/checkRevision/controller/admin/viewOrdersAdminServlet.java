@@ -15,9 +15,13 @@ public class viewOrdersAdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/admin/view-all-orders.jsp");
+        String query = request.getParameter("query");
+        if (query == null){
+            query = "";
+        }
         NewOrdersDAO dao = new NewOrdersDAO();
         try {
-            ArrayList<OrderBuyer> orders = dao.getOrdersForAdmin();
+            ArrayList<OrderBuyer> orders = dao.getOrdersForAdmin(query);
             request.setAttribute("orders", orders);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/admin/thisura/admin_view_orders.jsp");
             dispatcher.forward(request, response);

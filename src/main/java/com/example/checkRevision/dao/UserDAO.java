@@ -126,4 +126,14 @@ public class UserDAO {
         }
         return 0;
     }
+
+    public void removeDeliverer(String username) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "DELETE FROM `users` WHERE username = ? AND userType = 'delivery';";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1,username);
+        stmt.executeUpdate();
+
+
+    }
 }

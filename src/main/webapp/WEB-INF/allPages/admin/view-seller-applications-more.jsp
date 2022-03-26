@@ -53,8 +53,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 <div class="right-buttons">
                   <div class="remove-button">
                     <a
-                      href="<%=MyVariables.rootURL%>admin/acceptSellerApp?sellerAppId=<%=sellerApplication.getBuyerId()%>"
-                      ><p>Accept</p></a
+                      href="acceptSellerApp?sellerAppId=<%=sellerApplication.getBuyerId()%>"><p>Accept</p></a
                     >
                     <%--
                     <form action="acceptSellerApp" method="post">
@@ -64,8 +63,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   </div>
                   <div class="remove-button">
                     <a
-                      href="<%=MyVariables.rootURL%>admin/rejectSellerApp?sellerAppId=<%=sellerApplication.getBuyerId()%>"
-                      ><p>Reject</p></a
+                      href="rejectSellerApp?sellerAppId=<%=sellerApplication.getBuyerId()%>"><p>Reject</p></a
                     >
                     <%--
                     <form action="rejectSellerApp" method="post">

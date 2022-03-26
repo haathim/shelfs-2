@@ -1,3 +1,5 @@
+<%@ page import="com.example.checkRevision.model.OrderBuyer" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +18,10 @@
 </head>
 
 <body id="body">
+<%
+  ArrayList<OrderBuyer> orders = (ArrayList<OrderBuyer>) request.getAttribute("orders");
+
+%>
   <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
       <i class="fa fa-bars" aria-hidden="true"></i>
@@ -38,47 +44,46 @@
             <table id="order1">
               <thead>
                 <div class="searchbar">
-                    <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</div>
+                  <form action="viewOrdersAdmin" method="get">
+                    <input type="text" placeholder="Search.." name="query">
+                    <div class="inline"><button style="margin:10px;" type="submit">Submit</button></div>
+                  </form>
+
                   </div>
                 <tr>
                 <tr>
                   <th>Order Number</th>
-                  <th>Seller Name</th>
                   <th>Buyer Name</th>
-                  <th>Name of the Book</th>
-                  <th>More Details</th>
+                  <th>Date Ordered</th>
+                  <th>Method</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th>View More</th>
                 </tr>
               </thead>
               <tbody>
+              <% for (OrderBuyer order: orders){%>
                 <tr>
-                  <td>O432</td>
-                  <td>Asitha Muthumala</td>
-                  <td>Shawn Rodrigo</td>
-                  <td>Village by the Sea</td>
-                  <td><a href="viewOrdersAdminMore">View</a></td>
+                  <td><%=order.getOrder().getOrderId()%></td>
+                  <td><%=order.getBuyer().getFullName()%></td>
+                  <td><%=order.getOrder().getDateOrdered()%></td>
+                  <% if(order.getOrder().isCourier()){%>
+                  <td>Courier</td>
+                  <%} else{%>
+                  <td>Delivery</td>
+                  <%}%>
+                  <% if(order.getOrder().getStatus() == 0){%>
+                    <td>Pending Pickups</td>
+                  <%} else if(order.getOrder().getStatus() == 1){%>
+                  <td>All Pickups Done</td>
+                  <%} else if(order.getOrder().getStatus() == 2){%>
+                  <td>Handed to delivery/Courier</td>
+                  <%} else if(order.getOrder().getStatus() == 3){%>
                   <td>Delivered</td>
-                  <td><div class="inline"><button style="margin:5px;">Remove</div></td>
+                  <%}%>
+                  <td><a href="viewOrdersAdminMore?orderId=<%=order.getOrder().getOrderId()%>">View</a></td>
                 </tr>
-                <tr>
-                  <td>O657</td>
-                  <td>Thisura Ramanayake</td>
-                  <td>Shawn Rodrigo</td>
-                  <td>Village by the Sea</td>
-                  <td><a href="viewOrdersAdminMore">View</a></td>
-                  <td>Not Delivered</td>
-                  <td><div class="inline"><button style="margin:5px;">Remove</div></td>
-                  </tr>
-                  <tr>
-                  <td>O562</td>
-                  <td>Haathim Munas</td>
-                  <td>Shawn Rodrigo</td>
-                  <td>Village by the Sea</td>
-                  <td><a href="viewOrdersAdminMore">View</a></td>
-                  <td>Delivered</td>
-                  <td><div class="inline"><button style="margin:5px;">Remove</div></td>
-                  </tr>
+              <%}%>
+
               </tbody>
             </table>
           </div>

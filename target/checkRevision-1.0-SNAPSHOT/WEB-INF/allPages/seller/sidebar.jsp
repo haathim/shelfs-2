@@ -56,7 +56,7 @@
   </div>
   <div class="sidebar__link">
     <i class="fa fa-files-o"></i>
-    <a href="newSales">New Sales</a>
+    <a href="newSales">Pending Sales</a>
   </div>
 
   <div id="become-seller">
@@ -64,10 +64,10 @@
   </div>
 
   <h2>ACCOUNT</h2>
-  <div class="sidebar__link">
-    <i class="fa fa-handshake-o"></i>
-    <a href="messages">Messages</a>
-  </div>
+<%--  <div class="sidebar__link">--%>
+<%--    <i class="fa fa-handshake-o"></i>--%>
+<%--    <a href="messages">Messages</a>--%>
+<%--  </div>--%>
 
   <div class="sidebar__link">
     <i class="fa fa-briefcase"></i>

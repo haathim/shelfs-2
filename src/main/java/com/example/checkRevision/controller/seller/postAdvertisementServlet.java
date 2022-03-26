@@ -52,7 +52,7 @@ public class postAdvertisementServlet extends HttpServlet {
         }
 
 //      create advertisement object to hold data
-        Advertisement newAd = new Advertisement(-1, sellerId, title, author, price, isbn, language, true, description, "", "", category, new Timestamp(System.currentTimeMillis()));
+        Advertisement newAd = new Advertisement(-1, sellerId, title, author, price, isbn, language, 1, description, "", "", category, new Timestamp(System.currentTimeMillis()));
 
         AdvertisementDAO dao = new AdvertisementDAO();
         try {

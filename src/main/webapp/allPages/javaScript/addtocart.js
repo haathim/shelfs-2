@@ -19,14 +19,17 @@ window.addEventListener('load', ()=>{
     updateTotal()
 
     var removeItem = document.getElementsByClassName('remove-btn')
-    
+
     for (var i = 0; i < removeItem.length; i++) {
 
         var button = removeItem[i];
-        
+
         button.addEventListener('click', removeCart)
 
     }
+
+    updateCheckoutButtonValue()
+
 })
 
 function addToCart(){
@@ -57,14 +60,14 @@ function addToCart(){
     var adId = document.getElementById('adId').innerHTML;
     var img = document.getElementById('imgurl').getAttribute('src')
 
-    var book = {
-        "title":title,
+    var book = {"title":title,
         "author":author,
         "seller":seller,
         "price":price,
         "adId":adId,
         "img":img
     }
+
 
     const filteredArray = existingItems.filter(element => {
         if (element.adId === adId) {
@@ -82,21 +85,19 @@ function addToCart(){
     existingItems.push(book)
 
     console.log("Ex", existingItems)
-    localStorage.setItem("cartitem", JSON.stringify(existingItems));
-    
+    localStorage.setItem("cartitem", JSON.stringify(existingItems));    
 
-    
     console.log(img);
 
-    
 
     // console.log(localStorage.key(0));
+    // updateCheckoutButtonValue()
 
     return;
 }
 
 
-    
+
 
 function display(){
     let bookitems = localStorage.getItem('cartitem')
@@ -109,7 +110,7 @@ function display(){
         cartContainer.innerHTML = '';
         Object.values(bookitems).map(item=>{
             cartContainer.innerHTML += `
-            <div class="sub-box" data-adId="${item.adId}">
+        <div class="sub-box" data-adId="${item.adId}">
             <div class="text-box">
             <div hidden class="adId">
                 // <div id="adId">${item.adId}</div> 
@@ -141,7 +142,7 @@ function display(){
     </div>`
         })
     }
-    
+
 }
 
 function updateTotal(){
@@ -251,9 +252,26 @@ function removeCart(event) {
     // }
 
 
-    
+
     // existingItems = existingItems.splice(index, 1)
     // cartId = cartId.splice(index, 1)
     // localStorage.setItem("cartitem", JSON.stringify(existingItems));
     // localStorage.setItem("cart-Id", JSON.stringify(cartId));
+
+    updateCheckoutButtonValue()
+}
+
+function updateCheckoutButtonValue(){
+    console.log("11111111111111111111111111111111111111")
+    let bookitems = localStorage.getItem('cartitem')
+    bookitems = JSON.parse(bookitems)
+    let checkoutValue = document.getElementById("checkoutValues")
+    let checkoutValuesArray = [];
+    bookitems.forEach((item)=>{checkoutValuesArray.push(parseInt(item.adId.replace(/\n/g, '')))})
+    console.log("From updateCheckoutButtonValue()")
+    console.log(checkoutValuesArray)
+    // console.log(JSON.stringify(checkoutValuesArray).replace(/"/g, ''))
+    checkoutValue.value = JSON.stringify(checkoutValuesArray)
+    console.log("222222222222222222222222222222222222222")
+
 }

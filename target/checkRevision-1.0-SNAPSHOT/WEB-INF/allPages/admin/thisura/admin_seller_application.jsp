@@ -64,7 +64,7 @@
                   <td><%=sellerApp.getBuyerFirstName()%> <%=sellerApp.getBuyerLastName()%></td>
                   <td><%=sellerApp.getBuyerId()%></td>
                   <td><%=sellerApp.getNic()%></td>
-                  <td><a href="<%=MyVariables.rootURL%>admin/viewSellerApplicationsMore?sellerAppId=<%=sellerApp.getBuyerId()%>">View</a></td>
+                  <td><a href="viewSellerApplicationsMore?sellerAppId=<%=sellerApp.getBuyerId()%>">View</a></td>
                 </tr>
                 <%}%>
 

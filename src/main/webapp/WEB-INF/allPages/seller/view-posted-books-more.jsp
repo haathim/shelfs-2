@@ -70,8 +70,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
             </div>
             <div class="main-component">
               <div class="book-cover">
-                <% out.println("<img src=\""+ ad.getBookPhotoFront() + "\"
-                alt=\"Book Cover\" />"); %>
+                <% out.println("<img src=\""+ ad.getBookPhotoFront() + "\" alt=\"Book Cover\" />"); %>
               </div>
               <div class="book-details">
                 <div class="book-details-field">

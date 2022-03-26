@@ -1,8 +1,10 @@
 package com.example.checkRevision.controller.buyer;
 
+import com.example.checkRevision.dao.NewOrdersDAO;
 import com.example.checkRevision.dao.OrdersDAO;
 import com.example.checkRevision.dao.WishlistDAO;
 import com.example.checkRevision.model.Advertisement;
+import com.example.checkRevision.model.NewOrder;
 import com.example.checkRevision.model.Order;
 import com.example.checkRevision.model.OrderAdCombined;
 
@@ -19,9 +21,18 @@ public class viewOrdersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = (String) request.getSession().getAttribute("username");
-        OrdersDAO dao = new OrdersDAO();
+        String keyword;
+        if (request.getParameter("keyword") != null){
+            keyword = request.getParameter("keyword");
+        }else {
+            keyword = "";
+        }
+//        debug
+        System.out.println(keyword);
+
+        NewOrdersDAO newOrdersDAO = new NewOrdersDAO();
         try {
-            ArrayList<OrderAdCombined> orders = dao.getAllOrdersOfBuyer(username);
+            ArrayList<NewOrder> orders = newOrdersDAO.getAllOrdersOfBuyer(username, keyword);
 
             request.setAttribute("orders", orders);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/my-orders.jsp");

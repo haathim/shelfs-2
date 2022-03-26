@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "viewOrdersMoreServlet", value = "/buyer/viewOrdersMore")
 public class viewOrdersMoreServlet extends HttpServlet {
@@ -19,18 +20,11 @@ public class viewOrdersMoreServlet extends HttpServlet {
         String buyerId = (String) request.getSession().getAttribute("username");
         int orderId = Integer.parseInt(request.getParameter("orderId"));
 
-        OrdersDAO dao = new OrdersDAO();
+        AdvertisementDAO dao = new AdvertisementDAO();
         try {
-            OrderAdCombined orderAd = dao.getOrderByIdForBuyer(orderId, buyerId);
-
-            if (orderAd == null){
-                response.getWriter().println("Resource doesn't Exist");
-                return;
-            }
-
-            request.setAttribute("orderAd", orderAd);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/my-orders-more.jsp");
-            dispatcher.forward(request, response);
+            ArrayList<Advertisement> adsInOrder = dao.getAdsOfNewOrder(buyerId, orderId);
+            request.setAttribute("adsInOrder", adsInOrder);
+            request.getRequestDispatcher("/WEB-INF/allPages/buyer/my-orders-more.jsp").forward(request,response);
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

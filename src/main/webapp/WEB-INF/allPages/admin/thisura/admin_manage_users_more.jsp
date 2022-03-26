@@ -1,7 +1,8 @@
 
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.SellerApplications" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%-- Created by IntelliJ IDEA. User: Lenovo Date: 21-Sep-21 Time: 12:13 PM To
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.Seller" %><%-- Created by IntelliJ IDEA. User: Lenovo Date: 21-Sep-21 Time: 12:13 PM To
 change this template use File | Settings | File Templates. --%> <%@ page
         contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -24,7 +25,9 @@ change this template use File | Settings | File Templates. --%> <%@ page
 </head>
 <body id="body">
 
-
+<%
+    Seller user = (Seller) request.getAttribute("user");
+%>
 <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -48,7 +51,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
                         </div>
                         <div class="right-buttons">
                             <div class="remove-button">
-                                <p>Delete User</p>
+                                <p><a href="removeUser?username=">Delete User></a></p>
                             </div>
                         </div>
                     </div>
@@ -60,37 +63,49 @@ change this template use File | Settings | File Templates. --%> <%@ page
                             </div>
                             <div class="book-details-field">
                                 <p><strong>Buyer Name</strong></p>
-                                <p>Elmasiri Navathe</p>
+                                <p><%=user.getFullName()%></p>
                             </div>
 
                             <div class="book-details-field">
                                 <p><strong>Username</strong></p>
-                                <p>elmasiriRoxxzz123</p>
+                                <p><%=user.getUsername()%></p>
                             </div>
 
                             <div class="book-details-field">
-                                <p><strong>NIC</strong></p>
-                                <p>19992224993V</p>
+                                <p><strong>Address</strong></p>
+                                <p><%=user.getAddress()%></p>
+                            </div>
+
+                            <div class="book-details-field">
+                                <p><strong>Contact</strong></p>
+                                <p><%=user.getPhoneNo()%></p>
+                            </div>
+
+                            <div class="book-details-field">
+                                <p><strong>Email</strong></p>
+                                <p><%=user.getEmail()%></p>
                             </div>
                         </div>
 
 <%--                        <% if (request.getSession().getAttribute("userType") == "seller"){%>--%>
+                        <% if (user.getUserType().equals("seller")){%>
                         <div class="book-details">
                             <div class="details-title">
                                 <h2>Seller Details</h2>
                             </div>
                             <div class="book-details-field">
                                 <p><strong>NIC</strong></p>
-                                <p>199944399960</p>
+                                <p><%=user.getNic()%></p>
                             </div>
                         </div>
 
                         <div class="book-cover">
-                            <img src="<%=MyVariables.nicPhotoFrontRootURL%>buyer4.jpg" />
+                            <img src="<%=user.getNicPhotoFront()%>"/>
                         </div>
                         <div class="book-cover">
-                            <img src="<%=MyVariables.nicPhotoBackRootURL%>buyer4.jpg" />
+                            <img src="<%=user.getNicPhotoBack()%>"/>
                         </div>
+                        <%}%>
 <%--                        <%}%>--%>
 
                     </div>

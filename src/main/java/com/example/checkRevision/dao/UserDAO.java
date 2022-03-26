@@ -37,6 +37,9 @@ public class UserDAO {
                     return 3;
                 case "delivery":
                     return 4;
+                case "deleted":
+                    return 0;
+
             }
         }
 
@@ -99,6 +102,37 @@ public class UserDAO {
             return false;
         }
 
+
+
+    }
+
+    public int isWhatType(String username) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM users WHERE username=?";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1,username);
+        ResultSet result = stmt.executeQuery();
+
+        if (result.next()){
+            switch (result.getString("userType")) {
+                case "buyer":
+                    return 2;
+                case "seller":
+                    return 3;
+                default:
+                    return 0;
+
+            }
+        }
+        return 0;
+    }
+
+    public void removeDeliverer(String username) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "DELETE FROM `users` WHERE username = ? AND userType = 'delivery';";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1,username);
+        stmt.executeUpdate();
 
 
     }

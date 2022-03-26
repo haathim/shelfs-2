@@ -1,8 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.checkRevision.model.Wishlist" %>
-<%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %>
-<%@ page import="com.example.checkRevision.model.Order" %><%--
+<%--<%@ page import="com.example.checkRevision.model.Wishlist" %>--%>
+<%--<%@ page import="com.example.checkRevision.model.Advertisement" %>--%>
+<%--<%@ page import="com.example.checkRevision.variables.MyVariables" %>--%>
+<%--<%@ page import="com.example.checkRevision.model.Order" %>--%>
+<%@ page import="com.example.checkRevision.model.Delivery" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -27,7 +28,9 @@
   <title>SHELFS.</title>
 </head>
 <body>
-
+<%
+  ArrayList<Delivery> deliveryPersons = (ArrayList<Delivery>) request.getAttribute("deliveryPersons");
+%>
 
 <div class="container">
   <div class="nav_icon" onclick="toggleSidebar()">
@@ -144,12 +147,12 @@
         <%--            <button class="search-button">Search</button>--%>
         <%--          </div>--%>
 
-        <div class="search-container">
-          <form method="post" action="">
-            <input type="text" class="table-search" placeholder="Search Items...">
-            <button class="search-button">Search</button>
-          </form>
-        </div>
+<%--        <div class="search-container">--%>
+<%--          <form method="post" action="">--%>
+<%--            <input type="text" class="table-search" placeholder="Search Items...">--%>
+<%--            <button class="search-button">Search</button>--%>
+<%--          </form>--%>
+<%--        </div>--%>
 
         <table>
           <tr class="table-head">
@@ -157,38 +160,44 @@
             <th>Username</th>
             <th>Date Joined</th>
             <th>Mobile Number</th>
-            <th>View</th>
+            <th>Remove</th>
+<%--            <th>View</th>--%>
           </tr>
 
+          <% for (Delivery deliverer: deliveryPersons){%>
           <tr class="table-rows">
             <td class="table-cell">
               <p class="field-name">
                 <strong> Delivery Person Name</strong>
               </p>
-              <p>Elmasiri Navathe</p>
+              <p><%=deliverer.getFullName()%></p>
             </td>
 
             <td class="table-cell">
               <p class="field-name"><strong> Username</strong></p>
-              <p>elmasiriRoxxzz123</p>
+              <p><%=deliverer.getUsername()%></p>
             </td>
 
             <td class="table-cell">
               <p class="field-name"><strong> Date Joined</strong></p>
-              <p>25/12/2021</p>
+              <p><%=deliverer.getDateJoined()%></p>
             </td>
 
             <td class="table-cell">
               <p class="field-name"><strong> Mobile Number</strong></p>
-              <p>0773271199</p>
+              <p><%=deliverer.getPhoneNo()%></p>
             </td>
 
-            <td class="table-cell">
-              <div class="view-more-button">
-                <h2>View</h2>
-              </div>
-            </td>
+<%--            <td class="table-cell">--%>
+<%--              <div class="view-more-button">--%>
+<%--                <a></a><h2>View</h2>--%>
+<%--              </div>--%>
+<%--            </td>--%>
+
+            <td><div class="view-more-button"><a href="removeDeliverer?username=<%=deliverer.getUsername()%>"><h2>Remove</h2></a></div></td>
+
           </tr>
+          <%}%>
         </table>
       </div>
     </div>

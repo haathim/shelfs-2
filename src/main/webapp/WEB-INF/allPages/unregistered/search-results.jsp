@@ -68,19 +68,26 @@ change this template use File | Settings | File Templates. --%> <%@ page
                     <h2>Search Results</h2>
                 </div>
                 <div class="main-area-column">
-                    <%
-                        for (Advertisement ad: resultAds) {
-                            out.println("<div class=\"main-sub-box\">\n" +
-                                            "<div class=\"cover-pic\">" + "<img src=\""+ad.getBookPhotoFront()+"\" />" + "</div>" +
-                                            "<div class=\"title\">"+ad.getTitle()+"</div>\n" +
-                                            "<div class=\"author\"><str>"+ad.getAuthor()+"</str></div>"+
-//                                            "<div class=\"view-more-button\">" + "<button><a href=\""+"http://localhost:8000/checkRevision_war_exploded/searchResultsMoreServlet?adId="+ad.getAdId()+"\">View</a></button>\n" + "</div>"+
-                                    "<div class=\"view-more-button\">" + "<a href=\"" + MyVariables.rootURL +"public/searchResultsMore?adId=" + ad.getAdId() + "\"><button>View</button></a>\n" + "</div>" +                                    "<div class=\"price\">Rs."+ad.getPrice()+"</div>\n" +
-//                                            "<div id=\"view-more-url\" hidden>"+"http://localhost:8000/checkRevision_war_exploded/searchResultsMoreServlet?adId="+ad.getAdId()+"</div>\n" +
-                                        "</div>");
+                    <%--                    <%--%>
+                    <%--                        for (Advertisement ad: resultAds) {--%>
+                    <%--                            out.println("<div class=\"main-sub-box\">\n" +--%>
+                    <%--                                    "<div class=\"cover-pic\">" + "<img src=\""+ad.getBookPhotoFront()+"\" />" + "</div>" +--%>
+                    <%--                                    "<div class=\"title\">"+ad.getTitle()+"</div>\n" +--%>
+                    <%--                                    "<div class=\"author\"><str>"+ad.getAuthor()+"</str></div>"+--%>
+                    <%--                                    "<div class=\"view-more-button\">" + "<a href=searchResultsMore?adId=" + ad.getAdId() + "\"><button>View</button></a>\n" + "</div>" +                                    "<div class=\"price\">Rs."+ad.getPrice()+"</div>\n" +--%>
+                    <%--                                    "</div>");--%>
 
-                        }
-                    %>
+                    <%--                        }--%>
+                    <%--                    %>--%>
+                    <% for(Advertisement ad: resultAds) {%>
+                    <div class="main-sub-box">
+                        <div class="cover-pic"><img src="<%=ad.getBookPhotoFront()%>"></div>
+                        <div class="title"><%=ad.getTitle()%></div>
+                        <div class="author"><%=ad.getAuthor()%></div>
+                        <div class="view-more-button"><a href="searchResultsMore?adId=<%=ad.getAdId()%>"><button>View</button></a></div>
+                        <div class="price"><%=ad.getPrice()%></div>
+                    </div>
+                    <%}%>
                 </div>
             </div>
 

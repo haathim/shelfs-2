@@ -216,7 +216,7 @@
     box-sizing: border-box;
   }
   .cover-pic img{
-    position: relative;
+    /*position: relative;*/
     width: 250px;
     height: auto;
     left: -5px;

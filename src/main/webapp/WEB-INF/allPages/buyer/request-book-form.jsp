@@ -1,7 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.BuyerRequest" %>
+<%@ page import="com.example.checkRevision.model.Buyer" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -29,7 +31,7 @@
 </head>
 <body>
 <%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
+    ArrayList<BuyerRequest> buyerRequests = (ArrayList<BuyerRequest>) request.getAttribute("buyerRequests");
 %>
 
 
@@ -54,8 +56,10 @@
                 <div class="formContainer">
                     <h1>Request a book</h1>
                     <p>Fill the below form to Request for a Book.</p>
+
                     <div id="error" style="color: red; font-weight: bold"></div>
                     <form action="requestBooks" method="post" id="form">
+
                         <div class="row">
                             <div class="column">
                                 <label for="title">Title</label>
@@ -66,6 +70,8 @@
                                         placeholder="Use only letters, digits, period, commas, question-mark, ampersand and
                             exclamation mark. Length 1 - 50"
                                         required
+                                        placeholder="Title: Use only letters, digits, period, commas, question-mark, ampersand and
+                            exclamation mark. Length 1 - 50."
                                 />
                             </div>
                             <div class="column">
@@ -76,6 +82,7 @@
                                         name="author"
                                         placeholder="Use only letters, digits and period. Length 3 - 20"
                                         required
+                                        placeholder="Author: Use only letters, digits and period. Length 3 - 20."
                                 />
                             </div>
                         </div>
@@ -106,9 +113,10 @@
                                 <label for="comment">Comment</label>
                                 <textarea
                                         id="comment"
-                                        placeholder="Put a description about you request.."
                                         rows="3"
                                         name="comment"
+                                        placeholder="Description: Use only letters, digits, period, commas, question-mark,
+                            ampersand and exclamation mark. Length 1 - 500."
                                 ></textarea>
                             </div>
                         </div>
@@ -117,6 +125,28 @@
                     </form>
                 </div>
             </div>
+
+            <div class="table-template">
+
+                <table>
+                    <tr class="table-head">
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Preferred Price</th>
+                        <th>Edit</th>
+                    </tr>
+
+                    <% for (BuyerRequest buyerRequest: buyerRequests) {%>
+                    <tr class="table-rows">
+                        <td><%=buyerRequest.getTitle()%></td>
+                        <td><%=buyerRequest.getAuthor()%></td>
+                        <td><%=buyerRequest.getPreferredPrice()%></td>
+                        <td><div class="view-more-button"><a href="editBuyerRequest?buyerRequestId=<%=buyerRequest.getRequestId()%>"><h2>Edit</h2></a></div></td>
+                    </tr>
+                    <%}%>
+                </table>
+            </div>
+
 
 
         </div>

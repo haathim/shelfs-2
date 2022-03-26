@@ -36,25 +36,33 @@
 
     </div>
 
-    <div class="navbar__right">
-      <%@include file="/WEB-INF/allPages/admin/thisura/navbar-right.jsp"%>
-    </div>
+<%--    <div class="navbar__right">--%>
+<%--      <%@include file="/WEB-INF/allPages/admin/thisura/navbar-right.jsp"%>--%>
+<%--    </div>--%>
 
     <main>
       <div class="main-container">
-          <h1>Manage Advertisments</h1>
+          <h1>Advertisments</h1>
           <div class="mainbox1">
             <table id="order1">
               <thead>
               <div class="searchbar">
-                <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>
+<%--                <input type="text" placeholder="Search.."><div class="inline"><button style="margin:10px;">Submit</button></div>--%>
+                <form action="manageAds" method="get">
+                  <input
+                          type="text"
+                          class="table-search"
+                          placeholder="Search Items..."
+                          name="query"
+                  />
+                  <div class="inline"><button type="submit" style="margin:10px;">Submit</button></div>
+                </form>
               </div>
                 <tr>
                   <th>Name of the Book</th>
                   <th>Author</th>
                   <th>Seller ID</th>
                   <th>More Details</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -64,7 +72,6 @@
                   <td><%=ad.getAuthor()%></td>
                   <td><%=ad.getSellerId()%></td>
                   <td><a href="manageAdsMore?adId=<%=ad.getAdId()%>">View</a></td>
-                  <td><div class="inline"><a href="#"><button style="margin:5px;">Remove</button></a></div></td>
                 </tr>
               <%}%>
 <%--                <tr>--%>

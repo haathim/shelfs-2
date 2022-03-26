@@ -56,11 +56,12 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <div class="author"><% out.println(ad.getAuthor());%></div>
                 </div>
                 <div class="top-box-seller-block">
-                  <div class="seller-name">
-                    J. W. Perera
-                    <div class="rating">4.9</div>
-                  </div>
                   <div class="seller-icon"></div>
+                  <div class="seller-name" id="seller">
+                    <%=ad.getSellerId()%>
+                    <%--                    <div class="rating">4.9</div>--%>
+                  </div>
+
                 </div>
               </div>
               <div class="detail-block">
@@ -104,58 +105,58 @@ contentType="text/html;charset=UTF-8" language="java" %>
                     <div class="price-button">
                       Rs.<% out.println(ad.getPrice());%>
                     </div>
-                    <div class="btn-inline">
-                      <div class="add-to-cart-button">
-                        <span class="button-icon"
-                          ><i class="fa fa-shopping-cart"></i
-                        ></span>
-                        <span class="button-text">Add to cart</span>
-                      </div>
-                      <div class="add-to-cart-button">
-                        <span class="button-icon"
-                          ><i class="fa fa-star"></i
-                        ></span>
-                        <span class="button-text">Add to wishlist</span>
-                      </div>
-                    </div>
+<%--                    <div class="btn-inline">--%>
+<%--                      <div class="add-to-cart-button">--%>
+<%--                        <span class="button-icon"--%>
+<%--                          ><i class="fa fa-shopping-cart"></i--%>
+<%--                        ></span>--%>
+<%--                        <span class="button-text">Add to cart</span>--%>
+<%--                      </div>--%>
+<%--                      <div class="add-to-cart-button">--%>
+<%--                        <span class="button-icon"--%>
+<%--                          ><i class="fa fa-star"></i--%>
+<%--                        ></span>--%>
+<%--                        <span class="button-text">Add to wishlist</span>--%>
+<%--                      </div>--%>
+<%--                    </div>--%>
                   </div>
                 </div>
               </div>
-              <div class="recommendations">
-                <div class="top-box-title-block">You may also like</div>
-                <div class="recommended-books">
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/hobbit-cover.jpg" />
-                    </div>
-                  </div>
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/harrypotter-cover.jpg" />
-                    </div>
-                  </div>
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/got-cover.jpg" />
-                    </div>
-                  </div>
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/aw80-cover.jpg" />
-                    </div>
-                  </div>
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/sherlock-cover.jpg" />
-                    </div>
-                  </div>
-                  <div class="main-sub-box">
-                    <div class="cover-pic-small">
-                      <img src="../allPages/uploads/tomsawyer-cover.jpg" />
-                    </div>
-                  </div>
-                </div>
-              </div>
+<%--              <div class="recommendations">--%>
+<%--                <div class="top-box-title-block">You may also like</div>--%>
+<%--                <div class="recommended-books">--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/hobbit-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/harrypotter-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/got-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/aw80-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/sherlock-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                  <div class="main-sub-box">--%>
+<%--                    <div class="cover-pic-small">--%>
+<%--                      <img src="../allPages/uploads/tomsawyer-cover.jpg" />--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--              </div>--%>
             </div>
           </div>
         </div>

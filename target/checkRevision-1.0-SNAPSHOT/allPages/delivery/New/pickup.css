@@ -1,0 +1,165 @@
+/*Main heading styling start*/
+main > h1 { 
+    font-size: 25px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+/*Main heading styling end*/
+  
+/*pending pickup box styling start*/
+.pending-pickups {
+    overflow-y: scroll;
+    background-color:#fff;
+    height: 83vh;
+    width: 76vw;
+    margin: auto;
+    padding-top: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border: 2px solid rgb(163, 156, 156);
+}
+/*pending pickup box styling end*/
+
+/*pickup-box styling start*/
+.pickup-box {
+    background-color: #fff;
+    width: 98%;
+    height: 250px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border: 2px solid #b1cbbb;
+    overflow: hidden;
+    display: flex;
+}
+
+.seller-image {
+    height: 250px;
+    width: 30%;
+    background-color: #deeaee;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+.seller-image-box {
+    width: 80%;
+    height: 220px;
+}
+
+.seller-image-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.seller-details {
+    height: 250px;
+    width: 40%;
+    background-color: #b2b2b2;
+}
+
+.seller-details h3 {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+
+.seller-details p {
+    margin-left: 20px;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.control-buttons {
+    height: 250px;
+    width: 30%;
+    background-color: #deeaee;
+}
+/*pickup-box styling end*/
+
+/*buttons styling start*/
+.control-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.control-buttons a{
+    position: relative;
+    width: 240px;
+    height: 60px;
+    display: inline-block;
+    background: #fff;
+    margin: 8px;
+}
+
+.control-buttons a:before,
+.control-buttons a:after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #f00;
+    transition: 0.5s;
+}
+
+.control-buttons a:nth-child(1):before,
+.control-buttons a:nth-child(1):after{
+    background: linear-gradient(45deg, #00ccff,#0e1538,#0e1538,#d400d4);
+}
+
+.control-buttons a:nth-child(2):before,
+.control-buttons a:nth-child(2):after{
+    background: linear-gradient(45deg, #ff075b,#0e1538,#0e1538,#1aff22);
+}
+
+.control-buttons a:nth-child(3):before,
+.control-buttons a:nth-child(3):after{
+    background: linear-gradient(45deg, #ff075b,#0e1538,#0e1538,#1aff22);
+}
+
+.control-buttons a:nth-child(4):before,
+.control-buttons a:nth-child(4):after{
+    background: linear-gradient(45deg, #00ccff,#0e1538,#0e1538,#d400d4);
+}
+
+.control-buttons a:hover:before{
+    inset: -3px;
+}
+
+.control-buttons a:hover:before{
+    inset: -3px;
+    filter: blur(10px);
+}
+
+.control-buttons a span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background: #0e1538;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    border: 1px solid #9ea1af;
+    overflow: hidden;
+}
+
+.control-buttons a span::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.075);
+    transform: skew(25deg);
+}
+/*buttons styling end*/

@@ -28,10 +28,8 @@
 </head>
 <body>
 <%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
-
+    ArrayList<Advertisement> myShelfAds = (ArrayList<Advertisement>) request.getAttribute("myShelfAds");
 %>
-
 
 
 <div class="container">
@@ -52,50 +50,36 @@
             <div class="main-area-box">
                 <div class="top-box-title-block">
                     My Shelf
+                    <% for (Advertisement ad: myShelfAds){%>
                     <div class="sub-box">
                         <div class="text-box">
 
                             <div class="title">
-                                The Hobbit
+                                <%=ad.getTitle()%>
                             </div>
                             <div class="author">
-                                J.R.R Tolkien
+                                <%=ad.getAuthor()%>
                             </div>
+
 
                         </div>
 
                         <div class="book-cover">
                             <div class="cover-pic">
-                                <img src="../allPages/uploads/hobbit-cover.jpg">
+                                <img src="<%=ad.getBookPhotoFront()%>">
                             </div>
                         </div>
                         <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque vel corporis quidem praesentium delectus, rerum vero, ducimus ea iure, aut nam dolorum ullam. Quidem officia vero iure ex, deserunt voluptate.
+                           <%=ad.getDescription()%>
+                            <% if (ad.getAvailable() == 2){%>
+                            <p style="color: red">THIS BOOK WAS REJECTED BECAUSE IT DID NOT MEET VALID CONDITIONS. REFUND WILL BE PROVIDED SOON.</p>
+                            <%} else if(ad.getAvailable() == 3){%>
+                            <p style="color: red">THIS BOOK WAS REJECTED BECAUSE IT DID NOT MEET VALID CONDITIONS. REFUND HAS BEEN GIVEN.</p>
+                            <%}%>
                         </div>
-                        <button type="button" class="favorite-btn">Add a Review</button>
+<%--                        <button type="button" class="favorite-btn">Add a Review</button>--%>
                     </div>
-                    <div class="sub-box">
-                        <div class="text-box">
-
-                            <div class="title">
-                                Harry Potter
-                            </div>
-                            <div class="author">
-                                J.K. Rowling
-                            </div>
-
-                        </div>
-
-                        <div class="book-cover">
-                            <div class="cover-pic">
-                                <img src="../allPages/uploads/harrypotter-cover.jpg">
-                            </div>
-                        </div>
-                        <div class="description">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque vel corporis quidem praesentium delectus, rerum vero, ducimus ea iure, aut nam dolorum ullam. Quidem officia vero iure ex, deserunt voluptate.
-                        </div>
-                        <button type="button" class="favorite-btn">Add a Review</button>
-                    </div>
+                    <%}%>
                 </div>
 
             </div>

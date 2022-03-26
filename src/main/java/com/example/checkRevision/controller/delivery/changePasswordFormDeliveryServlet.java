@@ -9,7 +9,7 @@ import java.io.IOException;
 public class changePasswordFormDeliveryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/delivery/changePassword.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/delivery/New/settings.jsp");
         dispatcher.forward(request, response);
     }
 

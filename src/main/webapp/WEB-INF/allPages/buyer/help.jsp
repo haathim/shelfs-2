@@ -1,7 +1,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+<%@ page import="com.example.checkRevision.variables.MyVariables" %>
+<%@ page import="com.example.checkRevision.model.Complaint" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -27,11 +28,10 @@
     <title>SHELFS.</title>
 </head>
 <body>
+
 <%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
-
+    ArrayList<Complaint> buyersComplaintReplies = (ArrayList<Complaint>) request.getAttribute("buyersComplaintReplies");
 %>
-
 
 
 <div class="container">
@@ -53,24 +53,50 @@
             <div class="formContainer">
                 <h1>Hello There!</h1>
                 <p>How can we help you?</p>
-                <form>
-
+                <form method="post" action="help">
                     <div class="column">
-                        <label for="question">Send us your questions. we'll reach to you as soon as we can</label>
+                        <label for="complaintTitle">Title</label>
+                        <input
+                                id="complaintTitle"
+                                type="text"
+                                name="complaintTitle"
+                                required
+                        />
+                    </div>
+                    <div class="column">
+                        <label for="complaintDescription">Send us your questions. we'll reach to you as soon as we can</label>
                         <textarea
                                 type="text"
-                                id="text-id"
+                                id="complaintDescription"
+                                name="complaintDescription"
                                 placeholder="Type your questions here"
                                 rows="7"
+                                required
                         ></textarea>
 
                     </div>
-
-
-
+                    <button type="submit">Submit</button>
                 </form>
-                <button>Submit</button>
+
             </div>
+
+
+            <% if(!buyersComplaintReplies.isEmpty()){%>
+            <h1>Replies to Complaints</h1>
+            <%}%>
+            <% for (Complaint complaint: buyersComplaintReplies){%>
+            <div class="formContainer">
+                <h4 style="color: #343434">Complaint ID: <%=complaint.getComplaintId()%></h4>
+                <h2>Complaint Title: <%=complaint.getTitle()%></h2>
+                <h3>Complaint Description:</h3>
+                <p><%=complaint.getDescription()%></p>
+                <h3 style="color: #4c46f5">Reply from Admin:</h3>
+                <p style="color: #4c46f5"><%=complaint.getReply()%></p>
+            </div>
+
+            <%}%>
+
+
         </div>
 
     </main>

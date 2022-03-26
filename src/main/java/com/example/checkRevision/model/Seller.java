@@ -13,8 +13,18 @@ public class Seller extends Buyer{
     private String bankName;
     private String bankBranch;
 
-    public Seller(String username, String password, int salt, Timestamp dateJoined, String firstName, String lastName, String houseNo, String street, String city, String district, String province, boolean sellerApplied, String phoneNo, String email, String nic, String nicPhotoFront, String nicPhotoBack, String bankAccountNo, String bankName, String bankBranch) {
-        super(username, password, "seller", salt, dateJoined, firstName, lastName, houseNo, street, city, district, province, sellerApplied, phoneNo, email);
+//    public Seller(String username, String password, int salt, Timestamp dateJoined, String firstName, String lastName, String houseNo, String street, String city, String district, String province, boolean sellerApplied, String phoneNo, String email, String nic, String nicPhotoFront, String nicPhotoBack, String bankAccountNo, String bankName, String bankBranch) {
+//        super(username, password, "seller", salt, dateJoined, firstName, lastName, houseNo, street, city, district, province, sellerApplied, phoneNo, email);
+//        this.nic = nic;
+//        this.nicPhotoFront = nicPhotoFront;
+//        this.nicPhotoBack = nicPhotoBack;
+//        this.bankAccountNo = bankAccountNo;
+//        this.bankName = bankName;
+//        this.bankBranch = bankBranch;
+//    }
+
+    public Seller(String username, String password, String userType, int salt, Timestamp dateJoined, String firstName, String lastName, String houseNo, String street, String city, String district, String province, boolean sellerApplied, String phoneNo, String email, String nic, String nicPhotoFront, String nicPhotoBack, String bankAccountNo, String bankName, String bankBranch) {
+        super(username, password, userType, salt, dateJoined, firstName, lastName, houseNo, street, city, district, province, sellerApplied, phoneNo, email);
         this.nic = nic;
         this.nicPhotoFront = nicPhotoFront;
         this.nicPhotoBack = nicPhotoBack;

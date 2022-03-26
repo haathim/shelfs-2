@@ -1,6 +1,7 @@
 package com.example.checkRevision.controller.seller;
 
 import com.example.checkRevision.dao.OrdersDAO;
+import com.example.checkRevision.model.BuyerAdvertisement;
 import com.example.checkRevision.model.Order;
 import com.example.checkRevision.model.OrderAdCombined;
 import com.example.checkRevision.variables.MyVariables;
@@ -37,7 +38,7 @@ public class salesHistoryServlet extends HttpServlet {
         String username = (String) request.getSession().getAttribute("username");
         OrdersDAO dao = new OrdersDAO();
         try {
-            ArrayList<OrderAdCombined> orderAds = dao.getAllOrdersOfSeller(username, query, currentPage);
+            ArrayList<BuyerAdvertisement> buyerAds = dao.getAllOrdersOfSeller(username, query, currentPage);
             int rows = dao.getAllOrdersOfSellerNumberOfRows(username, query);
             int recordsPerPage = MyVariables.resultsPerPage;
             int nOfPages = rows / recordsPerPage;
@@ -47,7 +48,7 @@ public class salesHistoryServlet extends HttpServlet {
             request.setAttribute("noOfPages", nOfPages);
             request.setAttribute("currentPage", currentPage);
             request.setAttribute("query", query);
-            request.setAttribute("orderAds", orderAds);
+            request.setAttribute("buyerAds", buyerAds);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/seller/sales-history.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException | ClassNotFoundException throwables) {

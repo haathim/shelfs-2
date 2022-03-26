@@ -34,7 +34,7 @@ public class WishlistDAO {
             int price = result.getInt(8);
             String isbn = result.getString(9);
             String language = result.getString(10);
-            boolean available = result.getBoolean(11);
+            int available = result.getInt(11);
             String description = result.getString(12);
             String bookFrontPhoto = result.getString(13);
             String bookBackPhoto = result.getString(14);

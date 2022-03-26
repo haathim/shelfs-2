@@ -9,9 +9,10 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="unauthorized.css" />
 </head>
 <body>
-
+<div class="box">
 <form action="newPassword" method="post">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username"><br>
@@ -23,7 +24,7 @@
     <input type="text" id="otpCode" name="otpCode"><br>
     <input type="submit" value="Submit">
 </form>
-
+</div>
 
 </body>
 </html>

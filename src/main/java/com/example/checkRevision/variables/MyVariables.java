@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class MyVariables {
     private static ArrayList<String> categories = new ArrayList<String>();
     private static ArrayList<String> languages = new ArrayList<String>();
-    public static String port = "8000";
+    public static String port = "8976";
     public static String rootURL = "http://localhost:"+port+"/checkRevision_war_exploded/";
     private static ArrayList<String> districts = new ArrayList<String>();
     private static ArrayList<String> provinces = new ArrayList<String>();

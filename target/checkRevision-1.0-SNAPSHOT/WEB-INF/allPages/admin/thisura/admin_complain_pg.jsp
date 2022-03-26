@@ -1,3 +1,4 @@
+<%@ page import="com.example.checkRevision.model.Complaint" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +17,9 @@
 </head>
 
 <body id="body">
+<%
+  Complaint complaint = (Complaint) request.getAttribute("complaint");
+%>
   <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
       <i class="fa fa-bars" aria-hidden="true"></i>
@@ -36,16 +40,35 @@
           <h1>Complaints</h1>
           <div class="mainbox1">
             <div class="searchbar">
-                <div class="inline"><a href="#"><button style="margin:5px;">Reply</a></div>
+<%--                <div class="inline"><a href="#"><button style="margin:5px;">Reply</a></div>--%>
                 <div class="outline"><a href="viewComplaints"><button style="margin: 5px;">Back</a></div>
               </div>
             <h2>Complaint Details</h2>
-            <p><br><br><b>Name of User:</b> Chandler Bing<br><br><b>Username:</b> chandlerbing<br><br><b>Title:</b> Webiste is not 
-            working<br><br><b>Description:</b> This error is similar to the 401 error, but note the difference between unauthorized and 
-            forbidden. In this case no login opportunity was available. This can happen, for example, if you try to access a (forbidden)
-             directory on a website.</p>
+            <p><br><br><b>Name of User:</b><%=complaint.getBuyerName()%><br><br><b>Username:</b> <%=complaint.getBuyerId()%><br><br><b>Title:</b> <%=complaint.getTitle()%><br><br><b>Description:</b><%=complaint.getDescription()%></p>
           </div>
+
+        <div class="formContainer">
+          <h1>Give a reply</h1>
+          <form method="post" action="replyToComplaint">
+            <div class="column">
+                <input type="hidden" name="complaintId" value="<%=complaint.getComplaintId()%>">
+              <label for="replyDescription">Write your reply here.</label>
+              <textarea
+                      type="text"
+                      id="replyDescription"
+                      name="replyDescription"
+                      placeholder="Type your questions here"
+                      rows="7"
+                      required
+              ></textarea>
+
+            </div>
+            <button type="submit">Reply</button>
+          </form>
+
         </div>
+
+      </div>
     </main>
 
     <nav id="sidebar">

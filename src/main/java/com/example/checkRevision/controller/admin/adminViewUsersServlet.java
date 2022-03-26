@@ -20,23 +20,6 @@ public class adminViewUsersServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-//        BuyerDAO dao = new BuyerDAO();
-//        try {
-//            ArrayList<Buyer> allBuyers = dao.getAllBuyers();
-//            for (Buyer buyer:allBuyers) {
-//                System.out.println(buyer.getUsername());
-//            }
-//
-//            request.setAttribute("allBuyers", allBuyers);
-////            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/admin/view-buyers.jsp");
-//            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/admin/thisura/admin_manage_users.jsp");
-//            dispatcher.forward(request, response);
-//
-//        } catch (SQLException | ClassNotFoundException throwables) {
-//            throwables.printStackTrace();
-//        }
-
-
         String query;
         if (request.getParameter("query") == null){
             query = "";

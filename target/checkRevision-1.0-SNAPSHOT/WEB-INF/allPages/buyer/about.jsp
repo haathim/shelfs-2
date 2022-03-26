@@ -27,10 +27,6 @@
     <title>SHELFS.</title>
 </head>
 <body>
-<%
-    ArrayList<Advertisement> wishlistAds = (ArrayList<Advertisement>) request.getAttribute("wishlistAds");
-
-%>
 
 
 
@@ -50,7 +46,15 @@
     <main>
         <div class="main__container">
             <h1>About Us</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus reprehenderit eveniet fugiat unde. Cupiditate aut accusamus sunt doloremque in recusandae quisquam quaerat tenetur maxime provident repellat harum et, animi possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae quae voluptatem mollitia reiciendis, obcaecati quis assumenda saepe itaque vero tempora fugiat ratione magnam autem tempore? Corrupti mollitia explicabo id molestias. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis modi qui, libero, non alias, neque maiores inventore iste consequatur ab dolore totam dolorum quasi optio nihil eius rerum vitae ex. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam dolor repellat quis cum ducimus deserunt at labore nulla eius incidunt numquam obcaecati quam mollitia nemo, odio enim reprehenderit optio. Vero. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, asperiores! Voluptatem, ad pariatur temporibus in et aut eveniet at quidem, odio provident accusantium. Odit illo praesentium officia voluptate rem similique! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi maxime iusto voluptatum rerum corrupti quis dolorem, error hic odit praesentium? Dolores totam perspiciatis quo suscipit optio nobis aliquam necessitatibus culpa! Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores adipisci perspiciatis corporis vitae quibusdam laudantium inventore possimus fugiat qui totam, mollitia incidunt, cupiditate in officia, iure a et recusandae quidem. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore at voluptatibus libero nisi blanditiis, provident odio saepe assumenda neque nihil commodi tenetur perferendis dignissimos eveniet voluptates iure sequi dicta id?</p>
+            <p>Shelfs – Online Bookstore, the latest online bookstore exclusively for all Sri Lankans, is aimed
+                to provide our readers with the books they wish. The uniqueness of this store is that this store
+                carries only second-hand books where we provide customers the opportunity to purchase their
+                favourite books at lower cost than brand-new books, and this also opens the opportunity for
+                customers who are willing to sell their books as well after their quality is assured. This store
+                adopts a delivery system as well, hence our customers are given the luxury of receiving their
+                desired books at their doorstep saving their time and cost. We aim to cover many genres of
+                books, ranging from educational, to comics, to history and many more, providing the best
+                experience to our users around the country.</p>
         </div>
 
     </main>

@@ -3,6 +3,7 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
 <%@ page import="com.example.checkRevision.model.Buyer" %>
 <%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -98,6 +99,8 @@
                     value="<%=buyer.getCity()%>"
 
             ></input>
+
+            <% if(buyer.getUserType().equals("buyer")){%>
             <label for="district">District:</label>
             <br />
             <select
@@ -112,6 +115,24 @@
                     name="province"
                     required
             />
+            <%} else if(buyer.getUserType().equals("seller")){%>
+            <label for="district">District:</label>
+            <br />
+            <select
+                    id="district"
+                    type="text"
+                    name="district"
+                    value="<%=buyer.getDistrict()%>"
+                    disabled
+
+            ></select>
+            <input
+                    id="province"
+                    type="hidden"
+                    name="province"
+                    required
+            />
+
           </div>
 
 
@@ -120,6 +141,8 @@
 
       </div>
 
+
+      </div>
       <%@include file="/WEB-INF/allPages/common/changePasswordCommonpart.jsp"%>
 
     </div>

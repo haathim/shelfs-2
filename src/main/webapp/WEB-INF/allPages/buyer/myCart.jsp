@@ -51,7 +51,13 @@ change this template use File | Settings | File Templates. --%> <%@ page
                           <div class="cart-price"></div>
                           <p>Items - <div id="itemcount"></div></p>
                           <div class="top-box-checkout-btn">
-                              <i class="fa fa-book"><a href="checkout">Proceed to checkout</a> </i>
+
+                              <i class="fa fa-book">
+                                  <form action="testPayHereServlet" method="post">
+                                      <input type="hidden" name="checkoutValues" value="" id="checkoutValues">
+                                      <td><button type="submit">Proceed to checkout</button></td>
+                                  </form>
+                              </i>
                           </div>
                       </div>
                   </div>

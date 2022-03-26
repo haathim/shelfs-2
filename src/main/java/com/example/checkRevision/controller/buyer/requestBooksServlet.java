@@ -12,16 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 @WebServlet(name = "requestBooksServlet", value = "/buyer/requestBooks")
 public class requestBooksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String buyerId = (String) request.getSession().getAttribute("username");
+        BuyerRequestDAO dao = new BuyerRequestDAO();
+        try {
+            ArrayList<BuyerRequest> buyerRequests = dao.getBuyerRequestsOfBuyer(buyerId);
+            request.setAttribute("buyerRequests", buyerRequests);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/request-book-form.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/buyer/request-book-form.jsp");
-        dispatcher.forward(request, response);
 
     }
 

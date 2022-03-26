@@ -1,9 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.checkRevision.model.Wishlist" %>
-<%@ page import="com.example.checkRevision.model.Advertisement" %>
 <%@ page import="com.example.checkRevision.variables.MyVariables" %>
-<%@ page import="com.example.checkRevision.model.Order" %>
-<%@ page import="com.example.checkRevision.model.OrderAdCombined" %><%--
+<%@ page import="com.example.checkRevision.model.*" %><%--
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -30,7 +27,7 @@
 </head>
 <body>
 <%
-    ArrayList<OrderAdCombined> orders = (ArrayList<OrderAdCombined>) request.getAttribute("orders");
+    ArrayList<NewOrder> orders = (ArrayList<NewOrder>) request.getAttribute("orders");
 
 %>
 
@@ -53,31 +50,45 @@
         <div class="main__container">
             <div class="table-template">
                 <div class="search-container">
-                    <form method="post" action="">
-                        <input type="text" class="table-search" placeholder="Search Items...">
-                        <button class="search-button">Search</button>
+                    <form method="get" action="viewOrders">
+                        <input type="text" name="keyword" class="table-search" placeholder="Search Items...">
+                        <button type="submit" class="search-button">Search</button>
                     </form>
                 </div>
                 <table>
                     <tr class="table-head">
                         <th>Order Id</th>
-                        <th>Seller ID</th>
-                        <th>Delivered</th>
-                        <th>View</th>
+                        <th>Date Ordered</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>See More</th>
+
                     </tr>
-                    <%
+                    <%for (NewOrder order: orders){%>
 
-                        for (OrderAdCombined order: orders) {
-                            out.println("<tr class=\"table-rows\">");
-                            out.println("<td>" + order.getOrder().getOrderId() + "</td>");
-                            out.println("<td>" + order.getAd().getSellerId() + "</td>");
-                            out.println("<td>" + order.getOrder().isCompleted() + "</td>");
-                            out.println("<td>"+"<div class=\"view-more-button\">"+ "<a href=\"" + MyVariables.rootURL +"buyer/viewOrdersMore?orderId=" + order.getOrder().getOrderId() + "\"><h2>View</h2></a>\n" +"</div></td>");
-                            out.println("</tr>");
-                        }
+                    <tr class="table-rows">
 
+                    <td><%=order.getOrderId()%></td>
+                    <td><%=order.getDateOrdered()%></td>
+                    <td><% switch (order.getStatus()) {
+                        case 0:
+                            out.println("Pending Pickups");
+                            break;
+                        case 1:
+                            out.println("Pickups Complete");
+                            break;
+                        case 2:
+                            out.println("To be delivered");
+                            break;
+                        case 3:
+                            out.println("Delivered");
+                            break;
+                    }%></td>
+                    <td><%=order.getTotalPrice()%></td>
+                    <td><div class="view-more-button"><a href="viewOrdersMore?orderId=<%=order.getOrderId()%>"><h2>View</h2></a></div></td>
 
-                    %>
+                    </tr>
+                    <%}%>
                 </table>
             </div>
 

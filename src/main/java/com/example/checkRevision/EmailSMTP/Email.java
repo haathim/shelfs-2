@@ -33,7 +33,7 @@ public class Email {
 
         try{
             Message message = new MimeMessage( session );
-            message.setFrom( new InternetAddress("EduClick") );
+            message.setFrom( new InternetAddress("Shelfs") );
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(toEmail)

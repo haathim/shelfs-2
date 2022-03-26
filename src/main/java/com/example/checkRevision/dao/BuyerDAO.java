@@ -51,6 +51,49 @@ public class BuyerDAO {
         return result;
 
     }
+    public Buyer getBuyer(String usernamex) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "SELECT * FROM `buyers`  WHERE `username` = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, usernamex);
+        ResultSet result = stmt.executeQuery();
+        System.out.println("Outside");
+        if(result.next()){
+            System.out.println("Inside if");
+            String username = result.getString(1);
+            String firstname = result.getString(2);
+            String lastname = result.getString(3);
+            String houseNo = result.getString(4);
+            String street = result.getString(5);
+            String city = result.getString(6);
+            String district = result.getString(7);
+            String province = result.getString(8);
+            String phoneNo = result.getString(10);
+            String email = result.getString(11);
+            System.out.println(email);
+
+            Buyer buyer = new Buyer(username, "", "", 0, null, firstname, lastname, houseNo, street, city, district, province, false, phoneNo, email);
+            return buyer;
+
+        }else{
+            System.out.println("Inside else");
+            return null;
+        }
+    }
+
+    public void updateBuyer(String username, String houseNo, String street, String city, String phoneNo, String district) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnection.getConnection();
+        String sql = "UPDATE `buyers` SET `houseNo` = ?, `street` =?, `city`=?, `phoneNo`=?, `district`=?  WHERE `username` = ?;";
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setString(1, houseNo);
+        stmt.setString(2, street);
+        stmt.setString(3, city);
+        stmt.setString(4, phoneNo);
+        stmt.setString(5, district);
+        stmt.setString(6, username);
+        stmt.executeUpdate();
+
+    }
 
     public ArrayList<Buyer> getAllBuyers(String query, int currentPage) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();

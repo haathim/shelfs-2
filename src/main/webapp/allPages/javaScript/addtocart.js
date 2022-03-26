@@ -54,14 +54,16 @@ function addToCart(){
     var author = document.getElementById('bookauthor').innerHTML;
     var seller = document.getElementById('seller').innerHTML;
     var price = document.getElementById('price').innerHTML;
-    var adId = document.getElementById('adId').innerHTML
+    var adId = document.getElementById('adId').innerHTML;
+    var img = document.getElementById('imgurl').getAttribute('src')
 
     var book = {
         "title":title,
         "author":author,
         "seller":seller,
         "price":price,
-        "adId":adId
+        "adId":adId,
+        "img":img
     }
 
     const filteredArray = existingItems.filter(element => {
@@ -81,11 +83,11 @@ function addToCart(){
 
     console.log("Ex", existingItems)
     localStorage.setItem("cartitem", JSON.stringify(existingItems));
-    localStorage.setItem("cart-Id", JSON.stringify(cartId));
     
 
     
-    console.log(title);
+    console.log(img);
+
     
 
     // console.log(localStorage.key(0));
@@ -126,7 +128,9 @@ function display(){
         </div>
   
         <div class="book-cover">
-            <div class="cover-pic"></div>
+            <div class="cover-pic">
+                <img src="${item.img}">
+            </div>
         </div>
     
         <div class="price">

@@ -44,9 +44,9 @@
         <%@include file="/WEB-INF/allPages/unregistered/navbar-left/navbar-left - FAQ.jsp"%>
     </div>
 
-    <div class="navbar__right">
-        <%@include file="/WEB-INF/allPages/buyer/navbar-right.jsp"%>
-    </div>
+<%--    <div class="navbar__right">--%>
+<%--        <%@include file="/WEB-INF/allPages/buyer/navbar-right.jsp"%>--%>
+<%--    </div>--%>
 
     <main>
         <div class="main__container">

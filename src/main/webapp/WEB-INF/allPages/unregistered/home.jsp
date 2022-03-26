@@ -17,6 +17,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
     <link rel="stylesheet" href="../allPages/styling/layout.css" />
     <link rel="stylesheet" href="../allPages/unregistered/home.css" />
     <link rel="stylesheet" href="../allPages/unregistered/sidebar.css" />
+    <link rel="stylesheet" href="../allPages/unregistered/slideshow.css" />
 
     <title>SHELFS.</title>
   </head>
@@ -38,19 +39,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <%@include file="/WEB-INF/allPages/unregistered/navbar-left/navbar-left - Home.jsp"%>
       </div>
 
-      <div class="navbar__right">
-        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>
-      </div>
+<%--      <div class="navbar__right">--%>
+<%--        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>--%>
+<%--      </div>--%>
 
       <main>
+        <%@include file="/WEB-INF/allPages/unregistered/slideshow.jsp"%>
         <div class="main__container">
 
           <%@include file="/WEB-INF/allPages/unregistered/home-books.jsp"%>
 
         </div>
-
-
-
       </main>
 
       <nav id="sidebar">

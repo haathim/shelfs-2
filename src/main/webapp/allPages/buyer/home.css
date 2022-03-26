@@ -118,14 +118,14 @@ padding: 5px;
     align-content: center; */
   margin-top: auto;
 }
-.cover-pic {
-  /* padding: 10px;
-    width: 100px;
-    height: 100px;
-    position: relative;
-    box-sizing: border-box; */
-  border: 1px solid green;
-}
+/*.cover-pic {*/
+/*  !* padding: 10px;*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    position: relative;*/
+/*    box-sizing: border-box; *!*/
+/*  !*border: 1px solid green;*!*/
+/*}*/
 
 
 .cover-pic img {

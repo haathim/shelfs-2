@@ -33,14 +33,14 @@
       border-radius: 25px; */
 
   width: 90%;
-  /*border: 1px solid red;*/
-  padding: 5px;
+/border: 1px solid red;/
+padding: 5px;
   margin: 20px auto;
 }
 
 .main-area-column {
   display: flex;
-  /*overflow-x: scroll;*/
+/overflow-x: scroll;/
 }
 .main-area-row {
   display: flex;
@@ -127,11 +127,19 @@
   border: 1px solid green;
 }
 
+
 .cover-pic img {
   width: 160px;
   height: 240px;
-  position: relative;
-  object-fit: contain;
+/position: relative;/
+object-fit: contain;
+}
+
+.cart-cover-pic img {
+  width: 100px;
+  height: auto;
+/position: relative;/
+object-fit: contain;
 }
 
 .view-more-button button {

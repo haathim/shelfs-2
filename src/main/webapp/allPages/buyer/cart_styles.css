@@ -85,12 +85,17 @@
     height: 180px;
     width: 120px;
     border-radius: 8px;
-    background-image: url("hobbit-cover.jpg");
     background-size: cover;
     box-sizing: border-box;
     object-fit: fill;
     
   }
+.cover-pic img {
+    width: 100px;
+    height: auto;
+position: relative;
+object-fit: contain;
+}
 
    .description{
      position: relative;
@@ -148,9 +153,12 @@
   .title{
     height: 20px;
       font-size: 20px;
+      margin-right: 350px;
+
   }
   .author{
     height: 20px;
       font-size: 16px;
       padding-top: 3px;
+      margin-right: 400px;
   }

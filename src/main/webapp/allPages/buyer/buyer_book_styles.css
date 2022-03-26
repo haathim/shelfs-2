@@ -32,9 +32,13 @@
     color: #000;
     padding-right: 10px;
   }
+  .top-box-seller-block > i{
+    padding-right: 5px;
+  }
 
   .seller-name{
-    display: block;
+    display: flex;
+    left: 80%;
     font-size: 25px;
     color: #000;
     padding-right: 10px;
@@ -215,10 +219,10 @@
     position: relative;
     width: 250px;
     height: auto;
-    left: -95px;
+    left: -5px;
     /* position: absolute; */
     object-fit: contain;
-    bottom: 150px;
+    bottom: 10px;
   }
 
   .cover-pic-small img{

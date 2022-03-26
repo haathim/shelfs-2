@@ -64,10 +64,11 @@
   </div>
 
   <h2>ACCOUNT</h2>
-<%--  <div class="sidebar__link">--%>
-<%--    <i class="fa fa-handshake-o"></i>--%>
-<%--    <a href="messages">Messages</a>--%>
-<%--  </div>--%>
+
+  <div class="sidebar__link">
+    <i class="fa fa-handshake-o"></i>
+    <a href="chatUsersPage">Messages</a>
+  </div>
 
   <div class="sidebar__link">
     <i class="fa fa-briefcase"></i>

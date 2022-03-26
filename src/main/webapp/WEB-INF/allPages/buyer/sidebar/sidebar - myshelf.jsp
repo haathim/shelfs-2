@@ -58,6 +58,10 @@
   <h2>ACCOUNT</h2>
   <div class="sidebar__link">
     <i class="fa fa-wrench"></i>
+    <a href="chatUsersPage">Messages</a>
+  </div>
+  <div class="sidebar__link">
+    <i class="fa fa-wrench"></i>
     <a href="settings">Settings</a>
   </div>
   <div class="sidebar__link">

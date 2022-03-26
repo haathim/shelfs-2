@@ -409,4 +409,8 @@ public class AdvertisementDAO {
         }
 
     }
+
+    public void editPostedBookBySeller(int adId, String seller){
+
+    }
 }

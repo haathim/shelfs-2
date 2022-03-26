@@ -70,7 +70,7 @@
     </div>
     <div class="sidebar__link">
         <i class="fa fa-envelope"></i>
-        <a href="#">Messages</a>
+        <a href="chatUsersPage">Messages</a>
     </div>
     <h2>ACCOUNT</h2>
     <div class="sidebar__link">

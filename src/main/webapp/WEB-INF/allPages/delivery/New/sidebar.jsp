@@ -45,6 +45,11 @@
 
   <div class="sidebar__link">
     <i class="fa fa-question"></i>
+    <a href="chatUsersPage">Messages</a>
+  </div>
+
+  <div class="sidebar__link">
+    <i class="fa fa-question"></i>
     <a href="help1New">Help</a>
   </div>
 

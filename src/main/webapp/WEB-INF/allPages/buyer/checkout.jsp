@@ -1,6 +1,7 @@
 <%@ page import="com.example.checkRevision.model.Advertisement" %> <%@ page
 import="java.util.ArrayList" %>
-<%@ page import="com.example.checkRevision.model.Buyer" %><%-- Created by IntelliJ IDEA. User: Lenovo Date:
+<%@ page import="com.example.checkRevision.model.Buyer" %>
+<%@ page import="com.example.checkRevision.variables.MyVariables" %><%-- Created by IntelliJ IDEA. User: Lenovo Date:
 21-Sep-21 Time: 12:13 PM To change this template use File | Settings | File
 Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
 %>
@@ -73,119 +74,7 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
       <main>
         <div class="main__container">
           <div class="checkout-container">
-<%--            <div class="formContainer">--%>
-<%--              <h1>Billing Details</h1>--%>
-<%--              <p>Please check whether the below details are accurate</p>--%>
-<%--              <div--%>
-<%--                id="instructions"--%>
-<%--                style="color: blue; font-weight: bold"--%>
-<%--              ></div>--%>
-<%--              <div id="error" style="color: red; font-weight: bold"></div>--%>
-<%--              <form action="buyerRegSubmit" method="post" id="form">--%>
-<%--                <div class="row">--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="firstName">First Name:</label>--%>
-<%--                    <input--%>
-<%--                      id="firstName"--%>
-<%--                      placeholder="Nimal"--%>
-<%--                      type="text"--%>
-<%--                      name="firstName"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="lastName">Last Name:</label>--%>
-<%--                    <input--%>
-<%--                      id="lastName"--%>
-<%--                      placeholder="Perera"--%>
-<%--                      type="text"--%>
-<%--                      name="lastName"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="row">--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="houseNo">House Number:</label>--%>
-<%--                    <input--%>
-<%--                      id="houseNo"--%>
-<%--                      placeholder="23/7"--%>
-<%--                      type="text"--%>
-<%--                      name="houseNo"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="row">--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="street">Street:</label>--%>
-<%--                    <input--%>
-<%--                      id="street"--%>
-<%--                      placeholder="Parakrama road"--%>
-<%--                      type="text"--%>
-<%--                      name="street"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="city">City:</label>--%>
-<%--                    <input--%>
-<%--                      id="city"--%>
-<%--                      placeholder="Kaduwela"--%>
-<%--                      type="text"--%>
-<%--                      name="city"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="row">--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="district"> District:</label>--%>
-<%--                    <br />--%>
-<%--                    <select--%>
-<%--                      placeholder="Kaduwela"--%>
-<%--                      id="district"--%>
-<%--                      type="text"--%>
-<%--                      name="district"--%>
-<%--                      required--%>
-<%--                    ></select>--%>
-<%--                  </div>--%>
-<%--                  <div class="column">--%>
-<%--                    <input--%>
-<%--                      id="province"--%>
-<%--                      placeholder="Western"--%>
-<%--                      type="hidden"--%>
-<%--                      name="province"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                <div class="row">--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="mobileNo">Mobile Number</label>--%>
-<%--                    <input--%>
-<%--                      id="mobileNo"--%>
-<%--                      placeholder="0771234567"--%>
-<%--                      type="text"--%>
-<%--                      name="mobileNo"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                  <div class="column">--%>
-<%--                    <label for="email">Email Address</label>--%>
-<%--                    <input--%>
-<%--                      id="email"--%>
-<%--                      placeholder="Nimal@gmail.com"--%>
-<%--                      type="text"--%>
-<%--                      name="email"--%>
-<%--                      required--%>
-<%--                    />--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--                &lt;%&ndash;--%>
-<%--                <input type="submit" value="Register" class="sub-btn" />&ndash;%&gt;--%>
-<%--              </form>--%>
-<%--            </div>--%>
+
 
             <div class="checkout-details">
               <h2>YOUR ORDER</h2>
@@ -208,11 +97,52 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                 </tr>
                 <tr class="checkout-details-table-row">
                   <td><strong>Subtotal</strong></td>
-                  <td style="font-weight: bold"><%=total%></td>
+                  <td id="subTotal" style="font-weight: bold"><%=total%></td>
                 </tr>
               </table>
 
-              <h2>Delivery Method</h2>
+              <h3>Delivery Method</h3>
+                <% if (buyer.getDistrict().equals("Colombo")){%>
+                <div class="radio-button">
+                    <input
+                            type="radio"
+                            id="inhouse-delviery"
+                            name="delivery-method"
+                            value="inhouse"
+                            checked
+                            required
+                    />
+                    <label for="inhouse-delviery">In-House Delivery</label>
+                </div>
+                <div class="radio-button">
+                    <input
+                            type="radio"
+                            id="courier-delivery"
+                            name="delivery-method"
+                            value="courier"
+                            required
+                    />
+                    <label for="courier-delivery"
+                    >Courier Delivery <strong>Rs.100</strong></label
+                    >
+                </div>
+                <%}else{%>
+                <div class="radio-button">
+                    <input
+                            type="radio"
+                            id="courier-delivery"
+                            name="delivery-method"
+                            value="courier"
+                            disabled
+                            checked
+                            required
+                    />
+                    <label for="courier-delivery1"
+                    >Courier Delivery <strong>Rs.<%=MyVariables.courierAmount%></strong></label
+                    >
+                </div>
+                <br>
+                <%}%>
               <h4 id="error" style= "color:red"></h4>
               <table>
                 <tr class="checkout-details-table-row">
@@ -222,16 +152,25 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
               </table>
               <form onsubmit="checkDelivery()" id="payHereForm" method="post" action="https://sandbox.payhere.lk/pay/checkout">
                 <input type="hidden" name="merchant_id" value="1218974" />
+                  <% if (buyer.getDistrict().equals("Colombo")){%>
                 <input
                         type="hidden"
                         name="return_url"
-                        value="http://localhost:8976/checkRevision_war_exploded/buyer/payHereSuccess?checkoutAds=<%=commaseparatedlist%>"
+                        value="http://localhost:8976/checkRevision_war_exploded/buyer/payHereSuccess?checkoutAds=<%=commaseparatedlist%>&isCourier=0"
                 />
+                  <%}else{%>
+                  <input
+                          type="hidden"
+                          name="return_url"
+                          value="http://localhost:8976/checkRevision_war_exploded/buyer/payHereSuccess?checkoutAds=<%=commaseparatedlist%>&isCourier=1"
+                  />
+                  <%}%>
                 <input
                         type="hidden"
                         name="cancel_url"
                         value="http://localhost:8976/checkRevision_war_exploded/payHereFailiure"
                 />
+
                 <input
                         type="hidden"
                         name="notify_url"
@@ -243,12 +182,12 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                 <input type="hidden" name="currency" value="LKR" />
                 <input id="payHereTotal" type="hidden" name="amount" value="<%=total%>">
                 <br /><br />Customer Details<br />
-                <input type="text" name="first_name" value="" placeholder="First Name">
-                <input type="text" name="last_name" value="" placeholder="Last Name"><br />
-                <input type="text" name="email" value="" placeholder="Email">
-                <input type="text" name="phone" value="" placeholder="Phone"><br/>
-                <input type="text" name="address" value="" placeholder="Address">
-                <input type="text" name="city" value="" placeholder="City">
+                <input type="text" name="first_name" value="<%=buyer.getFirstName()%>" placeholder="First Name">
+                <input type="text" name="last_name" value="<%=buyer.getLastName()%>" placeholder="Last Name"><br />
+                <input type="text" name="email" value="<%=buyer.getEmail()%>" placeholder="Email">
+                <input type="text" name="phone" value="<%=buyer.getPhoneNo()%>" placeholder="Phone"><br/>
+                <input type="text" name="address" value="<%=buyer.getAddress()%>" placeholder="Address">
+                <input type="text" name="city" value="<%=buyer.getCity()%>" placeholder="City">
                 <input type="hidden" name="country" value="Sri Lanka"><br /><br />
                 <div>
                     <h4>Delivery Details</h4>
@@ -265,55 +204,8 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                 </div>
                   <br>
 
-
-
-
-            <%--                <div class="checkout-button">--%>
-<%--                  <h2><button type="submit">PLACE ORDER</button></h2>--%>
-<%--                </div>--%>
-<%--              </form>--%>
-
-              <% if (buyer.getDistrict().equals("Colombo")){%>
-              <div class="radio-button">
-                <input
-                        type="radio"
-                        id="inhouse-delviery"
-                        name="delivery-method"
-                        value="inhouse"
-                        required
-                />
-                <label for="inhouse-delviery">In-House Delivery</label>
-              </div>
-              <div class="radio-button">
-                <input
-                        type="radio"
-                        id="courier-delivery"
-                        name="delivery-method"
-                        value="courier"
-                        required
-                />
-                <label for="courier-delivery"
-                >Courier Delivery <strong>Rs.100</strong></label
-                >
-              </div>
-              <%}else{%>
-              <div class="radio-button">
-                <input
-                        type="radio"
-                        id="courier-delivery"
-                        name="delivery-method"
-                        value="courier"
-                        disabled
-                        checked
-                        required
-                />
-                <label for="courier-delivery1"
-                >Courier Delivery <strong>Rs.100</strong></label
-                >
-              </div>
-                  <br>
-              <%}%>
                   <input type="submit" value="Place Order">
+
               </form>
 
 
@@ -334,14 +226,14 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
       var form = document.getElementById("payHereForm");
       var total = document.getElementById("total");
       var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
-
+      var courierAmount = <%=MyVariables.courierAmount%>;
       form.addEventListener("submit", (e) => {
           var getSelectedValue = document.querySelector('input[name="delivery-method"]:checked');
           if (getSelectedValue != null) {
               console.log("INSIDE NOT NULL IF")
               if (getSelectedValue.value === "courier") {
                   console.log("INSIDE COURIER IF")
-                  document.getElementById("payHereTotal").value = 100 + parseInt(document.getElementById("payHereTotal").value);
+                  document.getElementById("payHereTotal").value = courierAmount + parseInt(document.getElementById("payHereTotal").value);
               }
           } else {
               console.log("INSIDE NULL IF")
@@ -351,6 +243,21 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
               e.preventDefault();
           }
       });
+
+      var deliveryOption = document.querySelectorAll('input[name="delivery-method"]')
+      deliveryOption.forEach((option)=> {
+          option.addEventListener("change", (e) => {
+              var selectedOption = document.querySelector('input[name="delivery-method"]:checked');
+              var returnURL = document.querySelector('input[name="return_url"]').value;
+              if(selectedOption.value === "courier"){
+                  document.querySelector('input[name="return_url"]').value = returnURL.toString().substring(0,returnURL.toString().length - 1) + "1";
+                  document.getElementById("total").innerText = parseInt(document.getElementById("subTotal").innerText) + courierAmount;
+              }else{
+                  document.querySelector('input[name="return_url"]').value = returnURL.toString().substring(0,returnURL.toString().length - 1) + "0";
+                  document.getElementById("total").innerText = document.getElementById("subTotal").innerText;
+              }
+          })
+      })
       //
       // function checkDelivery(e) {
       //     // if (getSelectedValue != null) {

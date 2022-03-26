@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MyVariables {
+    public static int courierAmount = 100;
     private static ArrayList<String> categories = new ArrayList<String>();
     private static ArrayList<String> languages = new ArrayList<String>();
     public static String port = "8976";

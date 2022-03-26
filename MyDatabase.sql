@@ -309,5 +309,13 @@ INNER JOIN newPickupsAds
          ON newOrderPickups.pickupId = newPickupsAds.pickupId;
 
 
-
+CREATE TABLE `messages` (
+    `msg_id` int(11) NOT NULL AUTO_INCREMENT,
+    `incoming_msg_user_id` VARCHAR(20) NOT NULL,
+    `outgoing_msg_user_id` VARCHAR(20) NOT NULL,
+    `msg` varchar(1000) NOT NULL,
+    PRIMARY KEY (`msg_id`),
+    FOREIGN KEY (`incoming_msg_user_id`) REFERENCES `users` (`username`) ON DELETE CASCADE,
+    FOREIGN KEY (`outgoing_msg_user_id`) REFERENCES `users` (`username`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

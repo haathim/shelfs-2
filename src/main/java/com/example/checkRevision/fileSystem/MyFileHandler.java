@@ -34,6 +34,20 @@ public class MyFileHandler {
         saveFile(bookPhotoBack, bookPhotoBackPath);
     }
 
+    public void saveBookPhotosForEdit(Part bookPhotoFront, Part bookPhotoBack, int adId, boolean validateFrontPhoto, boolean validateBackPhoto) throws IOException {
+//        String bookPhotoFrontPath = "C:\\Users\\Lenovo\\IdeaProjects\\Reviion\\src\\main\\webapp\\uploads\\bookPhotoFront\\" + adId + ".jpg";
+//        String bookPhotoBackPath = "C:\\Users\\Lenovo\\IdeaProjects\\Reviion\\src\\main\\webapp\\uploads\\bookPhotoBack\\" + adId + ".jpg";
+        String bookPhotoFrontPath = "bookPhotoFront\\" + adId + ".jpg";
+        String bookPhotoBackPath = "bookPhotoBack\\" + adId + ".jpg";
+        System.out.println("Error - 8");
+        if (validateFrontPhoto) {
+            saveFile(bookPhotoFront, bookPhotoFrontPath);
+        }
+        if (validateBackPhoto) {
+            saveFile(bookPhotoBack, bookPhotoBackPath);
+        }
+    }
+
     public void saveNicPhotos(Part nicPhotoFront, Part nicPhotoBack, String frontFileName, String backFileName) throws IOException {
 //        String nicPhotoFrontPath = "C:\\Users\\Lenovo\\IdeaProjects\\Reviion\\src\\main\\webapp\\uploads\\nicPhotoFront\\" + buyerId + ".jpg";
 //        String nicPhotoBackPath = "C:\\Users\\Lenovo\\IdeaProjects\\Reviion\\src\\main\\webapp\\uploads\\nicPhotoBack\\" + buyerId + ".jpg";

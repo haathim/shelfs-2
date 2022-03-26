@@ -55,7 +55,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
                               <i class="fa fa-book">
                                   <form action="testPayHereServlet" method="post">
                                       <input type="hidden" name="checkoutValues" value="" id="checkoutValues">
-                                      <td><button type="submit">Proceed to checkout</button></td>
+                                      <td><button id="checkoutButton" type="submit">Proceed to checkout</button></td>
                                   </form>
                               </i>
                           </div>

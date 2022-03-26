@@ -99,6 +99,10 @@ function addToCart(){
 
 
 function display(){
+
+    if (localStorage.getItem('cartitem') == null || localStorage.getItem('cartitem').length <= 2){
+        document.getElementById("checkoutButton").hidden = true;
+    }
     let bookitems = localStorage.getItem('cartitem')
     bookitems = JSON.parse(bookitems)
     console.log(bookitems)
@@ -196,6 +200,10 @@ function removeCart(event) {
     // cartId = cartId.splice(index, 1)
 
     localStorage.setItem("cartitem", JSON.stringify(existingItems));
+
+    if (localStorage.getItem('cartitem') == null || localStorage.getItem('cartitem').length <= 2){
+        document.getElementById("checkoutButton").hidden = true;
+    }
     // localStorage.setItem("cart-Id", JSON.stringify(cartId));
     //
     // var cartItemContainer = document.getElementsByClassName('top-box')[0]
@@ -259,7 +267,6 @@ function removeCart(event) {
 }
 
 function updateCheckoutButtonValue(){
-    console.log("11111111111111111111111111111111111111")
     let bookitems = localStorage.getItem('cartitem')
     bookitems = JSON.parse(bookitems)
     let checkoutValue = document.getElementById("checkoutValues")
@@ -267,8 +274,6 @@ function updateCheckoutButtonValue(){
     bookitems.forEach((item)=>{checkoutValuesArray.push(parseInt(item.adId.replace(/\n/g, '')))})
     console.log("From updateCheckoutButtonValue()")
     console.log(checkoutValuesArray)
-    // console.log(JSON.stringify(checkoutValuesArray).replace(/"/g, ''))
     checkoutValue.value = JSON.stringify(checkoutValuesArray)
-    console.log("222222222222222222222222222222222222222")
 
 }

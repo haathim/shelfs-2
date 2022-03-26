@@ -23,12 +23,6 @@ change this template use File | Settings | File Templates. --%> <%@ page
     <title>SHELFS.</title>
 </head>
 <body id="body">
-<%
-    ArrayList<Advertisement> fictionAds = (ArrayList<Advertisement>) request.getAttribute("fictionAds");
-    ArrayList<Advertisement> nonFictionAds = (ArrayList<Advertisement>) request.getAttribute("nonFictionAds");
-    ArrayList<Advertisement> otherAds = (ArrayList<Advertisement>) request.getAttribute("otherAds");
-
-%>
 
 
 <div class="container">
@@ -52,17 +46,6 @@ change this template use File | Settings | File Templates. --%> <%@ page
                     <h1>POST A BOOK</h1>
                     <p>Fill the below form to post book.</p>
                     <div id="instructions" style="color: blue; font-weight: bold">
-<%--                        <p>--%>
-<%--                            Title: Use only letters, digits, period, commas, question-mark, ampersand and--%>
-<%--                            exclamation mark. Length 1 - 50.--%>
-<%--                        </p>--%>
-<%--                        <p>Author: Use only letters, digits and period. Length 3 - 20.</p>--%>
-<%--                        <p>--%>
-<%--                            Description: Use only letters, digits, period, commas, question-mark,--%>
-<%--                            ampersand and exclamation mark. Length 1 - 500.--%>
-<%--                        </p>--%>
-<%--                        <p>ISBN: Valid 13 digit ISBN number.</p>--%>
-<%--                        <p>Images: Max size 2MB. Allowed types JPG and PNG.</p>--%>
 
                     </div>
                     <div id="error" style="color: red; font-weight: bold"></div>

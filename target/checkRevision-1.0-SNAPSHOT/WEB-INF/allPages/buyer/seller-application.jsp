@@ -42,8 +42,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
               <h1>Apply for Seller</h1>
               <p>Fill the below form to apply.</p>
               <div id="instructions" style="color: blue; font-weight: bold">
-                <p>NIC: Use only letters and digits. Length 3 - 20.</p>
-                <p>Images: Max size 2MB. Allowed types JPG and PNG.</p>
+<%--                <p>NIC: Use only letters and digits. Length 3 - 20.</p>--%>
+<%--                <p>Images: Max size 2MB. Allowed types JPG and PNG.</p>--%>
               </div>
               <div id="error" style="color: red; font-weight: bold"></div>
               <form
@@ -55,7 +55,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 <div class="row">
                   <div class="column">
                     <label for="nicNo">NIC No:</label>
-                    <input id="nicNo" type="text" name="nicNo" required />
+                    <input id="nicNo" type="text" name="nicNo" placeholder="NIC: Use only letters and digits. Length 3 - 20. Images: Max size 2MB. Allowed types JPG and PNG." required />
                   </div>
                 </div>
                 <div class="row">

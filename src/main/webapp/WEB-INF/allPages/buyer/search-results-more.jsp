@@ -38,7 +38,95 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
         <%@include file="/WEB-INF/allPages/buyer/navbar-right.jsp"%>
       </div>
 
-      <main>
+        <main>
+            <div class="main__container">
+                <div class="book-more-details">
+                    <div class="navigation">
+                        <div class="back-button">
+                            <button onclick="goBack()">Back</button>
+                        </div>
+                    </div>
+                    <div class="main-area-box">
+                        <div class="book-top-box">
+                            <div class="top-box-title-block">
+                                <% out.println(ad.getTitle());%>
+                                <div class="author">
+                                    <% out.println(ad.getAuthor());%>
+                                </div>
+                            </div>
+                            <div class="top-box-seller-block">
+                                <div class="seller-name" id="seller">
+                                    J. W. Perera
+<%--                                    <div class="rating">--%>
+<%--                                        4.9--%>
+<%--                                    </div>--%>
+                                </div>
+<%--                                <div class="seller-icon">--%>
+
+<%--                                </div>--%>
+                            </div>
+                        </div>
+                        <div class="detail-block" id="item1">
+                            <div class="book-cover">
+                                <div class="cover-pic">
+                                    <img src="<%=ad.getBookPhotoFront()%>" id="imgurl" >
+                                </div>
+
+                            </div>
+                            <div class="padding">
+
+                            </div>
+
+                            <div class="book-details">
+                                <div class="detail-list">
+                                    <div hidden class="list">
+                                        <h2 id="textwidth">Ad Id</h2>
+                                        <h3 id="adId"><% out.println(ad.getAdId());%></h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">Title</h2>
+                                        <h3 id="booktitle"><% out.println(ad.getTitle());%></h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">Author</h2>
+                                        <h3 id="bookauthor"><% out.println(ad.getAuthor());%></h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">Description</h2>
+                                        <h3 id="parawidth"><% out.println(ad.getDescription());%>.</h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">Language</h2>
+                                        <h3><% out.println(ad.getLanguage());%></h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">ISBN</h2>
+                                        <h3><% out.println(ad.getIsbn());%></h3>
+                                    </div>
+                                    <div class="list">
+                                        <h2 id="textwidth">Category</h2>
+                                        <h3><% out.println(ad.getCategory());%></h3>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <div class="price-button" id="price">
+                                        <% out.println(ad.getPrice());%>
+                                    </div>
+                                    <div class="btn-inline">
+                                        <button type="button" class="addtocart-btn" onclick="addToCart()"><i class="fa fa-shopping-cart"></i>  Add to cart</button>
+                                        <form action="addtowishlist" method="post">
+                                            <input type="hidden" name="adId" value=<%=ad.getAdId()%>>
+
+                                            <button type="submit" class="addtowishlist-btn"><i class="fa fa-star"></i>  Add to wishlist</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+<!--       <main>
         <div class="main__container">
           <div class="book-more-details">
             <div class="navigation">
@@ -53,7 +141,7 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                   <div class="author"><% out.println(ad.getAuthor());%></div>
                 </div>
                 <div class="top-box-seller-block">
-                  <div class="seller-icon"></div>
+                  <div class="seller-icon"></div> -->
 
                   <div class="seller-name" id="seller">
                     <%=ad.getSellerId()%>

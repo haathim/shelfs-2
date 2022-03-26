@@ -56,14 +56,9 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                         </div>
                         <div class="top-box-seller-block">
                             <div class="seller-name" id="seller">
-                                J. W. Perera
-                                <%--                                    <div class="rating">--%>
-                                <%--                                        4.9--%>
-                                <%--                                    </div>--%>
+                                Seller ID : @<% out.println(ad.getSellerId());%>
                             </div>
-                            <%--                                <div class="seller-icon">--%>
 
-                            <%--                                </div>--%>
                         </div>
                     </div>
                     <div class="detail-block" id="item1">
@@ -110,7 +105,7 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                             </div>
                             <div class="buttons">
                                 <div class="price-button" id="price">
-                                    <% out.println(ad.getPrice());%>
+                                    Rs.<% out.println(ad.getPrice());%>
                                 </div>
                                 <div class="btn-inline">
                                     <button type="button" class="addtocart-btn" onclick="addToCart()"><i class="fa fa-shopping-cart"></i>  Add to cart</button>

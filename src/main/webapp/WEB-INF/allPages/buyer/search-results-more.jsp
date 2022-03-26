@@ -57,19 +57,19 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                             <div class="top-box-seller-block">
                                 <div class="seller-name" id="seller">
                                     J. W. Perera
-                                    <div class="rating">
-                                        4.9
-                                    </div>
+<%--                                    <div class="rating">--%>
+<%--                                        4.9--%>
+<%--                                    </div>--%>
                                 </div>
-                                <div class="seller-icon">
+<%--                                <div class="seller-icon">--%>
 
-                                </div>
+<%--                                </div>--%>
                             </div>
                         </div>
                         <div class="detail-block" id="item1">
                             <div class="book-cover">
                                 <div class="cover-pic">
-                                    <img src="<%=ad.getBookPhotoFront()%>" id="image">
+                                    <img src="<%=ad.getBookPhotoFront()%>" id="imgurl" >
                                 </div>
 
                             </div>

@@ -54,17 +54,6 @@
                 <div class="formContainer">
                     <h1>Request a book</h1>
                     <p>Fill the below form to Request for a Book.</p>
-                    <div id="instructions" style="color: blue; font-weight: bold">
-                        <p>
-                            Title: Use only letters, digits, period, commas, question-mark, ampersand and
-                            exclamation mark. Length 1 - 50.
-                        </p>
-                        <p>Author: Use only letters, digits and period. Length 3 - 20.</p>
-                        <p>
-                            Description: Use only letters, digits, period, commas, question-mark,
-                            ampersand and exclamation mark. Length 1 - 500.
-                        </p>
-                    </div>
                     <div id="error" style="color: red; font-weight: bold"></div>
                     <form action="requestBooks" method="post" id="form">
                         <div class="row">
@@ -74,6 +63,8 @@
                                         id="title"
                                         type="text"
                                         name="title"
+                                        placeholder="Use only letters, digits, period, commas, question-mark, ampersand and
+                            exclamation mark. Length 1 - 50"
                                         required
                                 />
                             </div>
@@ -83,6 +74,7 @@
                                         id="author"
                                         type="text"
                                         name="author"
+                                        placeholder="Use only letters, digits and period. Length 3 - 20"
                                         required
                                 />
                             </div>

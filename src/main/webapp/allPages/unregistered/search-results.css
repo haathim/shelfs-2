@@ -77,10 +77,15 @@
 .view-more-button button {
   border: none;
   padding: 10px 20px;
-  background: #0000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   border-radius: 3px;
   width: 100%;
+}
+
+.title, .author {
+  text-align: center;
+  align-content: center;
 }
 
 @media only screen and (max-width: 978px) {

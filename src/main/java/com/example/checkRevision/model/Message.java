@@ -1,20 +1,17 @@
 package com.example.checkRevision.model;
 
-import java.sql.Timestamp;
-
 public class Message {
-    private int messageId;
-    private String from;
-    private String to;
-    private Timestamp date;
-    private String content;
 
-    public Message(int messageId, String from, String to, Timestamp date, String content) {
+    private int messageId;
+    private String incomingUserId;
+    private String outgoingUserId;
+    private String messageContent;
+
+    public Message(int messageId, String incomingUserId, String outgoingUserId, String messageContent) {
         this.messageId = messageId;
-        this.from = from;
-        this.to = to;
-        this.date = date;
-        this.content = content;
+        this.incomingUserId = incomingUserId;
+        this.outgoingUserId = outgoingUserId;
+        this.messageContent = messageContent;
     }
 
     public int getMessageId() {
@@ -25,35 +22,27 @@ public class Message {
         this.messageId = messageId;
     }
 
-    public String getFrom() {
-        return from;
+    public String getIncomingUserId() {
+        return incomingUserId;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setIncomingUserId(String incomingUserId) {
+        this.incomingUserId = incomingUserId;
     }
 
-    public String getTo() {
-        return to;
+    public String getOutgoingUserId() {
+        return outgoingUserId;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setOutgoingUserId(String outgoingUserId) {
+        this.outgoingUserId = outgoingUserId;
     }
 
-    public Timestamp getDate() {
-        return date;
+    public String getMessageContent() {
+        return messageContent;
     }
 
-    public void setDate(Timestamp date) {
-        this.date = date;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setMessageContent(String messageContent) {
+        this.messageContent = messageContent;
     }
 }

@@ -57,13 +57,17 @@ function addToCart(){
     var author = document.getElementById('bookauthor').innerHTML;
     var seller = document.getElementById('seller').innerHTML;
     var price = document.getElementById('price').innerHTML;
-    var adId = document.getElementById('adId').innerHTML
+    var adId = document.getElementById('adId').innerHTML;
+    var img = document.getElementById('imgurl').getAttribute('src')
 
     var book = {"title":title,
         "author":author,
         "seller":seller,
-        "price":price,
-        "adId":adId}
+        "price":price.replace(/(\s|\n|R|s|\.)/g, ''),
+        "adId":adId,
+        "img":img
+    }
+
 
     const filteredArray = existingItems.filter(element => {
         if (element.adId === adId) {
@@ -81,12 +85,9 @@ function addToCart(){
     existingItems.push(book)
 
     console.log("Ex", existingItems)
-    localStorage.setItem("cartitem", JSON.stringify(existingItems));
-    localStorage.setItem("cart-Id", JSON.stringify(cartId));
+    localStorage.setItem("cartitem", JSON.stringify(existingItems));    
 
-
-
-    console.log(title);
+    console.log(img);
 
 
     // console.log(localStorage.key(0));
@@ -99,6 +100,10 @@ function addToCart(){
 
 
 function display(){
+
+    if (localStorage.getItem('cartitem') == null || localStorage.getItem('cartitem').length <= 2){
+        document.getElementById("checkoutButton").hidden = true;
+    }
     let bookitems = localStorage.getItem('cartitem')
     bookitems = JSON.parse(bookitems)
     console.log(bookitems)
@@ -128,13 +133,15 @@ function display(){
         </div>
   
         <div class="book-cover">
-            <div class="cover-pic"></div>
+            <div class="cover-pic">
+                <img src="${item.img}">
+            </div>
         </div>
     
         <div class="price">
-            <span id="price">${item.price}</span>
+            <span id="price">Rs.${item.price}</span>
         </div>
-        <button type="button" class="view-btn"><i class="fa fa-book"></i>  View</button>
+        <a href="searchResultsMore?adId=${item.adId}"><button type="button" class="view-btn"><i class="fa fa-book"></i>  View</button></a>
         <button type="button" class="remove-btn"><i class="fa fa-trash"></i>  Remove</button>
     </div>`
         })
@@ -156,13 +163,13 @@ function updateTotal(){
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('price')[0]
-        var price = parseFloat(priceElement.innerText.replace('LKR',))
+        var price = parseFloat(priceElement.innerText.replace(/[Rs.]/g, ''))
         total = total + price
         console.log(priceElement)
 
     }
     console.log("Nmber:", cartRows.length)
-    total = Math.round(total*100)/100
+    // total = Math.round(total*100)/100
     document.getElementsByClassName('cart-price')[0].innerText = 'Total - LKR ' + total;
     document.getElementById('itemcount').innerText = cartRows.length
 }
@@ -196,6 +203,10 @@ function removeCart(event) {
     // cartId = cartId.splice(index, 1)
 
     localStorage.setItem("cartitem", JSON.stringify(existingItems));
+
+    if (localStorage.getItem('cartitem') == null || localStorage.getItem('cartitem').length <= 2){
+        document.getElementById("checkoutButton").hidden = true;
+    }
     // localStorage.setItem("cart-Id", JSON.stringify(cartId));
     //
     // var cartItemContainer = document.getElementsByClassName('top-box')[0]
@@ -259,7 +270,6 @@ function removeCart(event) {
 }
 
 function updateCheckoutButtonValue(){
-    console.log("11111111111111111111111111111111111111")
     let bookitems = localStorage.getItem('cartitem')
     bookitems = JSON.parse(bookitems)
     let checkoutValue = document.getElementById("checkoutValues")
@@ -267,8 +277,6 @@ function updateCheckoutButtonValue(){
     bookitems.forEach((item)=>{checkoutValuesArray.push(parseInt(item.adId.replace(/\n/g, '')))})
     console.log("From updateCheckoutButtonValue()")
     console.log(checkoutValuesArray)
-    // console.log(JSON.stringify(checkoutValuesArray).replace(/"/g, ''))
     checkoutValue.value = JSON.stringify(checkoutValuesArray)
-    console.log("222222222222222222222222222222222222222")
 
 }

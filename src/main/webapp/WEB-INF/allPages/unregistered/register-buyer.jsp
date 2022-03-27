@@ -54,13 +54,13 @@ template use File | Settings | File Templates. --%> <%@ page
               </div>
               <div class="column">
                 <label for="pass">Enter New Password for Account:</label>
-                <input id="pass" type="text" name="pass" placeholder="Password should be at least 8 characters long" required />
+                <input id="pass" type="password" name="pass" placeholder="Password should be at least 8 characters long" required />
               </div>
             </div>
             <div class="row">
               <div class="column">
                 <label for="pass2">Re-Enter Password:</label>
-                <input id="pass2" type="text" name="pass2" placeholder="Re enter the password you entered" required />
+                <input id="pass2" type="password" name="pass2" placeholder="Re enter the password you entered" required />
               </div>
             </div>
             <div class="row">

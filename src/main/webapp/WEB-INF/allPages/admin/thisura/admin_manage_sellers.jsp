@@ -44,7 +44,7 @@
 
     <main>
         <div class="main-container">
-            <h1>Sellers</h1>
+            <h1>Pay Sellers</h1>
             <div class="mainbox1">
                 <table id="order1">
                     <thead>
@@ -54,6 +54,7 @@
                     <tr>
                         <th>SellerId</th>
                         <th>Name</th>
+                        <th>Mobile</th>
                         <th>Email</th>
                         <th>Account No.</th>
                         <th>Bank Name</th>
@@ -68,6 +69,7 @@
                     <tr>
                         <td><%=sellersPayment.getSeller().getUsername()%></td>
                         <td><%=sellersPayment.getSeller().getFullName()%></td>
+                        <td><%=sellersPayment.getSeller().getPhoneNo()%></td>
                         <td><%=sellersPayment.getSeller().getEmail()%></td>
                         <td><%=sellersPayment.getSeller().getBankAccountNo()%></td>
                         <td><%=sellersPayment.getSeller().getBankName()%></td>

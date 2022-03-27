@@ -47,7 +47,7 @@ public class resendVerCodeServlet extends HttpServlet {
         Email emailObject = new Email();
         int verCode = (int)(Math.random() * 1000000);
         session.setAttribute("verCode", verCode);
-        emailObject.sendMail(email,"Verification code from SHELFS", String.valueOf(verCode));
+        emailObject.sendAccountVerificationOTP(email, verCode);
 
 
         request.setAttribute("username", username);

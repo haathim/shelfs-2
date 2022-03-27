@@ -28,7 +28,7 @@ To resend code.
 
 <form action="resendVerCode" method="post">
     <label for="username1">Username:</label><br>
-    <input type="text" id="username1" name="username1"><br>
+    <input type="text" id="username1" name="username1" style="margin: 10px;"><br>
     <input type="submit" value="Resend Code">
 </form>
 </div>

@@ -15,7 +15,7 @@
 <div class="box">
 <form action="forgotPassword" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
+    <input type="text" id="username" name="username" style="margin: 10px;"><br>
     <input type="submit" value="Submit">
 </form>
 </div>

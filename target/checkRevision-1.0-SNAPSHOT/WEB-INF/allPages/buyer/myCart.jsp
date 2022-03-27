@@ -14,10 +14,9 @@ change this template use File | Settings | File Templates. --%> <%@ page
           crossorigin="anonymous"
   />
   <link rel="stylesheet" href="../allPages/styling/layout.css" />
-  <link rel="stylesheet" href="../allPages/buyer/home.css" />
   <link rel="stylesheet" href="../allPages/buyer/sidebar.css" />
   <link rel="stylesheet" href="../allPages/buyer/cart_styles.css" />
-
+<%--    <link rel="stylesheet" href="../allPages/buyer/home.css" />--%>
 <%--  <link rel="stylesheet" href="allPages/styling/layout.css" />--%>
 <%--  <link rel="stylesheet" href="allPages/buyer/home.css" />--%>
 <%--  <link rel="stylesheet" href="allPages/buyer/sidebar.css" />--%>
@@ -52,12 +51,13 @@ change this template use File | Settings | File Templates. --%> <%@ page
                           <div class="cart-price"></div>
                           <p>Items - <div id="itemcount"></div></p>
                           <div class="top-box-checkout-btn">
-                              <i class="fa fa-book">
+
+<%--                              <i class="fa fa-book">--%>
                                   <form action="testPayHereServlet" method="post">
                                       <input type="hidden" name="checkoutValues" value="" id="checkoutValues">
-                                      <td><button type="submit">Proceed to checkout</button></td>
+                                      <td><button id="checkoutButton" type="submit">Proceed to checkout</button></td>
                                   </form>
-                              </i>
+<%--                              </i>--%>
                           </div>
                       </div>
                   </div>

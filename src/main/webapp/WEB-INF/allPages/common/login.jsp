@@ -11,6 +11,9 @@
     <title>SHELFS - Online Bookstore</title>
 </head>
 <body id="body">
+<%
+    boolean isError = (boolean) request.getAttribute("isError");
+%>
 <div class="container">
     <div class="nav_icon" onclick="toggleSidebar()">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -19,9 +22,6 @@
     <div class="navbar__left">
 
         <%@include file="/WEB-INF/allPages/unregistered/navbar-left/navbar-left - SignIn.jsp"%>
-
-
-
 
     </div>
 
@@ -46,11 +46,16 @@
             <div id="top-signup" class="topsignuptext">
                 <h1>Create an Account</h1>
             </div>
+            <% if (isError){%>
+                <div id="error" style="color: red; font-weight: bold; background: black;text-align: center; width: fit-content;margin: auto;">Incorrect username or password.</div>
+            <%}%>
+
             <form id="login" action="login" class="input-group" method="post">
                 <input id = "uname" name ="uname" type="text" class="input-field" placeholder="Username"  required>
                 <input id = "pass" name = "pass" type="password" class="input-field" placeholder="Password" required>
                 <button type="submit" class="submit-btn">Log in</button>
-                <p > <a href="forgotPasswordForm"><span style="color:white">Forgot password?</span></a></p>
+                <p ><a href="forgotPasswordForm" style="text-decoration: none"><span style="color:white">Forgot Password?</span></a></p><br>
+                <p ><a href="verifyAccount" style="text-decoration: none"><span  style="color:white">Verify Newly Created Account</span></a></p>
             </form>
             <form id="signup" class="input-group">
                 <input type="email" class="input-field" placeholder="Email" required>
@@ -151,31 +156,8 @@
         q.style.left = "-300px";
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="../allPages/javaScript/script.js"></script>
-</body>
-This is new lofin
+<script src="allPages/javaScript/script.js"></script>
+<%--<script src="allPages/javaScript/inputValidation/login.js"></script>--%>
 
-<form action="login" method="post">
-    <label for="uname">Username</label>
-    <input
-            id="uname"
-            type="text"
-            name="uname"
-            required
-    />
-    <br /><br />
-
-    <label for="pass">Password:</label>
-    <input
-            id="pass"
-            type="text"
-            name="pass"
-            required
-    />
-    <br /><br />
-    <input type="submit" value="Submit" />
-</form>
-</body>
 </body>
 </html>

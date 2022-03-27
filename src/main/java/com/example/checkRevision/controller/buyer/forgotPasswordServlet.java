@@ -26,7 +26,7 @@ public class forgotPasswordServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("forgotPwdVerCodeUsername", username);
             session.setAttribute("forgotPwdVerCode", forgotPwdVerCode);
-            emailObject.sendMail(email,"Forgot Password code from SHELFS", String.valueOf(forgotPwdVerCode));
+            emailObject.sendForgotPasswordOTP(email,forgotPwdVerCode);
 
             response.sendRedirect("newPasswordFormServlet");
 

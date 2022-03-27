@@ -160,6 +160,31 @@ main {
   margin: 40px auto;
 }
 
+.about-bg{
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(rgba(46, 46, 46, 0.7), rgba(46, 46, 46, 0.7)),
+  url("bookshelf2.jpg");
+  object-fit: cover;
+}
+
+.about-bg > h1{
+  margin: 10px;
+  padding-top: 50px;
+  margin-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+  color: #ffffff;
+}
+
+.about-bg > p{
+  margin-left: 50px;
+  margin-right: 50px;
+  color: #ffffff;
+  background: linear-gradient(rgba(46, 46, 46, 0.9), rgba(46, 46, 46, 0.9));
+  padding: 20px;
+  border-radius: 5px;
+}
 /*  SIDEBAR STARTS HERE  */
 
 #sidebar {
@@ -370,6 +395,7 @@ main {
 #create-account > input {
   background-color: #e8c340;
   border: none;
+  color: #000;
   font-weight: bold;
 }
 
@@ -378,7 +404,7 @@ main {
   color: #000;
   border: none;
   width: 70%;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 700;
   box-shadow: 1px 1px 2px rgb(0, 29, 2);
 }
@@ -478,10 +504,11 @@ main {
 /*FOR ALL FORMS STARTS HERE*/
 
 .formContainer {
+  margin: auto;
   background-color: #ffffff;
   width: 80%;
   padding: 35px 50px;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   border-radius: 10px;
   box-shadow: 20px 30px 25px rgba(0, 0, 0, 0.15);
   /*align-self: center;*/

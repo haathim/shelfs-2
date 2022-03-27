@@ -60,14 +60,16 @@
   </div>
 
   <div id="become-seller">
-    <a href="../buyer/home"><h2>SWITCH TO BUYER PORTAL</h2></a>
+    <h3></h3>
+    <input type="submit" value="SWITCH TO BUYER PORTAL" class="btn" onClick="window.location.href='../seller/home'">
   </div>
 
   <h2>ACCOUNT</h2>
-<%--  <div class="sidebar__link">--%>
-<%--    <i class="fa fa-handshake-o"></i>--%>
-<%--    <a href="messages">Messages</a>--%>
-<%--  </div>--%>
+
+  <div class="sidebar__link">
+    <i class="fa fa-handshake-o"></i>
+    <a href="chatUsersPage">Messages</a>
+  </div>
 
   <div class="sidebar__link">
     <i class="fa fa-briefcase"></i>

@@ -85,7 +85,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
                         <div class="title"><%=ad.getTitle()%></div>
                         <div class="author"><%=ad.getAuthor()%></div>
                         <div class="view-more-button"><a href="searchResultsMore?adId=<%=ad.getAdId()%>"><button>View</button></a></div>
-                        <div class="price"><%=ad.getPrice()%></div>
+                        <div class="price">Rs.<%=ad.getPrice()%></div>
                     </div>
                     <%}%>
                 </div>

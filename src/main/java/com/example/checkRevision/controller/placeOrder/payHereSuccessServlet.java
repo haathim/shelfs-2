@@ -5,6 +5,7 @@ import com.example.checkRevision.dao.NewOrderPickupsDAO;
 import com.example.checkRevision.dao.NewOrdersDAO;
 import com.example.checkRevision.dao.NewPickupAdsDAO;
 import com.example.checkRevision.model.Advertisement;
+import com.example.checkRevision.variables.MyVariables;
 import com.google.gson.Gson;
 
 import javax.servlet.*;
@@ -26,7 +27,9 @@ public class payHereSuccessServlet extends HttpServlet {
         System.out.println("WE ARE IN PAYHERESUCCESS SERVLET");
 
         String checkoutAds = request.getParameter("checkoutAds");
-        boolean isCourier = false;
+//        boolean isCourier = false;
+        int isCourierPara = Integer.parseInt(request.getParameter("isCourier"));
+        boolean isCourier = isCourierPara == 1;
         checkoutAds = "["+checkoutAds+"]";
         String buyerId = (String) request.getSession().getAttribute("username");
         System.out.println("BUYER IS " + buyerId);
@@ -53,6 +56,9 @@ public class payHereSuccessServlet extends HttpServlet {
         int total = 0;
         for (Advertisement ad : cartAds){
             total += ad.getPrice();
+        }
+        if (isCourier){
+            total += MyVariables.courierAmount;
         }
 
 //        have to add to orders table

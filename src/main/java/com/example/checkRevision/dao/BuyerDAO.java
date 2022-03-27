@@ -52,35 +52,35 @@ public class BuyerDAO {
         return result;
 
     }
-    public Buyer getBuyer(String usernamex) throws SQLException, ClassNotFoundException {
-        Connection con = DBConnection.getConnection();
-        String sql = "SELECT * FROM `buyers`  WHERE `username` = ?;";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setString(1, usernamex);
-        ResultSet result = stmt.executeQuery();
-        System.out.println("Outside");
-        if(result.next()){
-            System.out.println("Inside if");
-            String username = result.getString(1);
-            String firstname = result.getString(2);
-            String lastname = result.getString(3);
-            String houseNo = result.getString(4);
-            String street = result.getString(5);
-            String city = result.getString(6);
-            String district = result.getString(7);
-            String province = result.getString(8);
-            String phoneNo = result.getString(10);
-            String email = result.getString(11);
-            System.out.println(email);
+    // public Buyer getBuyer(String usernamex) throws SQLException, ClassNotFoundException {
+    //     Connection con = DBConnection.getConnection();
+    //     String sql = "SELECT * FROM `buyers`  WHERE `username` = ?;";
+    //     PreparedStatement stmt = con.prepareStatement(sql);
+    //     stmt.setString(1, usernamex);
+    //     ResultSet result = stmt.executeQuery();
+    //     System.out.println("Outside");
+    //     if(result.next()){
+    //         System.out.println("Inside if");
+    //         String username = result.getString(1);
+    //         String firstname = result.getString(2);
+    //         String lastname = result.getString(3);
+    //         String houseNo = result.getString(4);
+    //         String street = result.getString(5);
+    //         String city = result.getString(6);
+    //         String district = result.getString(7);
+    //         String province = result.getString(8);
+    //         String phoneNo = result.getString(10);
+    //         String email = result.getString(11);
+    //         System.out.println(email);
 
-            Buyer buyer = new Buyer(username, "", "", 0, null, firstname, lastname, houseNo, street, city, district, province, false, phoneNo, email);
-            return buyer;
+    //         Buyer buyer = new Buyer(username, "", "", 0, null, firstname, lastname, houseNo, street, city, district, province, false, phoneNo, email);
+    //         return buyer;
 
-        }else{
-            System.out.println("Inside else");
-            return null;
-        }
-    }
+    //     }else{
+    //         System.out.println("Inside else");
+    //         return null;
+    //     }
+    // }
 
     public void updateBuyer(String username, String houseNo, String street, String city, String phoneNo, String district) throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
@@ -391,6 +391,25 @@ public class BuyerDAO {
         if (result.next()){
             return result.getString(1);
         }
+        return null;
+    }
+
+    public String getEmailOfSellerOfAd(int adId) throws SQLException, ClassNotFoundException {
+
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT email FROM `buyers` INNER JOIN `advertisements` ON buyers.username = advertisements.sellerId WHERE advertisements.adId = ?;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, adId);
+
+        ResultSet result = stmt.executeQuery();
+
+        if (result.next()){
+            String email = result.getString(1);
+            return email;
+        }
+
         return null;
     }
 }

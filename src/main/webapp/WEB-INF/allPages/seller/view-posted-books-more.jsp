@@ -110,6 +110,101 @@ contentType="text/html;charset=UTF-8" language="java" %>
               <p><%out.println(ad.getDescription());%></p>
             </div>
           </div>
+
+          <div class="edit-book">
+            <div class="formContainer">
+              <h1>EDIT BOOK</h1>
+              <p>Fill the below form to edit book.</p>
+              <div id="instructions" style="color: blue; font-weight: bold">
+              </div>
+              <div id="error" style="color: red; font-weight: bold"></div>
+              <form action="editPostedBook" method="post" enctype="multipart/form-data" id="form">
+                <input type="hidden" name="adId" value="<%=ad.getAdId()%>">
+                <div class="row">
+                  <div class="column">
+                    <label for="title">Title</label>
+                    <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            value="<%=ad.getTitle()%>"
+                            required
+
+                    />
+                  </div>
+                  <div class="column">
+                    <label for="author">Author</label>
+                    <input
+                            type="text"
+                            id="author"
+                            name="author"
+                            value="<%=ad.getAuthor()%>"
+                            required
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <label for="isbn">ISBN</label>
+                    <input type="text" id="isbn" name="isbn" value="<%=ad.getIsbn()%>" required />
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="column">
+                    <label for="category">Category</label><br>
+                    <select
+                            type="text"
+                            id="category"
+                            name="category"
+                            required
+                    ></select>
+                  </div>
+                  <div class="column">
+                    <label for="language">Language</label><br>
+                    <select
+                            type="text"
+                            id="language"
+                            name="language"
+                            required
+                    ></select>
+                  </div>
+                </div>
+                <div class="row">
+
+                  <div class="column">
+                    <label for="price">Price</label>
+                    <input type="number" id="price" name="price" value="<%=ad.getPrice()%>" required />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <label for="description">Description</label>
+                    <h4>Current Description:</h4>
+                    <p><%=ad.getDescription()%></p>
+                    <textarea
+                            id="description"
+                            placeholder="Describe your book in detail here"
+                            rows="3"
+                            name="description"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="column">
+                    <label for="frontPhoto">Front Image</label>
+                    <input type="file" id="frontPhoto" placeholder="Images: Max size 2MB. Allowed types JPG and PNG." name="frontPhoto" multiple accept=".jpg, .png" />
+                  </div>
+                  <div class="column">
+                    <label for="backPhoto">Back Image</label>
+                    <input type="file" id="backPhoto" placeholder="Images: Max size 2MB. Allowed types JPG and PNG." name="backPhoto" multiple accept=".jpg, .png" />
+                  </div>
+                </div>
+                <input type="submit" id="submit-button" value="Edit"/>
+
+              </form>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -117,6 +212,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <%@include file="/WEB-INF/allPages/seller/sidebar.jsp"%>
       </nav>
       <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+      <script src="../allPages/javaScript/inputValidation/seller/editBookForm.js"></script>
+
     </div>
   </body>
 </html>

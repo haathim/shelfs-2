@@ -33,12 +33,12 @@ public class AzureUpload {
         InputStream fileInputStream = filePart.getInputStream();
         blobClient.upload(fileInputStream, filePart.getSize());
 
-        System.out.println("\nListing blobs...");
+//        System.out.println("\nListing blobs...");
 
         // List the blob(s) in the container.
-        for (BlobItem blobItem : containerClient.listBlobs()) {
-            System.out.println("\t" + blobItem.getName());
-        }
+//        for (BlobItem blobItem : containerClient.listBlobs()) {
+//            System.out.println("\t" + blobItem.getName());
+//        }
 
     }
 }

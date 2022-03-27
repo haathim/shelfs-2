@@ -25,15 +25,15 @@
     </div>
     <div class="sidebar__link">
         <i class="fa fa-book"></i>
-        <a href="manageAds">Manage Advertisements</a>
+        <a href="manageAds">Advertisements</a>
     </div>
     <div class="sidebar__link">
         <i class="fa fa-user"></i>
-        <a href="viewUsers">Manage Users</a>
+        <a href="viewUsers">Users</a>
     </div>
     <div class="sidebar__link">
         <i class="fa fa-archive"></i>
-        <a href="manageDeliveryPersons">Manage Delivery Persons</a>
+        <a href="manageDeliveryPersons">Delivery Persons</a>
     </div>
 
     <div class="sidebar__link">
@@ -68,11 +68,14 @@
         <i class="fa fa-exclamation-triangle"></i>
         <a href="refundBuyers">Refund Buyers</a>
     </div>
+
+    <h2>ACCOUNT</h2>
+
     <div class="sidebar__link">
         <i class="fa fa-envelope"></i>
-        <a href="#">Messages</a>
+        <a href="chatUsersPage">Messages</a>
     </div>
-    <h2>ACCOUNT</h2>
+
     <div class="sidebar__link">
         <i class="fa fa-user"></i>
         <a href="changePasswordForm">My Account</a>

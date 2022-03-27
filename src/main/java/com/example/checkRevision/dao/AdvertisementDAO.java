@@ -409,4 +409,34 @@ public class AdvertisementDAO {
         }
 
     }
+
+
+    public void updateAdvertisement(int adId, String sellerId, Advertisement newAd, Part frontPhoto, Part backPhoto, boolean validateFrontPhoto, boolean validateBackPhoto) throws SQLException, ClassNotFoundException, IOException {
+
+        Connection con = DBConnection.getConnection();
+
+        //Add advertisement to database without adding bookImage URLs
+        String newAdSQL = "UPDATE `advertisements` SET  `title` = ? , `author` = ? , `price` = ?, `ISBN` = ?, `language` = ?, `availableStatus` = ?, `description` = ?,`category` = ? WHERE adId = ? AND sellerId = ?";
+        PreparedStatement newAdStmt = con.prepareStatement(newAdSQL);
+        newAdStmt.setString(1, newAd.getTitle());
+        newAdStmt.setString(2, newAd.getAuthor());
+        newAdStmt.setInt(3, (int) (newAd.getPrice()*1.1));
+        newAdStmt.setString(4, newAd.getIsbn());
+        newAdStmt.setString(5, newAd.getLanguage());
+        newAdStmt.setInt(6, 1);
+        newAdStmt.setString(7, newAd.getDescription());
+        newAdStmt.setString(8, newAd.getCategory());
+
+        newAdStmt.setInt(9, adId);
+        newAdStmt.setString(10, sellerId);
+
+        newAdStmt.executeUpdate();
+
+        //save book Images
+        MyFileHandler saveFile = new MyFileHandler();
+        saveFile.saveBookPhotosForEdit(frontPhoto, backPhoto, adId, validateFrontPhoto, validateBackPhoto);
+
+        System.out.println("Error - 4");
+
+    }
 }

@@ -53,7 +53,8 @@
             <div class="formContainer">
                 <h1>Hello There!</h1>
                 <p>How can we help you?</p>
-                <form method="post" action="help">
+                <div id="error" style="color: red; font-weight: bold;padding: 10px"></div>
+                <form id="complaintForm" method="post" action="help">
                     <div class="column">
                         <label for="complaintTitle">Title</label>
                         <input
@@ -75,7 +76,8 @@
                         ></textarea>
 
                     </div>
-                    <button type="submit">Submit</button>
+<%--                    <button type="submit">Submit</button>--%>
+                    <input type="submit" value="Submit Complaint">
                 </form>
 
             </div>
@@ -89,6 +91,7 @@
                 <h4 style="color: #343434">Complaint ID: <%=complaint.getComplaintId()%></h4>
                 <h2>Complaint Title: <%=complaint.getTitle()%></h2>
                 <h3>Complaint Description:</h3>
+                <br><br>
                 <p><%=complaint.getDescription()%></p>
                 <h3 style="color: #4c46f5">Reply from Admin:</h3>
                 <p style="color: #4c46f5"><%=complaint.getReply()%></p>
@@ -105,6 +108,8 @@
         <%@include file="/WEB-INF/allPages/buyer/sidebar/sidebar - help.jsp"%>
     </nav>
     <script src="../allPages/javaScript/sidebarResponsive.js"></script>
+    <script src="../allPages/javaScript/inputValidation/buyer/complaintsValidation.js"></script>
+
 </div>
 </body>
 </html>

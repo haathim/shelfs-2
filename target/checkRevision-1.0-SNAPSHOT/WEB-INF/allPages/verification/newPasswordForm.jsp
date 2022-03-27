@@ -15,9 +15,9 @@
 <div class="box">
 <form action="newPassword" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username"><br>
+    <input type="password" id="username" name="username"><br>
     <label for="username">Enter New Password:</label><br>
-    <input type="text" id="password1" name="password1"><br>
+    <input type="password" id="password1" name="password1"><br>
     <label for="username">Re-enter New Password:</label><br>
     <input type="text" id="password2" name="password2"><br>
     <label for="username">OTP Code:</label><br>

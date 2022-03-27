@@ -51,10 +51,15 @@
       onClick="window.location.href='sellerApplication'"
     />
     <%}else if (request.getSession().getAttribute("userType") == "seller"){%>
-    <a href="../seller/home"><h2>SWITCH TO SELLER PORTAL</h2></a>
-    <%}%>
+    <%--    <a href="../seller/home"><h2>SWITCH TO SELLER PORTAL</h2></a>--%>
+    <h3></h3>
+    <input type="submit" value="SWITCH TO SELLER PORTAL" class="btn" onClick="window.location.href='../seller/home'">    <%}%>
   </div>
   <h2>ACCOUNT</h2>
+  <div class="sidebar__link">
+    <i class="fa fa-wrench"></i>
+    <a href="chatUsersPage">Messages</a>
+  </div>
   <div class="sidebar__link">
     <i class="fa fa-wrench"></i>
     <a href="settings">Settings</a>

@@ -89,7 +89,7 @@
                     name="street"
                     value="<%=buyer.getStreet()%>"
 
-            ></input>
+            />
             <label for="city">City</label>
             <input
                     type="text"
@@ -98,7 +98,7 @@
                     placeholder="Enter your city"
                     value="<%=buyer.getCity()%>"
 
-            ></input>
+            />
 
             <% if(buyer.getUserType().equals("buyer")){%>
             <label for="district">District:</label>
@@ -132,7 +132,7 @@
                     name="province"
                     required
             />
-
+            <%}%>
           </div>
 
 
@@ -142,7 +142,7 @@
       </div>
 
 
-      </div>
+<%--      </div>--%>
       <%@include file="/WEB-INF/allPages/common/changePasswordCommonpart.jsp"%>
 
     </div>

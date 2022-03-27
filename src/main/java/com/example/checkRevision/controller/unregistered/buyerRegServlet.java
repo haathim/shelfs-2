@@ -68,7 +68,7 @@ public class buyerRegServlet extends HttpServlet {
         int verCode = (int)(Math.random() * 1000000);
         HttpSession session = request.getSession();
         session.setAttribute("verCode", verCode);
-        emailObject.sendMail(email,"Verification code from SHELFS", String.valueOf(verCode));
+        emailObject.sendAccountVerificationOTP(email,verCode);
 
 
         assert result != null;

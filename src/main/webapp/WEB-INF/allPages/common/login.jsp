@@ -54,7 +54,8 @@
                 <input id = "uname" name ="uname" type="text" class="input-field" placeholder="Username"  required>
                 <input id = "pass" name = "pass" type="password" class="input-field" placeholder="Password" required>
                 <button type="submit" class="submit-btn">Log in</button>
-                <p > <a href="forgotPasswordForm"><span style="color:white">Forgot password?</span></a></p>
+                <p ><a href="forgotPasswordForm" style="text-decoration: none"><span style="color:white">Forgot Password?</span></a></p><br>
+                <p ><a href="verifyAccount" style="text-decoration: none"><span  style="color:white">Verify Newly Created Account</span></a></p>
             </form>
             <form id="signup" class="input-group">
                 <input type="email" class="input-field" placeholder="Email" required>

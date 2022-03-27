@@ -53,16 +53,14 @@
           <p>Fill the below form to add new delivery person.</p>
           <div id="instructions" style="color: blue; font-weight: bold">
             <p>
-              Username: Use only letters and digits. Length 3 - 20. Should be globally
-              unique.
+
             </p>
             <p>
-              First Name, Last Name: Use only letters. First letter should be Capital.
-              Length 3 - 20.
-            </p>
-            <p>Password: Length 8 - 20.</p>
 
-            <p>Mobile No: Should be valid SriLankan mobile number. Eg: 0777123456</p>
+            </p>
+            <p></p>
+
+            <p></p>
 
           </div>
           <div id="error" style="color: red; font-weight: bold"></div>
@@ -74,7 +72,8 @@
                         type="text"
                         id="username"
                         name="username"
-                        placeholder="Enter username"
+                        placeholder="Username: Use only letters and digits. Length 3 - 20. Should be globally
+              unique."
                         required
                 />
               </div>
@@ -84,7 +83,7 @@
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Enter password"
+                        placeholder="Password: Length 8 - 20."
                         required
                 />
               </div>
@@ -107,17 +106,19 @@
                         type="text"
                         id="firstName"
                         name="firstName"
-                        placeholder="Enter first name here"
+                        placeholder="Enter first name here. First Name, Last Name: Use only letters. First letter should be Capital. Length 3 - 20."
                         required
                 />
               </div>
+            </div>
+            <div class="row">
               <div class="column">
                 <label for="lastName">Last Name</label>
                 <input
                         type="text"
                         id="lastName"
                         name="lastName"
-                        placeholder="Enter last name here"
+                        placeholder="Enter last name here. First Name, Last Name: Use only letters. First letter should be Capital. Length 3 - 20."
                         required
                 />
               </div>
@@ -125,7 +126,7 @@
             <div class="row">
               <div class="column">
                 <label for="mobileNo">Phone Number</label>
-                <input type="text" id="mobileNo" name="mobileNo" placeholder="Enter Mobile Number here" required/>
+                <input type="text" id="mobileNo" name="mobileNo" placeholder="Enter Mobile Number here. Mobile No: Should be valid SriLankan mobile number. Eg: 0777123456" required/>
               </div>
             </div>
             <input type="submit" id="submit-button" value="Add Deliverer"/>

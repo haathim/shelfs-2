@@ -140,7 +140,7 @@ public class NewOrderPickupsDAO {
 
     public ArrayList<SellersPayment> getToBePayedSellers() throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT neworderpickups.pickupId, neworderpickups.sellerId, buyers.firstName, buyers.lastname, buyers.email, sellers.bankAccountNo, sellers.bankName, sellers.bankBranch, SUM(advertisements.price) FROM neworderpickups INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId INNER JOIN buyers ON neworderpickups.sellerId = buyers.username INNER JOIN sellers ON neworderpickups.sellerId = sellers.username INNER JOIN pickuppaymentstatus ON neworderpickups.pickupId = pickuppaymentstatus.pickupId WHERE neworderpickups.status <> 0 AND pickuppaymentstatus.status = 0 GROUP BY neworderpickups.pickupId;";
+        String sql = "SELECT neworderpickups.pickupId, neworderpickups.sellerId, buyers.firstName, buyers.lastname, buyers.email, sellers.bankAccountNo, sellers.bankName, sellers.bankBranch, SUM(advertisements.price), buyers.phoneNo FROM neworderpickups INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId INNER JOIN buyers ON neworderpickups.sellerId = buyers.username INNER JOIN sellers ON neworderpickups.sellerId = sellers.username INNER JOIN pickuppaymentstatus ON neworderpickups.pickupId = pickuppaymentstatus.pickupId WHERE neworderpickups.status <> 0 AND pickuppaymentstatus.status = 0 AND advertisements.availableStatus = 0 GROUP BY neworderpickups.pickupId;";
 
         PreparedStatement stmt = con.prepareStatement(sql);
         ResultSet result = stmt.executeQuery();
@@ -157,10 +157,11 @@ public class NewOrderPickupsDAO {
             String bankName = result.getString(7);
             String bankBranch = result.getString(8);
             int paymentAmount = result.getInt(9);
+            String phoneNo = result.getString(10);
 
 
 
-            Seller seller = new Seller(sellerId,"","seller",0,null, firstName, lastName, "","","","","",true,"",email,"", "", "", bankAccountNo,bankName,bankBranch);
+            Seller seller = new Seller(sellerId,"","seller",0,null, firstName, lastName, "","","","","",true,phoneNo,email,"", "", "", bankAccountNo,bankName,bankBranch);
             sellersPaymentsList.add(new SellersPayment(pickupId, seller, paymentAmount));
         }
 

@@ -199,7 +199,7 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
                     <p><%=buyer.getProvince()%> Province</p>
                     <br>
                     <div class="view-more-button">
-                        <a href="settings">Change Delivery Address</a>
+                        <a href="settings" style="background: green;padding: 10px;border-radius: 5px;text-decoration: none;color: white;">Change Delivery Address</a>
                     </div>
                 </div>
                   <br>

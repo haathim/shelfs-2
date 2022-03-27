@@ -393,4 +393,23 @@ public class BuyerDAO {
         }
         return null;
     }
+
+    public String getEmailOfSellerOfAd(int adId) throws SQLException, ClassNotFoundException {
+
+        Connection con = DBConnection.getConnection();
+
+        String sql = "SELECT email FROM `buyers` INNER JOIN `advertisements` ON buyers.username = advertisements.sellerId WHERE advertisements.adId = ?;";
+
+        PreparedStatement stmt = con.prepareStatement(sql);
+        stmt.setInt(1, adId);
+
+        ResultSet result = stmt.executeQuery();
+
+        if (result.next()){
+            String email = result.getString(1);
+            return email;
+        }
+
+        return null;
+    }
 }

@@ -49,7 +49,8 @@
 
         <div class="formContainer">
           <h1>Give a reply</h1>
-          <form method="post" action="replyToComplaint">
+            <div id="error" style="color: red; font-weight: bold;padding: 10px"></div>
+          <form id="complaintReplyForm" method="post" action="replyToComplaint">
             <div class="column">
                 <input type="hidden" name="complaintId" value="<%=complaint.getComplaintId()%>">
               <label for="replyDescription">Write your reply here.</label>
@@ -81,6 +82,8 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script src="script.js"></script>
   <script src="layoutjs.js"></script>
+<script src="../allPages/javaScript/inputValidation/admin/complaintReplyValidation.js"></script>
+
 </body>
 
 </html>

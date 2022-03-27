@@ -45,7 +45,7 @@
 
     <main>
         <div class="main-container">
-            <h1>Pending Deliveries</h1>
+            <h1>Refund Buyers</h1>
             <div class="mainbox1">
                 <table id="order1">
                     <thead>

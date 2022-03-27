@@ -44,7 +44,7 @@
 
     <main>
       <div class="main-container">
-          <h1>Manage Users</h1>
+          <h1>Users</h1>
           <div class="mainbox1">
             <table id="order1">
               <thead>

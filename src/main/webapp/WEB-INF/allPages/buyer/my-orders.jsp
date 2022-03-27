@@ -60,7 +60,7 @@
                         <th>Order Id</th>
                         <th>Date Ordered</th>
                         <th>Status</th>
-                        <th>Total</th>
+                        <th>Total Price</th>
                         <th>See More</th>
 
                     </tr>
@@ -84,7 +84,7 @@
                             out.println("Delivered");
                             break;
                     }%></td>
-                    <td><%=order.getTotalPrice()%></td>
+                    <td>Rs.<%=order.getTotalPrice()%></td>
                     <td><div class="view-more-button"><a href="viewOrdersMore?orderId=<%=order.getOrderId()%>"><h2>View</h2></a></div></td>
 
                     </tr>

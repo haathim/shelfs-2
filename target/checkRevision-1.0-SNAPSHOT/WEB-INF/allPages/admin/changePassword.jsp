@@ -28,11 +28,11 @@ change this template use File | Settings | File Templates. --%> <%@ page
   </div>
 
   <div class="navbar__left">
-    <%@include file="/WEB-INF/allPages/admin/navbar-left.jsp"%>
+    <%@include file="/WEB-INF/allPages/admin/thisura/navbar-left.jsp"%>
   </div>
 
   <div class="navbar__right">
-    <%@include file="/WEB-INF/allPages/admin/navbar-right.jsp"%>
+    <%@include file="/WEB-INF/allPages/admin/thisura/navbar-right.jsp"%>
   </div>
 
   <main>

@@ -1,4 +1,7 @@
 const nicNo = document.getElementById("nicNo");
+const bankAccountNo = document.getElementById("bankAccountNo");
+const bankName = document.getElementById("bankName");
+const bankBranch = document.getElementById("bankBranch");
 
 const form = document.getElementById("form");
 const errorElement = document.getElementById("error");
@@ -7,10 +10,27 @@ form.addEventListener("submit", (e) => {
   let messages = [];
 
   const nicRegex = /^([0-9]{12}|[0-9]{9}(v|V|x|X))$/;
+  const bankAccountRegex = /^([0-9]{12}|[0-9]{15})$/;
+  const bankNameRegex = /^[A-Z][a-zA-Z\s]{1,19}$/;
+  const bankBranchRegex = /^[A-Z][a-z]{1,19}$/;
+
 
   if (!nicRegex.test(nicNo.value)) {
     messages.push("NIC number is not valid.");
   }
+
+  if (!bankAccountRegex.test(bankAccountNo.value)) {
+    messages.push("Bank Account No is not valid.");
+  }
+
+  if (!bankNameRegex.test(bankName.value)) {
+    messages.push("Bank Name is not valid.");
+  }
+
+  if (!bankBranchRegex.test(bankBranch.value)) {
+    messages.push("Bank Branch name is not valid.");
+  }
+
 
   if (messages.length > 0) {
     e.preventDefault();

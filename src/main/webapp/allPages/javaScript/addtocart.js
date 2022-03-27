@@ -63,7 +63,7 @@ function addToCart(){
     var book = {"title":title,
         "author":author,
         "seller":seller,
-        "price":price,
+        "price":price.replace(/(\s|\n|R|s|\.)/g, ''),
         "adId":adId,
         "img":img
     }
@@ -139,9 +139,9 @@ function display(){
         </div>
     
         <div class="price">
-            <span id="price">${item.price}</span>
+            <span id="price">Rs.${item.price}</span>
         </div>
-        <button type="button" class="view-btn"><i class="fa fa-book"></i>  View</button>
+        <a href="searchResultsMore?adId=${item.adId}"><button type="button" class="view-btn"><i class="fa fa-book"></i>  View</button></a>
         <button type="button" class="remove-btn"><i class="fa fa-trash"></i>  Remove</button>
     </div>`
         })
@@ -163,13 +163,13 @@ function updateTotal(){
     for (var i = 0; i < cartRows.length; i++) {
         var cartRow = cartRows[i]
         var priceElement = cartRow.getElementsByClassName('price')[0]
-        var price = parseFloat(priceElement.innerText.replace('LKR',))
+        var price = parseFloat(priceElement.innerText.replace(/[Rs.]/g, ''))
         total = total + price
         console.log(priceElement)
 
     }
     console.log("Nmber:", cartRows.length)
-    total = Math.round(total*100)/100
+    // total = Math.round(total*100)/100
     document.getElementsByClassName('cart-price')[0].innerText = 'Total - LKR ' + total;
     document.getElementById('itemcount').innerText = cartRows.length
 }

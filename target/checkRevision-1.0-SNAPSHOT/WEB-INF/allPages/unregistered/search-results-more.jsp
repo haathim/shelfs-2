@@ -46,8 +46,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
           <div class="book-more-details">
             <div class="navigation">
               <div class="back-button">
-                <i class="fa fa-arrow-left"></i>
-                <button onclick="goBack()"></button>
+                <button onclick="goBack()"><i class="fa fa-arrow-left"></i></button>
               </div>
             </div>
             <div class="main-area-box">

@@ -58,14 +58,13 @@
                     <p>Fill the below form to Edit Request for a Book.</p>
                     <div id="instructions" style="color: blue; font-weight: bold">
                         <p>
-                            Title: Use only letters, digits, period, commas, question-mark, ampersand and
-                            exclamation mark. Length 1 - 50.
+
                         </p>
-                        <p>Author: Use only letters, digits and period. Length 3 - 20.</p>
-                        <p>
-                            Description: Use only letters, digits, period, commas, question-mark,
-                            ampersand and exclamation mark. Length 1 - 500.
-                        </p>
+                        <p></p>
+<%--                        <p>--%>
+<%--                            Description: Use only letters, digits, period, commas, question-mark,--%>
+<%--                            ampersand and exclamation mark. Length 1 - 500.--%>
+<%--                        </p>--%>
                     </div>
                     <div id="error" style="color: red; font-weight: bold"></div>
                     <form action="editBuyerRequest" method="post" id="form">
@@ -78,6 +77,7 @@
                                         type="text"
                                         name="title"
                                         value="<%=buyerRequestDetails.getTitle()%>"
+                                        placeholder="Title: Use only letters, digits, period commas, question-mark, ampersand and exclamation mark. Length 1 - 50."
                                         required
                                 />
                             </div>

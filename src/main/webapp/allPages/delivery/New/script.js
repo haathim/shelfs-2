@@ -103,7 +103,7 @@ function toggleProfileMenu() {
         down2 = false;
     }
     else {
-        box2.style.height  = '160px';
+        box2.style.height  = '120px';
         box2.style.opacity = 1;
         down2 = true;
     }

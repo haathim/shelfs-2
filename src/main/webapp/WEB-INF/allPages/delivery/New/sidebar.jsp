@@ -16,7 +16,7 @@
 
   <div class="sidebar__link active_menu_link">
     <i class="fa fa-home"></i>
-    <a href="#">Home</a> <!--Link to the first page of deliveryman-->
+    <a href="pendingPickupsNew">Home</a> <!--Link to the first page of deliveryman-->
   </div>
 
   <h2>DELIVERY</h2>
@@ -42,11 +42,6 @@
   </div>
 
   <h2>ACCOUNT</h2>
-
-  <div class="sidebar__link">
-    <i class="fa fa-question"></i>
-    <a href="chatUsersPage">Messages</a>
-  </div>
 
   <div class="sidebar__link">
     <i class="fa fa-question"></i>

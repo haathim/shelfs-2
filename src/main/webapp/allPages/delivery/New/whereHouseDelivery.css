@@ -70,11 +70,6 @@ main > h1 {
     font-weight: 600;
 }
 
-.control-buttons {
-    height: 250px;
-    width: 30%;
-    background-color: #deeaee;
-}
 /*pickup-box styling end*/
 
 /*buttons styling start*/
@@ -83,6 +78,10 @@ main > h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 250px;
+    width: 30%;
+    background-color: #deeaee;
+    z-index: 1;
 }
 
 .control-buttons a{

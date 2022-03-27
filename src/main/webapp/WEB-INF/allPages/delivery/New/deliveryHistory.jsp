@@ -53,50 +53,54 @@
     <div class="navbar__right">
 
         <!--notification icon-->
-        <a href="#" onclick="toggleNotifi()">
-            <i class="fa fa-bell"></i>
-        </a>
+<%--        <a href="#" onclick="toggleNotifi()">--%>
+<%--            <i class="fa fa-bell"></i>--%>
+<%--        </a>--%>
 
         <!--notification list-->
-        <div class="notification-list" id="n-list">
+<%--        <div class="notification-list" id="n-list">--%>
 
-            <h2>Notifications<span>#count</span></h2>
+<%--            <h2>Notifications<span>#count</span></h2>--%>
 
-            <div class="notifi-item">
-                <div class="data">
-                    <h4>Dear Sir/Miss</h4>
-                    <p>Notification Message.</p>
-                </div>
-            </div>
+<%--            <div class="notifi-item">--%>
+<%--                <div class="data">--%>
+<%--                    <h4>Dear Sir/Miss</h4>--%>
+<%--                    <p>Notification Message.</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="notifi-item">
-                <div class="data">
-                    <h4>Dear Sir/Miss</h4>
-                    <p>Notification Message.</p>
-                </div>
-            </div>
+<%--            <div class="notifi-item">--%>
+<%--                <div class="data">--%>
+<%--                    <h4>Dear Sir/Miss</h4>--%>
+<%--                    <p>Notification Message.</p>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-        </div>
+<%--        </div>--%>
 
         <!--Message icon.(decided to remove)-->
-        <a href="#">
-            <i class="fa fa-envelope"></i>
-        </a>
+<%--        <a href="#">--%>
+<%--            <i class="fa fa-envelope"></i>--%>
+<%--        </a>--%>
 
         <!--user image and drop-down list-->
+
+        <h4 style="color: black; font-weight: bold;">@<%=request.getSession().getAttribute("username")%></h4>
+
         <a href="#" onclick="toggleProfileMenu()">
-            <img width="30" src="assets/user_image.svg" alt="user_image" />
+<%--            <img width="30" src="assets/user_image.svg" alt="user_image" />--%>
+            <i class="fa fa-user"></i>
         </a>
 
         <!--profile menu list-->
         <div class="profile-menu" id="p-menu">
 
-            <div class="menu-item">
-                <div class="item-name">
-                    <i class="fa fa-user"></i>
-                    <a href="">Profile</a>
-                </div>
-            </div>
+<%--            <div class="menu-item">--%>
+<%--                <div class="item-name">--%>
+<%--                    <i class="fa fa-user"></i>--%>
+<%--                    <a href="">Profile</a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <div class="menu-item">
                 <div class="item-name">

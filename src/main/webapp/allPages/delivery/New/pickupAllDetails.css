@@ -142,6 +142,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1;
 }
 
 .backButton a{
@@ -207,3 +208,28 @@
     transform: skew(25deg);
 }
 /*buttons styling end*/
+
+/*reject button styling start*/
+.description-of-book form button {
+    border: 0;
+    background: #0e1538;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    /*border: 3px solid #ff1a1a;*/
+    padding: 10px 35px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 20px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+}
+
+.description-of-book form button:hover {
+    color: black;
+    background: none;
+    border: 2px solid #ff0000;
+}
+/*reject button styling end*/

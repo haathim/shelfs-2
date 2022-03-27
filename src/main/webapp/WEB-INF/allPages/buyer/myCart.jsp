@@ -52,12 +52,12 @@ change this template use File | Settings | File Templates. --%> <%@ page
                           <p>Items - <div id="itemcount"></div></p>
                           <div class="top-box-checkout-btn">
 
-                              <i class="fa fa-book">
+<%--                              <i class="fa fa-book">--%>
                                   <form action="testPayHereServlet" method="post">
                                       <input type="hidden" name="checkoutValues" value="" id="checkoutValues">
-                                      <td><button type="submit">Proceed to checkout</button></td>
+                                      <button type="submit" id="chkout-btn">Proceed to checkout</button>
                                   </form>
-                              </i>
+<%--                              </i>--%>
                           </div>
                       </div>
                   </div>

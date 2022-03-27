@@ -17,6 +17,7 @@ change this template use File | Settings | File Templates. --%> <%@ page
     <link rel="stylesheet" href="../allPages/buyer/home.css" />
     <link rel="stylesheet" href="../allPages/buyer/sidebar.css" />
 
+
     <title>SHELFS - Online Bookstore</title>
 </head>
 <body id="body">

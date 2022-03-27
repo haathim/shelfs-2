@@ -58,15 +58,15 @@
                 <input type="password" class="input-field" placeholder="Retype Password" required>
                 <button type="submit" class="submit-btn">Sign in</button>
             </form>
-<%--            <div id="signuptext" class="signup-text">--%>
-<%--                <p>Don't have an account?</p>--%>
+            <div id="signuptext" class="signup-text">
+                <p>Don't have an account?</p>
 
-<%--            </div>--%>
+            </div>
             <div id="logintext" class="login-text">
                 <p>Already have an account?</p>
             </div>
 
-<%--            <button id="signupbtn" type="button" class="signup-btn" onclick="signup()">Sign Up</button>--%>
+            <button id="signupbtn" type="button" class="signup-btn" onClick="window.location.href='public/buyerRegForm'">Sign Up</button>
             <button id="loginbtn" type="button" class="login-btn" onclick="login()">Log In</button>
         </div>
 

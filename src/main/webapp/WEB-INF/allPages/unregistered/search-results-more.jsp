@@ -34,19 +34,20 @@ contentType="text/html;charset=UTF-8" language="java" %>
       </div>
 
       <div class="navbar__left">
-        <%@include file="/WEB-INF/allPages/buyer/navbar-left.jsp"%>
+        <%@include file="/WEB-INF/allPages/unregistered/navbar-left/navbar-left.jsp"%>
       </div>
 
-      <div class="navbar__right">
-        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>
-      </div>
+<%--      <div class="navbar__right">--%>
+<%--        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>--%>
+<%--      </div>--%>
 
       <main>
         <div class="main__container">
           <div class="book-more-details">
             <div class="navigation">
               <div class="back-button">
-                <button onclick="goBack()">Back</button>
+                <i class="fa fa-arrow-left"></i>
+                <button onclick="goBack()"></button>
               </div>
             </div>
             <div class="main-area-box">
@@ -56,12 +57,12 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <div class="author"><% out.println(ad.getAuthor());%></div>
                 </div>
                 <div class="top-box-seller-block">
-                  <div class="seller-icon"></div>
+                  <%--              <div class="seller-icon"></div>--%>
+                  <%--              <i class="fa fa-user"></i>--%>
                   <div class="seller-name" id="seller">
-                    <%=ad.getSellerId()%>
+                    Seller ID : @<%=ad.getSellerId()%>
                     <%--                    <div class="rating">4.9</div>--%>
                   </div>
-
                 </div>
               </div>
               <div class="detail-block">
@@ -104,6 +105,10 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   <div class="buttons">
                     <div class="price-button">
                       Rs.<% out.println(ad.getPrice());%>
+                    </div>
+                    <div class="btn-inline">
+                      <button type="button" class="addtocart-btn" onclick="window.location.href='../login'"><i class="fa fa-shopping-cart"></i>  Add to cart</button>
+
                     </div>
 <%--                    <div class="btn-inline">--%>
 <%--                      <div class="add-to-cart-button">--%>

@@ -1,8 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %>
-<%@ page import="com.example.checkRevision.model.Buyer" %><%--
+<%@ page import="com.example.checkRevision.model.Buyer" %>
+<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -29,6 +30,7 @@
   <title>SHELFS.</title>
 </head>
 <body>
+
 <% Buyer buyer = (Buyer)request.getAttribute("usernamex"); %>
 
 
@@ -97,6 +99,7 @@
                     value="<%=buyer.getCity()%>"
 
             ></input>
+
             <% if(buyer.getUserType().equals("buyer")){%>
             <label for="district">District:</label>
             <br />
@@ -129,12 +132,15 @@
                     name="province"
                     required
             />
-            <%}%>
+
           </div>
 
 
           <button type="submit">Submit</button>
         </form>
+
+      </div>
+
 
       </div>
       <%@include file="/WEB-INF/allPages/common/changePasswordCommonpart.jsp"%>
@@ -149,6 +155,7 @@
   <script src="../allPages/javaScript/sidebarResponsive.js"></script>
   <script src="../allPages/javaScript/inputValidation/changePasswordValidation.js"></script>
   <script src="../allPages/javaScript/inputValidation/buyer/changeAccountDetails.js"></script>
+
 </div>
 </body>
 </html>

@@ -114,6 +114,8 @@ Templates. --%> <%@ page contentType="text/html;charset=UTF-8" language="java"
 
                                         <button type="submit" class="addtowishlist-btn"><i class="fa fa-star"></i>  Add to wishlist</button>
                                     </form>
+                                    <a href="chatPage?otherUser=<%=ad.getSellerId()%>"><button type="button" class="addtocart-btn">Message Seller</button></a>
+
                                 </div>
 
                             </div>

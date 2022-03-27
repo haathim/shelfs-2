@@ -38,9 +38,9 @@ change this template use File | Settings | File Templates. --%> <%@ page
         <%@include file="/WEB-INF/allPages/unregistered/navbar-left.jsp"%>
     </div>
 
-    <div class="navbar__right">
-        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>
-    </div>
+<%--    <div class="navbar__right">--%>
+<%--        <%@include file="/WEB-INF/allPages/unregistered/navbar-right.jsp"%>--%>
+<%--    </div>--%>
 
     <main>
         <div class="main__container">

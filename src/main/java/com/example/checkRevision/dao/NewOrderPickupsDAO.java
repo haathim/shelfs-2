@@ -140,7 +140,7 @@ public class NewOrderPickupsDAO {
 
     public ArrayList<SellersPayment> getToBePayedSellers() throws SQLException, ClassNotFoundException {
         Connection con = DBConnection.getConnection();
-        String sql = "SELECT neworderpickups.pickupId, neworderpickups.sellerId, buyers.firstName, buyers.lastname, buyers.email, sellers.bankAccountNo, sellers.bankName, sellers.bankBranch, SUM(advertisements.price) FROM neworderpickups INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId INNER JOIN buyers ON neworderpickups.sellerId = buyers.username INNER JOIN sellers ON neworderpickups.sellerId = sellers.username INNER JOIN pickuppaymentstatus ON neworderpickups.pickupId = pickuppaymentstatus.pickupId WHERE neworderpickups.status = 1 AND pickuppaymentstatus.status = 0 GROUP BY neworderpickups.pickupId;";
+        String sql = "SELECT neworderpickups.pickupId, neworderpickups.sellerId, buyers.firstName, buyers.lastname, buyers.email, sellers.bankAccountNo, sellers.bankName, sellers.bankBranch, SUM(advertisements.price) FROM neworderpickups INNER JOIN newpickupsads on neworderpickups.pickupId = newpickupsads.pickupId INNER JOIN advertisements ON newpickupsads.adId = advertisements.adId INNER JOIN buyers ON neworderpickups.sellerId = buyers.username INNER JOIN sellers ON neworderpickups.sellerId = sellers.username INNER JOIN pickuppaymentstatus ON neworderpickups.pickupId = pickuppaymentstatus.pickupId WHERE neworderpickups.status <> 0 AND pickuppaymentstatus.status = 0 GROUP BY neworderpickups.pickupId;";
 
         PreparedStatement stmt = con.prepareStatement(sql);
         ResultSet result = stmt.executeQuery();

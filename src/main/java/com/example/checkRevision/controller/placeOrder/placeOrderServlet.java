@@ -48,8 +48,8 @@ public class placeOrderServlet extends HttpServlet {
 //            cartAds.add(advertisementDAO.getAdById(21));
 //            cartAds.add(advertisementDAO.getAdById(22));
 //            cartAds.add(advertisementDAO.getAdById(51));
-//            cartAds.add(advertisementDAO.getAdById(56));
-            cartAds.add(advertisementDAO.getAdById(27));
+            cartAds.add(advertisementDAO.getAdById(66));
+            cartAds.add(advertisementDAO.getAdById(65));
 //            cartAds.add(advertisementDAO.getAdById(19));
 
 

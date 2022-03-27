@@ -63,7 +63,7 @@
               ></textarea>
 
             </div>
-            <button type="submit">Reply</button>
+              <input type="submit" value="Reply">
           </form>
 
         </div>

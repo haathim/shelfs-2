@@ -17,6 +17,7 @@ public class loginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.setAttribute("isError", false);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/common/login.jsp");
         dispatcher.forward(request, response);
     }
@@ -76,7 +77,9 @@ public class loginServlet extends HttpServlet {
 
             }
         } else {
-            response.sendRedirect("login");
+            request.setAttribute("isError", true);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/allPages/common/login.jsp");
+            dispatcher.forward(request, response);
         }
 
 

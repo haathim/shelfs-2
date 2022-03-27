@@ -1,8 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.example.checkRevision.model.Wishlist" %>
 <%@ page import="com.example.checkRevision.model.Advertisement" %>
-<%@ page import="com.example.checkRevision.variables.MyVariables" %>
-<%@ page import="com.example.checkRevision.model.Buyer" %><%--
+<%@ page import="com.example.checkRevision.model.Buyer" %>
+<%@ page import="com.example.checkRevision.variables.MyVariables" %><%--
+
   Created by IntelliJ IDEA.
   User: Lenovo
   Date: 21-Sep-21
@@ -29,6 +30,7 @@
   <title>SHELFS.</title>
 </head>
 <body>
+
 <% Buyer buyer = (Buyer)request.getAttribute("usernamex"); %>
 
 
@@ -87,7 +89,7 @@
                     name="street"
                     value="<%=buyer.getStreet()%>"
 
-            ></input>
+            />
             <label for="city">City</label>
             <input
                     type="text"
@@ -96,7 +98,8 @@
                     placeholder="Enter your city"
                     value="<%=buyer.getCity()%>"
 
-            ></input>
+            />
+
             <% if(buyer.getUserType().equals("buyer")){%>
             <label for="district">District:</label>
             <br />
@@ -137,6 +140,9 @@
         </form>
 
       </div>
+
+
+<%--      </div>--%>
       <%@include file="/WEB-INF/allPages/common/changePasswordCommonpart.jsp"%>
 
     </div>
@@ -149,6 +155,7 @@
   <script src="../allPages/javaScript/sidebarResponsive.js"></script>
   <script src="../allPages/javaScript/inputValidation/changePasswordValidation.js"></script>
   <script src="../allPages/javaScript/inputValidation/buyer/changeAccountDetails.js"></script>
+
 </div>
 </body>
 </html>

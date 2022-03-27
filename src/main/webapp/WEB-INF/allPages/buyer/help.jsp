@@ -75,7 +75,8 @@
                         ></textarea>
 
                     </div>
-                    <button type="submit">Submit</button>
+<%--                    <button type="submit">Submit</button>--%>
+                    <input type="submit" value="Submit Complaint">
                 </form>
 
             </div>
